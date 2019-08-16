@@ -7,11 +7,11 @@ package model;
 
 /**
  *
- * @author scmz2607
+ * @author Nicole Alvarez
  */
 public abstract class Empleado {
     protected String numCedula, nombre, cargo, apellido, direccion, numTelefono;
-    protected UsuarioBasico usuario;
+  
 
     public Empleado(String numCedula, String nombre, String cargo, String apellido, String direccion, String numTelefono) {
         this.numCedula = numCedula;
@@ -20,7 +20,6 @@ public abstract class Empleado {
         this.apellido = apellido;
         this.direccion = direccion;
         this.numTelefono = numTelefono;
-        usuario =  generarUsuario(numCedula);
     }
 
     public String getNumCedula() {
@@ -71,14 +70,5 @@ public abstract class Empleado {
         this.numTelefono = numTelefono;
     }
 
-    public UsuarioBasico getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(UsuarioBasico usuario) {
-        this.usuario = usuario;
-    }
-    
     
 }
-//iniciarSesion() creo que no deberia ir aqui ni activarOnline()
