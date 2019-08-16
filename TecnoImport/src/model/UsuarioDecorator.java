@@ -10,9 +10,9 @@ package model;
  * @author Nicole Alvarez
  */
 public class UsuarioDecorator implements Usuario{
-    private String idUser;
-    private String password;
-    private Empleado empleado;
+    protected String idUser;
+    protected String password;
+    protected Empleado empleado;
 
     public UsuarioDecorator(Usuario usuario) {
         this.idUser = usuario.getIdUser();
