@@ -11,7 +11,7 @@ package model;
  */
 public abstract class Empleado {
     protected String numCedula, nombre, cargo, apellido, direccion, numTelefono;
-    protected Usuario usuario;
+    protected UsuarioBasico usuario;
 
     public Empleado(String numCedula, String nombre, String cargo, String apellido, String direccion, String numTelefono) {
         this.numCedula = numCedula;
@@ -71,18 +71,14 @@ public abstract class Empleado {
         this.numTelefono = numTelefono;
     }
 
-    public Usuario getUsuario() {
+    public UsuarioBasico getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(UsuarioBasico usuario) {
         this.usuario = usuario;
     }
     
-    //aqui se debe crear una excepcion para cedulas no repetidas
-    private Usuario generarUsuario(String numCedula){
-        return new Usuario(numCedula, numCedula); //luego habra que permitirle cambiar clave
-    }
-
+    
 }
 //iniciarSesion() creo que no deberia ir aqui ni activarOnline()

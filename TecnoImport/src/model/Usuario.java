@@ -7,32 +7,18 @@ package model;
 
 /**
  *
- * @author scmz2607
+ * @author Nicole Alvarez
  */
-public class Usuario {
-    private String idUser;
-    private String password;
+public interface Usuario {
 
-    public Usuario(String idUser, String password) {
-        this.idUser = idUser;
-        this.password = password;
-    }
-
-    public String getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(String idUser) {
-        this.idUser = idUser;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    
+    public void iniciarSesion();
+    public void cambiarPsw();
+    public void consultarProductos();
+    public String getIdUser();
+    public void setIdUser(String idUser);
+    public Empleado getEmpleado();
+    public void setEmpleado(Empleado empleado);
+    public String getPassword();
+    public void setPassword(String password);
     
 }
