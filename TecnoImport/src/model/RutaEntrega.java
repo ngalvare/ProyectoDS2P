@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -67,6 +68,6 @@ public class RutaEntrega {
     
     public List<Envio> obtenerEnviosFallidos(){
         System.out.println("Clase RutaEntrega Metodo obtenerEnviosFallidos");
-        return new ArrayList<Envio>;
+        return new ArrayList<>();
     }
 }
