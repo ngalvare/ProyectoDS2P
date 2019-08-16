@@ -103,21 +103,15 @@ public class ViewAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClientesActionPerformed
-        ViewListClientes listaClientes = new ViewListClientes();
-        listaClientes.setVisible(true);
-        this.setVisible(false);
+        
     }//GEN-LAST:event_buttonClientesActionPerformed
 
     private void buttonEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEmpleadosActionPerformed
-        ViewListEmpleados listaEmpleados = new ViewListEmpleados();
-        listaEmpleados.setVisible(true);
-        this.setVisible(false);
+        
     }//GEN-LAST:event_buttonEmpleadosActionPerformed
 
     private void buttonProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonProductosActionPerformed
-        ViewListProductos listaProductos = new ViewListProductos();
-        listaProductos.setVisible(true);
-        this.setVisible(false);
+       
     }//GEN-LAST:event_buttonProductosActionPerformed
 
     /**
