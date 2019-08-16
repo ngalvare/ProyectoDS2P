@@ -109,7 +109,7 @@ public class Database {
         System.out.println("base de dato 14");
     }
     
-    public void emitirDocumentoElectronico(){ //DocumentoElectronico
+    public void emitirDocumentoElectronico(){ //aqui tienen que retornar DocumentoElectronico
         System.out.println("base de dato 15");
     }
     
