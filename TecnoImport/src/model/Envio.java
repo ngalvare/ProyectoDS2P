@@ -33,7 +33,7 @@ public class Envio {
         System.out.println("EnvioCambiarEstadoEnvio");
     }
     
-    public void solicitar(List<Productos> productos){
+    public void solicitar(List<Producto> productos){
     
         System.out.println("Enviosolicitar");
     }
