@@ -20,6 +20,15 @@ public class EnvioAbastecimiento extends Envio {
         this.lugarDestino = local;
         
     }
+
+    public Local getLugarDestino() {
+        return lugarDestino;
+    }
+
+    public void setLugarDestino(Local lugarDestino) {
+        this.lugarDestino = lugarDestino;
+    }
+    
     
     
     

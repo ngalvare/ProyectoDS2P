@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.Date;
+
 /**
  *
  * @author ANA
@@ -14,12 +16,15 @@ public class NotaCredito extends DocumentoElectronico{
     private float porcentajeDescuento, valorGastoIncurrido;
     private Factura facturaAnulada;
 
-    public NotaCredito(float porcentajeDescuento, float valorGastoIncurrido, Factura facturaAnulada) {
+    public NotaCredito(int id, PagoStrategy pago, Cliente cliente, Date fecha, String detalle,float porcentajeDescuento, float valorGastoIncurrido, Factura facturaAnulada) {
+        super(id, pago, cliente, fecha, detalle);
         this.porcentajeDescuento = porcentajeDescuento;
         this.valorGastoIncurrido = valorGastoIncurrido;
         this.facturaAnulada = facturaAnulada;
+      
     }
 
+   
     public float getPorcentajeDescuento() {
         return porcentajeDescuento;
     }
