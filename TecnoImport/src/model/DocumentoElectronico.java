@@ -14,7 +14,7 @@ import java.util.Date;
 public class DocumentoElectronico {
     
     private int id;
-    //private Pago tipoPago
+    private PagoStrategy pago;
     private Cliente cliente;
     private Date fecha;
     private String detalle;
