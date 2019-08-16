@@ -29,20 +29,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        bienbenidosMenu = new javax.swing.JLabel();
         userName = new javax.swing.JTextField();
         contraseña = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        usuarios = new javax.swing.JLabel();
+        cntraseñas = new javax.swing.JLabel();
         iniciarSecion = new javax.swing.JButton();
         registar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
-        setBackground(new java.awt.Color(0, 0, 153));
+        setBackground(new java.awt.Color(0, 0, 102));
+        setMaximumSize(null);
 
-        jLabel1.setFont(new java.awt.Font("Stencil", 2, 24)); // NOI18N
-        jLabel1.setText("Bienvenido a TecnoImport S.A. ");
+        bienbenidosMenu.setFont(new java.awt.Font("Stencil", 2, 24)); // NOI18N
+        bienbenidosMenu.setText("Bienvenido a TecnoImport S.A. ");
 
         userName.setFont(new java.awt.Font("Sitka Small", 0, 11)); // NOI18N
         userName.addActionListener(new java.awt.event.ActionListener() {
@@ -53,13 +54,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         contraseña.setFont(new java.awt.Font("Sitka Text", 0, 11)); // NOI18N
 
-        jLabel2.setText("Usuario:");
+        usuarios.setText("Usuario:");
 
-        jLabel3.setText("Contraseña:");
+        cntraseñas.setText("Contraseña:");
 
+        iniciarSecion.setBackground(new java.awt.Color(193, 203, 240));
         iniciarSecion.setText("Iniciar Sesión");
+        iniciarSecion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iniciarSecionActionPerformed(evt);
+            }
+        });
 
+        registar.setBackground(new java.awt.Color(193, 203, 240));
         registar.setText("Registar");
+        registar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -71,8 +84,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
+                            .addComponent(usuarios)
+                            .addComponent(cntraseñas)
                             .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -83,20 +96,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(66, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(bienbenidosMenu)
                 .addGap(64, 64, 64))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bienbenidosMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(usuarios)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
-                .addComponent(jLabel3)
+                .addComponent(cntraseñas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -112,6 +125,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void userNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_userNameActionPerformed
+
+    private void registarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_registarActionPerformed
+
+    private void iniciarSecionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarSecionActionPerformed
+        MenuAdmin m = new MenuAdmin();
+        m.setVisible(true);
+        m.setResizable(false);
+        
+        this.setVisible(false);
+    }//GEN-LAST:event_iniciarSecionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,18 +168,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuPrincipal().setVisible(true);
+                MenuPrincipal menu = new MenuPrincipal();
+                menu.setVisible(true);
+                menu.setResizable(false);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel bienbenidosMenu;
+    private javax.swing.JLabel cntraseñas;
     private javax.swing.JTextField contraseña;
     private javax.swing.JButton iniciarSecion;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton registar;
     private javax.swing.JTextField userName;
+    private javax.swing.JLabel usuarios;
     // End of variables declaration//GEN-END:variables
 }
