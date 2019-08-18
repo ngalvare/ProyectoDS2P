@@ -11,8 +11,8 @@ package Modeltecnoimport;
  */
 public class Gerente extends Empleado{
     
-    public Gerente(String numCedula, String nombre, String cargo, String apellido, String direccion, String numTelefono) {
-        super(numCedula, nombre, cargo, apellido, direccion, numTelefono);
+    public Gerente(String numCedula, String nombre, String direccion, String numTelefono) {
+        super(numCedula, nombre, direccion, numTelefono);
     }
     
     public void agregarPedidoAbastecimiento(){

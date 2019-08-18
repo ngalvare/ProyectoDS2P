@@ -5,16 +5,24 @@
  */
 package Modeltecnoimport;
 
+import Modeltecnoimport.Queries.SelectQueries;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author scmz2607
  */
 public class Database {
-    private Connection conn = null;
+    private static Connection conn = null;
     private final String driver;
     private final String user; //poner el usuario
     private final String password; //poner la clave
@@ -55,6 +63,49 @@ public class Database {
         return instance;
     }
     
+    public static ResultSet consultaQuery(String comando){
+        Statement st;
+        ResultSet rs=null;
+        try {
+            st= conn.createStatement();
+            rs= st.executeQuery(comando);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rs;
+    }
+    
+    public static Usuario validaInicio(String usr, String psw) {
+        Usuario u = null;
+        try {
+
+            ResultSet rs = consultaQuery(SelectQueries.getUser(usr, psw));
+            while (rs.next()) {
+                u = Objetos.creaUsuario(rs);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return u;
+    }
+    
+    public static Empleado getEmpleado(String cedula){
+        Empleado e = null;
+        List<String> cargos= Arrays.asList("GERENTE","JEFE","VENDEDOR");
+        try{
+            for(String c:cargos){
+                ResultSet rs = consultaQuery(SelectQueries.getEmpCargo(cedula, c));
+                if (rs.getRow()!=0){
+                    e = Objetos.crearEmp(rs, c);
+                    break;
+                }
+            }
+        }catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return e;
+    }
     public void agregarClienteSQL(){
         System.out.println("base de dato agregarCliente");
     }

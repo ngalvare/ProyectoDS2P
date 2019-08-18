@@ -11,25 +11,8 @@ package Modeltecnoimport;
  */
 public class Repartidor extends Empleado{
     
-    private int entregasRealizadas;
-    
-    public Repartidor(String numCedula, String nombre, String cargo, String apellido, String direccion, String numTelefono, int entregas) {
-        super(numCedula, nombre, cargo, apellido, direccion, numTelefono);
-        this.entregasRealizadas = entregas;
+    public Repartidor(String numCedula, String nombre, String direccion, String numTelefono) {
+        super(numCedula, nombre, direccion, numTelefono);
     }
 
-    public int getEntregasRealizadas() {
-        return entregasRealizadas;
-    }
-
-    public void setEntregasRealizadas(int entregasRealizadas) {
-        this.entregasRealizadas = entregasRealizadas;
-    }
-    
-    public int valorCobrar(){
-        System.out.println("Clase Repartidor Metodo valorCobrar");
-        return 1;
-    }
-    
-    
 }

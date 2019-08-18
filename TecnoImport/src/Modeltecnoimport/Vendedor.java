@@ -11,8 +11,8 @@ package Modeltecnoimport;
  */
 public class Vendedor extends Empleado{
     
-    public Vendedor(String numCedula, String nombre, String cargo, String apellido, String direccion, String numTelefono) {
-        super(numCedula, nombre, cargo, apellido, direccion, numTelefono);
+    public Vendedor(String numCedula, String nombre, String direccion, String numTelefono) {
+        super(numCedula, nombre, direccion, numTelefono);
     }
     
     public void crearVenta(){

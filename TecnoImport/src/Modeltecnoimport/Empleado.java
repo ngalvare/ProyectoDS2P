@@ -10,14 +10,12 @@ package Modeltecnoimport;
  * @author Nicole Alvarez
  */
 public abstract class Empleado {
-    protected String numCedula, nombre, cargo, apellido, direccion, numTelefono;
+    protected String numCedula, nombre, direccion, numTelefono;
   
 
-    public Empleado(String numCedula, String nombre, String cargo, String apellido, String direccion, String numTelefono) {
+    public Empleado(String numCedula, String nombre, String direccion, String numTelefono) {
         this.numCedula = numCedula;
         this.nombre = nombre;
-        this.cargo = cargo;
-        this.apellido = apellido;
         this.direccion = direccion;
         this.numTelefono = numTelefono;
     }
@@ -36,22 +34,6 @@ public abstract class Empleado {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
     }
 
     public String getDireccion() {
