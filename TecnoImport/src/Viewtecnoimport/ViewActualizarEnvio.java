@@ -80,10 +80,8 @@ public class ViewActualizarEnvio extends javax.swing.JFrame {
             }
         });
 
-        buttonProceso.setForeground(new java.awt.Color(255, 255, 255));
         buttonProceso.setText("En Proceso");
 
-        buttonTerminado.setForeground(new java.awt.Color(255, 255, 255));
         buttonTerminado.setText("Terminado");
 
         btnRegresar.setText("Regresar");

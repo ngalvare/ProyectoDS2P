@@ -226,17 +226,11 @@
         </Component>
         <Component class="javax.swing.JRadioButton" name="buttonProceso">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="En Proceso"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="buttonTerminado">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Terminado"/>
           </Properties>
         </Component>
