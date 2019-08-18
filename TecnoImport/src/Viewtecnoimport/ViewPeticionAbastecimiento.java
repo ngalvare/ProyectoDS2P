@@ -103,8 +103,10 @@ public class ViewPeticionAbastecimiento extends javax.swing.JFrame {
 
         buttonSeleccionarBodega.setText("Seleccionar Bodega");
 
+        buttonEnProceso.setForeground(new java.awt.Color(255, 255, 255));
         buttonEnProceso.setText("En Proceso");
 
+        buttonTerminado.setForeground(new java.awt.Color(255, 255, 255));
         buttonTerminado.setText("Terminado");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -179,7 +181,7 @@ public class ViewPeticionAbastecimiento extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(65, 65, 65)
+                        .addGap(66, 66, 66)
                         .addComponent(btnRegresar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(buttonSeleccionarProducto)

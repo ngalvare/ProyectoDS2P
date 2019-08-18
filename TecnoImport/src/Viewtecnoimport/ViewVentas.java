@@ -55,9 +55,15 @@ public class ViewVentas extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("VENTAS");
 
         btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -111,6 +117,7 @@ public class ViewVentas extends javax.swing.JFrame {
         ViewVentaPresencial v = new ViewVentaPresencial();
         this.setVisible(false);
         v.setVisible(true);
+        v.setResizable(false);
     }//GEN-LAST:event_buttonVentaPresencialActionPerformed
 
     private void buttonVentaDomicilioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVentaDomicilioActionPerformed
@@ -118,7 +125,15 @@ public class ViewVentas extends javax.swing.JFrame {
         ViewVentaDomicilio v = new ViewVentaDomicilio();
         this.setVisible(false);
         v.setVisible(true);
+        v.setResizable(false);
     }//GEN-LAST:event_buttonVentaDomicilioActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        ViewVendedor v = new ViewVendedor();
+        this.setVisible(false);
+        v.setVisible(true);
+        v.setResizable(false);
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
