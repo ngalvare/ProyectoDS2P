@@ -183,7 +183,7 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrearRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearRutaActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnCrearRutaActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
@@ -194,7 +194,7 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void buttonProcesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonProcesoActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_buttonProcesoActionPerformed
 
     /**
