@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author ANA
  */
-public class ViewVendedor extends javax.swing.JFrame {
+public class ViewVentas extends javax.swing.JFrame {
 
     /**
      * Creates new form ViewVendedor
      */
-    public ViewVendedor() {
+    public ViewVentas() {
         initComponents();
     }
 
@@ -30,10 +30,8 @@ public class ViewVendedor extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        buttonVentas = new javax.swing.JButton();
-        buttonClientes = new javax.swing.JButton();
-        buttonCotizaciones = new javax.swing.JButton();
-        buttonNotasCredito = new javax.swing.JButton();
+        buttonVentaPresencial = new javax.swing.JButton();
+        buttonVentaDomicilio = new javax.swing.JButton();
         buttonRegresar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -41,32 +39,18 @@ public class ViewVendedor extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 170, 176));
 
-        buttonVentas.setBackground(new java.awt.Color(255, 255, 255));
-        buttonVentas.setText("Ventas");
-        buttonVentas.addActionListener(new java.awt.event.ActionListener() {
+        buttonVentaPresencial.setBackground(new java.awt.Color(255, 255, 255));
+        buttonVentaPresencial.setText("Crear Venta Presencial");
+        buttonVentaPresencial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonVentasActionPerformed(evt);
+                buttonVentaPresencialActionPerformed(evt);
             }
         });
 
-        buttonClientes.setText("Clientes");
-        buttonClientes.addActionListener(new java.awt.event.ActionListener() {
+        buttonVentaDomicilio.setText("Crear Venta Domicilio");
+        buttonVentaDomicilio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonClientesActionPerformed(evt);
-            }
-        });
-
-        buttonCotizaciones.setText("Cotizaciones");
-        buttonCotizaciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonCotizacionesActionPerformed(evt);
-            }
-        });
-
-        buttonNotasCredito.setText("Notas de Credito");
-        buttonNotasCredito.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonNotasCreditoActionPerformed(evt);
+                buttonVentaDomicilioActionPerformed(evt);
             }
         });
 
@@ -79,7 +63,7 @@ public class ViewVendedor extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Bienvenido");
+        jLabel1.setText("VENTAS");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -92,32 +76,26 @@ public class ViewVendedor extends javax.swing.JFrame {
                         .addComponent(buttonRegresar)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 139, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(buttonVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonCotizaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonNotasCredito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
                         .addGap(140, 140, 140))))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(77, 77, 77)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonVentaPresencial)
+                    .addComponent(buttonVentaDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 90, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(39, 39, 39)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                .addComponent(buttonVentas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonClientes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonCotizaciones)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonNotasCredito)
-                .addGap(65, 65, 65)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addComponent(buttonVentaPresencial)
+                .addGap(18, 18, 18)
+                .addComponent(buttonVentaDomicilio)
+                .addGap(66, 66, 66)
                 .addComponent(buttonRegresar)
                 .addContainerGap())
         );
@@ -136,31 +114,26 @@ public class ViewVendedor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVentasActionPerformed
+    private void buttonVentaPresencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVentaPresencialActionPerformed
         // TODO add your handling code here:
-        ViewVentas v = new ViewVentas();
+        ViewVentaPresencial v = new ViewVentaPresencial();
         this.setVisible(false);
         v.setVisible(true);
-    }//GEN-LAST:event_buttonVentasActionPerformed
+    }//GEN-LAST:event_buttonVentaPresencialActionPerformed
 
-    private void buttonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClientesActionPerformed
+    private void buttonVentaDomicilioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVentaDomicilioActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_buttonClientesActionPerformed
-
-    private void buttonNotasCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNotasCreditoActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_buttonNotasCreditoActionPerformed
+        ViewVentaDomicilio v = new ViewVentaDomicilio();
+        this.setVisible(false);
+        v.setVisible(true);
+    }//GEN-LAST:event_buttonVentaDomicilioActionPerformed
 
     private void buttonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegresarActionPerformed
         // TODO add your handling code here:
+        ViewVendedor v = new ViewVendedor();
+        this.setVisible(false);
+        v.setVisible(true);
     }//GEN-LAST:event_buttonRegresarActionPerformed
-
-    private void buttonCotizacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCotizacionesActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_buttonCotizacionesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,30 +152,29 @@ public class ViewVendedor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewVentas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewVentas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewVentas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewVentas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewVendedor().setVisible(true);
+                new ViewVentas().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonClientes;
-    private javax.swing.JButton buttonCotizaciones;
-    private javax.swing.JButton buttonNotasCredito;
     private javax.swing.JButton buttonRegresar;
-    private javax.swing.JButton buttonVentas;
+    private javax.swing.JButton buttonVentaDomicilio;
+    private javax.swing.JButton buttonVentaPresencial;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
