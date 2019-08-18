@@ -57,7 +57,12 @@ public class ViewListadoRutas extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        btnRegistar.setText("Registar");
+        btnRegistar.setText("Regresar");
+        btnRegistar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -103,6 +108,13 @@ public class ViewListadoRutas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRegistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistarActionPerformed
+       ViewRutaEntrega v = new ViewRutaEntrega();
+        this.setVisible(false);
+        v.setVisible(true);
+        v.setResizable(false);
+    }//GEN-LAST:event_btnRegistarActionPerformed
 
     /**
      * @param args the command line arguments

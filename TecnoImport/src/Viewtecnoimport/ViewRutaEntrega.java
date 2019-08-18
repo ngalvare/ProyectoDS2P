@@ -37,7 +37,7 @@ public class ViewRutaEntrega extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(150, 155, 135));
+        jPanel1.setBackground(new java.awt.Color(0, 153, 102));
 
         buttonNuevaRutaEntrega.setBackground(new java.awt.Color(255, 255, 255));
         buttonNuevaRutaEntrega.setText("Nueva Ruta de Entrega");
@@ -55,9 +55,15 @@ public class ViewRutaEntrega extends javax.swing.JFrame {
         });
 
         labelTitulo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        labelTitulo.setForeground(new java.awt.Color(255, 255, 255));
         labelTitulo.setText("RUTAS DE ENTREGAS");
 
         btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -109,6 +115,7 @@ public class ViewRutaEntrega extends javax.swing.JFrame {
         ViewNuevaRutaEntrega v = new ViewNuevaRutaEntrega();
         this.setVisible(false);
         v.setVisible(true);
+        v.setResizable(false);
     }//GEN-LAST:event_buttonNuevaRutaEntregaActionPerformed
 
     private void buttonListadoRutasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonListadoRutasActionPerformed
@@ -116,7 +123,15 @@ public class ViewRutaEntrega extends javax.swing.JFrame {
         ViewListadoRutas v = new ViewListadoRutas();
         this.setVisible(false);
         v.setVisible(true);
+        v.setResizable(false);
     }//GEN-LAST:event_buttonListadoRutasActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+       ViewJefeBodega v = new ViewJefeBodega();
+       v.setVisible(true);
+        v.setResizable(false);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
