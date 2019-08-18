@@ -204,7 +204,7 @@ public class ViewVentaDomicilio extends javax.swing.JFrame {
 
     private void buttonAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarClienteActionPerformed
         // TODO add your handling code here:
-        ViewSeleccionarCliente v = new ViewSeleccionarCliente();
+        ViewTablas v = new ViewTablas();
         v.setVisible(true);
     }//GEN-LAST:event_buttonAgregarClienteActionPerformed
 
