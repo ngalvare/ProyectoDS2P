@@ -5,6 +5,10 @@
  */
 package Viewtecnoimport;
 
+import Modeltecnoimport.Database;
+import Modeltecnoimport.Usuario;
+import Modeltecnoimport.Vendedor;
+
 /**
  *
  * @author Nicole Alvarez
@@ -139,10 +143,15 @@ public class ViewLogin extends javax.swing.JFrame {
 
     private void iniciarSecionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarSecionActionPerformed
         //Por defecto va al admin sin embargo hay que hacer las validaciones por empleado         
-        ViewSelectAdminMood m = new ViewSelectAdminMood();
-        m.setVisible(true);
-        m.setResizable(false);
-        this.setVisible(false);
+        Usuario logueado = Database.validaInicio(txtUserName.getText(), txtContraseña.getText());
+        if (logueado ==null){
+            
+        }else {
+            ViewSelectAdminMood m = new ViewSelectAdminMood();
+            m.setVisible(true);
+            m.setResizable(false);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_iniciarSecionActionPerformed
 
     private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
@@ -163,6 +172,7 @@ public class ViewLogin extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        Database.getInstance().conectar();
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {

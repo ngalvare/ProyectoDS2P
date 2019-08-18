@@ -33,7 +33,7 @@ public class Database {
         driver = "com.mysql.jdbc.Driver";
         user = "arun"; //poner el usuario
         password = "12345"; //poner la clave
-        url = "jdbc:mysql://localhost:3306/dbTecno"; 
+        url = "jdbc:mysql://186.178.113.43:3306/dbTecno"; 
     }
     
     public void conectar() {
@@ -81,7 +81,7 @@ public class Database {
 
             ResultSet rs = consultaQuery(SelectQueries.getUser(usr, psw));
             while (rs.next()) {
-                u = Objetos.creaUsuario(rs);
+                u = Objetos.crearUser(rs);
             }
 
         } catch (SQLException ex) {

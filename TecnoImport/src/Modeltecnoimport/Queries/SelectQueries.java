@@ -10,11 +10,11 @@ package Modeltecnoimport.Queries;
  * @author scmz2607
  */
 public class SelectQueries {
-    public String getUser(String id, String psw){
+    public static String getUser(String id, String psw){
         return "select * from tblUser where idUser=\'"+id+"\' and psw=\'"+psw+"\';";
     }
     
-    public String getEmpCargo(String ced, String cargo){
+    public static String getEmpCargo(String ced, String cargo){
         String tabla = "";
         switch (cargo){
             case "GERENTE":
@@ -32,4 +32,6 @@ public class SelectQueries {
         }
         return "select * from "+tabla+" where cedulaEmp = \'"+ced+"\';";
     }
+    
+    
 }

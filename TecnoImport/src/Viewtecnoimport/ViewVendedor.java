@@ -5,6 +5,7 @@
  */
 package Viewtecnoimport;
 
+import Modeltecnoimport.Vendedor;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,14 +13,18 @@ import javax.swing.JOptionPane;
  * @author ANA
  */
 public class ViewVendedor extends javax.swing.JFrame {
-
+    private static Vendedor vendedor;
     /**
      * Creates new form ViewVendedor
+     * @param vendedor
      */
-    public ViewVendedor() {
+    public ViewVendedor(Vendedor vendedor) {
+        ViewVendedor.vendedor = vendedor;
         initComponents();
     }
 
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -194,7 +199,7 @@ public class ViewVendedor extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewVendedor().setVisible(true);
+                new ViewVendedor(vendedor).setVisible(true);
             }
         });
     }
