@@ -5,14 +5,16 @@
  */
 package Viewtecnoimport;
 
+import javax.swing.JOptionPane;
+
 /**
  *
- * @author Nicole Alvarez
+ * @author ANA
  */
 public class ViewAdmin extends javax.swing.JFrame {
 
     /**
-     * Creates new form MenuAdmin
+     * Creates new form ViewVendedor
      */
     public ViewAdmin() {
         initComponents();
@@ -27,97 +29,125 @@ public class ViewAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bienvenidoLabel = new javax.swing.JLabel();
-        buttonProductos = new javax.swing.JButton();
-        buttonEmpleados = new javax.swing.JButton();
-        buttonClientes = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        buttonConsultarData = new javax.swing.JButton();
+        buttonRegresar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        bienvenidoLabel.setFont(new java.awt.Font("Sitka Text", 3, 36)); // NOI18N
-        bienvenidoLabel.setText("Bienvenido ");
+        jPanel1.setBackground(new java.awt.Color(222, 218, 141));
 
-        buttonProductos.setBackground(new java.awt.Color(193, 203, 240));
-        buttonProductos.setFont(new java.awt.Font("Sitka Text", 0, 18)); // NOI18N
-        buttonProductos.setText("Producto");
-        buttonProductos.addActionListener(new java.awt.event.ActionListener() {
+        buttonConsultarData.setBackground(new java.awt.Color(255, 255, 255));
+        buttonConsultarData.setText("Consultar Data");
+        buttonConsultarData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonProductosActionPerformed(evt);
+                buttonConsultarDataActionPerformed(evt);
             }
         });
 
-        buttonEmpleados.setBackground(new java.awt.Color(193, 203, 240));
-        buttonEmpleados.setFont(new java.awt.Font("Sitka Text", 0, 18)); // NOI18N
-        buttonEmpleados.setText("Empleados");
-        buttonEmpleados.addActionListener(new java.awt.event.ActionListener() {
+        buttonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/regresarNegra.png"))); // NOI18N
+        buttonRegresar.setText("Regresar");
+        buttonRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonEmpleadosActionPerformed(evt);
+                buttonRegresarActionPerformed(evt);
             }
         });
 
-        buttonClientes.setBackground(new java.awt.Color(193, 203, 240));
-        buttonClientes.setFont(new java.awt.Font("Sitka Text", 0, 18)); // NOI18N
-        buttonClientes.setText("Clientes");
-        buttonClientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonClientesActionPerformed(evt);
-            }
-        });
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText("Bienvenido");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel1)
+                .addContainerGap(225, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(buttonRegresar)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonConsultarData)
+                .addGap(120, 120, 120))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jLabel1)
+                .addGap(61, 61, 61)
+                .addComponent(buttonConsultarData)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addComponent(buttonRegresar)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(bienvenidoLabel)
-                        .addContainerGap(182, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(buttonClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25))))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(bienvenidoLabel)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(buttonClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(buttonProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)))
-                .addComponent(buttonEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClientesActionPerformed
-        
-    }//GEN-LAST:event_buttonClientesActionPerformed
+    private void buttonConsultarDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConsultarDataActionPerformed
+        // TODO add your handling code here
+        ViewConsultarDataGerente v = new ViewConsultarDataGerente();
+        this.setVisible(false);
+        v.setVisible(true);
+    }//GEN-LAST:event_buttonConsultarDataActionPerformed
 
-    private void buttonEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEmpleadosActionPerformed
-        
-    }//GEN-LAST:event_buttonEmpleadosActionPerformed
-
-    private void buttonProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonProductosActionPerformed
-       
-    }//GEN-LAST:event_buttonProductosActionPerformed
+    private void buttonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegresarActionPerformed
+        // TODO add your handling code here:
+        ViewSegundaPrincipal v = new ViewSegundaPrincipal();
+        this.setVisible(false);
+        v.setVisible(true);
+    }//GEN-LAST:event_buttonRegresarActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ViewAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ViewAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ViewAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ViewAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -127,9 +157,9 @@ public class ViewAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel bienvenidoLabel;
-    private javax.swing.JButton buttonClientes;
-    private javax.swing.JButton buttonEmpleados;
-    private javax.swing.JButton buttonProductos;
+    private javax.swing.JButton buttonConsultarData;
+    private javax.swing.JButton buttonRegresar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -52,8 +52,8 @@
                   <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="labelTitulo" min="-2" max="-2" attributes="0"/>
-                      <Component id="buttonConsultarData" alignment="1" max="32767" attributes="0"/>
-                      <Component id="buttonRutaEntrega" alignment="1" max="32767" attributes="0"/>
+                      <Component id="buttonListadoRutas" alignment="1" max="32767" attributes="0"/>
+                      <Component id="buttonNuevaRutaEntrega" alignment="1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="103" max="32767" attributes="0"/>
               </Group>
@@ -65,9 +65,9 @@
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   <Component id="labelTitulo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                  <Component id="buttonRutaEntrega" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonNuevaRutaEntrega" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="buttonConsultarData" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonListadoRutas" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="58" max="32767" attributes="0"/>
                   <Component id="buttonRegresar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -76,7 +76,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="buttonRutaEntrega">
+        <Component class="javax.swing.JButton" name="buttonNuevaRutaEntrega">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -84,15 +84,15 @@
             <Property name="text" type="java.lang.String" value="Nueva Ruta de Entrega"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonRutaEntregaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonNuevaRutaEntregaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="buttonConsultarData">
+        <Component class="javax.swing.JButton" name="buttonListadoRutas">
           <Properties>
             <Property name="text" type="java.lang.String" value="Listado de Ruta de Entregas"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonConsultarDataActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonListadoRutasActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="buttonRegresar">

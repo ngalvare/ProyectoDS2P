@@ -30,8 +30,8 @@ public class ViewRutaEntrega extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        buttonRutaEntrega = new javax.swing.JButton();
-        buttonConsultarData = new javax.swing.JButton();
+        buttonNuevaRutaEntrega = new javax.swing.JButton();
+        buttonListadoRutas = new javax.swing.JButton();
         buttonRegresar = new javax.swing.JButton();
         labelTitulo = new javax.swing.JLabel();
 
@@ -39,18 +39,18 @@ public class ViewRutaEntrega extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(150, 155, 135));
 
-        buttonRutaEntrega.setBackground(new java.awt.Color(255, 255, 255));
-        buttonRutaEntrega.setText("Nueva Ruta de Entrega");
-        buttonRutaEntrega.addActionListener(new java.awt.event.ActionListener() {
+        buttonNuevaRutaEntrega.setBackground(new java.awt.Color(255, 255, 255));
+        buttonNuevaRutaEntrega.setText("Nueva Ruta de Entrega");
+        buttonNuevaRutaEntrega.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRutaEntregaActionPerformed(evt);
+                buttonNuevaRutaEntregaActionPerformed(evt);
             }
         });
 
-        buttonConsultarData.setText("Listado de Ruta de Entregas");
-        buttonConsultarData.addActionListener(new java.awt.event.ActionListener() {
+        buttonListadoRutas.setText("Listado de Ruta de Entregas");
+        buttonListadoRutas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonConsultarDataActionPerformed(evt);
+                buttonListadoRutasActionPerformed(evt);
             }
         });
 
@@ -72,8 +72,8 @@ public class ViewRutaEntrega extends javax.swing.JFrame {
                 .addGap(105, 105, 105)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(labelTitulo)
-                    .addComponent(buttonConsultarData, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonRutaEntrega, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(buttonListadoRutas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonNuevaRutaEntrega, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(103, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -82,9 +82,9 @@ public class ViewRutaEntrega extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addComponent(labelTitulo)
                 .addGap(44, 44, 44)
-                .addComponent(buttonRutaEntrega)
+                .addComponent(buttonNuevaRutaEntrega)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonConsultarData)
+                .addComponent(buttonListadoRutas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(buttonRegresar)
                 .addContainerGap())
@@ -104,14 +104,19 @@ public class ViewRutaEntrega extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonRutaEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRutaEntregaActionPerformed
+    private void buttonNuevaRutaEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNuevaRutaEntregaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonRutaEntregaActionPerformed
+        ViewNuevaRutaEntrega v = new ViewNuevaRutaEntrega();
+        this.setVisible(false);
+        v.setVisible(true);
+    }//GEN-LAST:event_buttonNuevaRutaEntregaActionPerformed
 
-    private void buttonConsultarDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConsultarDataActionPerformed
+    private void buttonListadoRutasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonListadoRutasActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_buttonConsultarDataActionPerformed
+        ViewListadoRutas v = new ViewListadoRutas();
+        this.setVisible(false);
+        v.setVisible(true);
+    }//GEN-LAST:event_buttonListadoRutasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,9 +157,9 @@ public class ViewRutaEntrega extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonConsultarData;
+    private javax.swing.JButton buttonListadoRutas;
+    private javax.swing.JButton buttonNuevaRutaEntrega;
     private javax.swing.JButton buttonRegresar;
-    private javax.swing.JButton buttonRutaEntrega;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelTitulo;
     // End of variables declaration//GEN-END:variables

@@ -135,6 +135,9 @@ public class ViewJefeBodega extends javax.swing.JFrame {
 
     private void buttonActualizarEnviosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActualizarEnviosActionPerformed
         // TODO add your handling code here:
+        ViewSeleccionarEnvio v = new ViewSeleccionarEnvio();
+        this.setVisible(false);
+        v.setVisible(true);
     }//GEN-LAST:event_buttonActualizarEnviosActionPerformed
 
     /**
