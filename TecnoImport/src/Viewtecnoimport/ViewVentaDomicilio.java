@@ -52,24 +52,31 @@ public class ViewVentaDomicilio extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 170, 176));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("VENTA A DOMICILIO");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("ID:");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Cliente:");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Productos:");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Tipo de Pago:");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Fecha:");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Documento Electronico: ");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -102,8 +109,18 @@ public class ViewVentaDomicilio extends javax.swing.JFrame {
         });
 
         btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
 
         btnCrearVenta.setText("Crear Venta");
+        btnCrearVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearVentaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -204,14 +221,24 @@ public class ViewVentaDomicilio extends javax.swing.JFrame {
 
     private void buttonAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarClienteActionPerformed
         // TODO add your handling code here:
-        ViewTablas v = new ViewTablas();
-        v.setVisible(true);
+        JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);;
     }//GEN-LAST:event_buttonAgregarClienteActionPerformed
 
     private void buttonGenerarDEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerarDEActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_buttonGenerarDEActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        ViewVentas v = new ViewVentas();
+        this.setVisible(false);
+        v.setVisible(true);
+        v.setResizable(false);
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void btnCrearVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearVentaActionPerformed
+        JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btnCrearVentaActionPerformed
 
     /**
      * @param args the command line arguments

@@ -5,6 +5,7 @@
  */
 package Viewtecnoimport;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -35,10 +36,11 @@ public class ViewJefeBodega extends javax.swing.JFrame {
         buttonActualizarEnvios = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 102));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
 
         buttonRutaEntrega.setBackground(new java.awt.Color(255, 255, 255));
         buttonRutaEntrega.setText("Rutas de Entrega");
@@ -48,7 +50,7 @@ public class ViewJefeBodega extends javax.swing.JFrame {
             }
         });
 
-        buttonAsignarPermisos.setText("Asignar Permisos Admin");
+        buttonAsignarPermisos.setText("Asignar Permisos Administrador");
         buttonAsignarPermisos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonAsignarPermisosActionPerformed(evt);
@@ -66,10 +68,17 @@ public class ViewJefeBodega extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Bienvenido");
 
-        btnRegresar.setText("Regresar");
+        btnRegresar.setText("Cerrar sesión");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
+            }
+        });
+
+        btnVolver.setText("Regresar");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
             }
         });
 
@@ -85,29 +94,32 @@ public class ViewJefeBodega extends javax.swing.JFrame {
                     .addComponent(buttonActualizarEnvios, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 97, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(btnRegresar)))
+                .addGap(31, 31, 31)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRegresar)
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnVolver)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(btnRegresar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(buttonRutaEntrega)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonAsignarPermisos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonActualizarEnvios)
-                .addGap(59, 59, 59)
-                .addComponent(btnRegresar)
-                .addContainerGap())
+                .addGap(41, 41, 41)
+                .addComponent(btnVolver)
+                .addGap(29, 29, 29))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -140,9 +152,10 @@ public class ViewJefeBodega extends javax.swing.JFrame {
 
     private void buttonActualizarEnviosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActualizarEnviosActionPerformed
         // TODO add your handling code here:
-        ViewSeleccionarEnvio v = new ViewSeleccionarEnvio();
+        ViewSeleccionarEnvios v = new ViewSeleccionarEnvios();
         this.setVisible(false);
         v.setVisible(true);
+        v.setResizable(false);
     }//GEN-LAST:event_buttonActualizarEnviosActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
@@ -151,6 +164,13 @@ public class ViewJefeBodega extends javax.swing.JFrame {
         v.setResizable(false);
         this.setVisible(false);
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        ViewSelectAdminMood v = new ViewSelectAdminMood();
+        this.setVisible(false);
+        v.setVisible(true);
+        v.setResizable(false);
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,6 +210,7 @@ public class ViewJefeBodega extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JButton buttonActualizarEnvios;
     private javax.swing.JButton buttonAsignarPermisos;
     private javax.swing.JButton buttonRutaEntrega;
