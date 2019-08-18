@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author ANA
  */
-public class ViewGerente extends javax.swing.JFrame {
+public class ViewRutaEntrega extends javax.swing.JFrame {
 
     /**
      * Creates new form ViewVendedor
      */
-    public ViewGerente() {
+    public ViewRutaEntrega() {
         initComponents();
     }
 
@@ -30,66 +30,62 @@ public class ViewGerente extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        buttonRutaEntrega = new javax.swing.JButton();
         buttonConsultarData = new javax.swing.JButton();
-        buttonPeticionAbastecimiento = new javax.swing.JButton();
         buttonRegresar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        labelTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(222, 149, 88));
+        jPanel1.setBackground(new java.awt.Color(150, 155, 135));
 
-        buttonConsultarData.setBackground(new java.awt.Color(255, 255, 255));
-        buttonConsultarData.setText("Consultar Data");
+        buttonRutaEntrega.setBackground(new java.awt.Color(255, 255, 255));
+        buttonRutaEntrega.setText("Nueva Ruta de Entrega");
+        buttonRutaEntrega.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRutaEntregaActionPerformed(evt);
+            }
+        });
+
+        buttonConsultarData.setText("Listado de Ruta de Entregas");
         buttonConsultarData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonConsultarDataActionPerformed(evt);
             }
         });
 
-        buttonPeticionAbastecimiento.setText("Nueva Peticion de Abastecimiento");
-        buttonPeticionAbastecimiento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonPeticionAbastecimientoActionPerformed(evt);
-            }
-        });
-
         buttonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/regresarNegra.png"))); // NOI18N
         buttonRegresar.setText("Regresar");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Bienvenido");
+        labelTitulo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        labelTitulo.setText("RUTAS DE ENTREGAS");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(buttonPeticionAbastecimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonConsultarData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(60, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(buttonRegresar)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(105, 105, 105)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(labelTitulo)
+                    .addComponent(buttonConsultarData, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonRutaEntrega, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addComponent(buttonConsultarData)
+                .addGap(33, 33, 33)
+                .addComponent(labelTitulo)
+                .addGap(44, 44, 44)
+                .addComponent(buttonRutaEntrega)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonPeticionAbastecimiento)
-                .addGap(66, 66, 66)
+                .addComponent(buttonConsultarData)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(buttonRegresar)
                 .addContainerGap())
         );
@@ -108,19 +104,14 @@ public class ViewGerente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonConsultarDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConsultarDataActionPerformed
-        // TODO add your handling code here
-        ViewConsultarDataGerente v = new ViewConsultarDataGerente();
-        this.setVisible(false);
-        v.setVisible(true);
-    }//GEN-LAST:event_buttonConsultarDataActionPerformed
-
-    private void buttonPeticionAbastecimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPeticionAbastecimientoActionPerformed
+    private void buttonRutaEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRutaEntregaActionPerformed
         // TODO add your handling code here:
-        ViewPeticionAbastecimiento v = new ViewPeticionAbastecimiento();
-        this.setVisible(false);
-        v.setVisible(true);
-    }//GEN-LAST:event_buttonPeticionAbastecimientoActionPerformed
+    }//GEN-LAST:event_buttonRutaEntregaActionPerformed
+
+    private void buttonConsultarDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConsultarDataActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_buttonConsultarDataActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,13 +130,13 @@ public class ViewGerente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewGerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewRutaEntrega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewGerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewRutaEntrega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewGerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewRutaEntrega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewGerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewRutaEntrega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -155,16 +146,16 @@ public class ViewGerente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewGerente().setVisible(true);
+                new ViewRutaEntrega().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonConsultarData;
-    private javax.swing.JButton buttonPeticionAbastecimiento;
     private javax.swing.JButton buttonRegresar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton buttonRutaEntrega;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel labelTitulo;
     // End of variables declaration//GEN-END:variables
 }
