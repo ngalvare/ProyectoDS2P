@@ -5,16 +5,54 @@
  */
 package Modeltecnoimport;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 /**
  *
  * @author scmz2607
  */
 public class Database {
-    
+    private Connection conn = null;
+    private final String driver;
+    private final String user; //poner el usuario
+    private final String password; //poner la clave
+    private final String url ; 
     private static Database instance;
 
     private Database() {
-        
+        driver = "com.mysql.jdbc.Driver";
+        user = "arun"; //poner el usuario
+        password = "12345"; //poner la clave
+        url = "jdbc:mysql://localhost:3306/dbTecno"; 
+    }
+    
+    public void conectar() {
+        try {
+            Class.forName(driver);
+            conn = DriverManager.getConnection(url, user, password);
+            if (conn != null) {
+                System.out.println("Conexion exitosa");
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("No se conecto " + e);
+        }
+    }
+
+    public Connection getConection() {
+        return conn;
+    }
+
+    public void desconectar() {
+        conn = null;
+    }
+    
+    public static Database getInstance(){
+        if(instance == null){
+            instance = new Database();
+        }
+        return instance;
     }
     
     public void agregarClienteSQL(){
