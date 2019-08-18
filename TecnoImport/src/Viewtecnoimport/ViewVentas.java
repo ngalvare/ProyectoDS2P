@@ -32,8 +32,8 @@ public class ViewVentas extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         buttonVentaPresencial = new javax.swing.JButton();
         buttonVentaDomicilio = new javax.swing.JButton();
-        buttonRegresar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,37 +54,29 @@ public class ViewVentas extends javax.swing.JFrame {
             }
         });
 
-        buttonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/regresar.png"))); // NOI18N
-        buttonRegresar.setText("Regresar");
-        buttonRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRegresarActionPerformed(evt);
-            }
-        });
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("VENTAS");
+
+        btnRegresar.setText("Regresar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(buttonRegresar)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(140, 140, 140))))
+                .addContainerGap(122, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(140, 140, 140))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(77, 77, 77)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buttonVentaPresencial)
                     .addComponent(buttonVentaDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 90, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(btnRegresar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,9 +87,9 @@ public class ViewVentas extends javax.swing.JFrame {
                 .addComponent(buttonVentaPresencial)
                 .addGap(18, 18, 18)
                 .addComponent(buttonVentaDomicilio)
-                .addGap(66, 66, 66)
-                .addComponent(buttonRegresar)
-                .addContainerGap())
+                .addGap(47, 47, 47)
+                .addComponent(btnRegresar)
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -127,13 +119,6 @@ public class ViewVentas extends javax.swing.JFrame {
         this.setVisible(false);
         v.setVisible(true);
     }//GEN-LAST:event_buttonVentaDomicilioActionPerformed
-
-    private void buttonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegresarActionPerformed
-        // TODO add your handling code here:
-        ViewVendedor v = new ViewVendedor();
-        this.setVisible(false);
-        v.setVisible(true);
-    }//GEN-LAST:event_buttonRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,7 +157,7 @@ public class ViewVentas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonRegresar;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JButton buttonVentaDomicilio;
     private javax.swing.JButton buttonVentaPresencial;
     private javax.swing.JLabel jLabel1;

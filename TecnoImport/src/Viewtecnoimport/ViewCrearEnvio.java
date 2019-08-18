@@ -30,8 +30,6 @@ public class ViewCrearEnvio extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        buttonCrearEnvio = new javax.swing.JButton();
-        buttonRegresar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -43,27 +41,12 @@ public class ViewCrearEnvio extends javax.swing.JFrame {
         buttonSeleccionarBodega = new javax.swing.JButton();
         buttonProceso = new javax.swing.JRadioButton();
         buttonTerminado = new javax.swing.JRadioButton();
+        btnRegresar = new javax.swing.JButton();
+        btnCrearEnvio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 170, 176));
-
-        buttonCrearEnvio.setBackground(new java.awt.Color(255, 255, 255));
-        buttonCrearEnvio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/manufactura.png"))); // NOI18N
-        buttonCrearEnvio.setText("Crear Envio");
-        buttonCrearEnvio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonCrearEnvioActionPerformed(evt);
-            }
-        });
-
-        buttonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/regresar.png"))); // NOI18N
-        buttonRegresar.setText("Regresar");
-        buttonRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRegresarActionPerformed(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("ENVIO");
@@ -93,6 +76,10 @@ public class ViewCrearEnvio extends javax.swing.JFrame {
         buttonProceso.setText("En Proceso");
 
         buttonTerminado.setText("Terminado");
+
+        btnRegresar.setText("Regresar");
+
+        btnCrearEnvio.setText("Crear Envio");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -125,15 +112,15 @@ public class ViewCrearEnvio extends javax.swing.JFrame {
                         .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
                         .addGap(198, 198, 198))))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(buttonRegresar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buttonCrearEnvio)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(176, 176, 176)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnRegresar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCrearEnvio)
+                .addGap(18, 18, 18))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,11 +146,11 @@ public class ViewCrearEnvio extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(buttonProceso)
                     .addComponent(buttonTerminado))
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonRegresar)
-                    .addComponent(buttonCrearEnvio))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnCrearEnvio)
+                    .addComponent(btnRegresar))
+                .addGap(21, 21, 21))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -179,18 +166,6 @@ public class ViewCrearEnvio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void buttonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegresarActionPerformed
-        // TODO add your handling code here:
-        ViewVentas v = new ViewVentas();
-        this.setVisible(false);
-        v.setVisible(true);
-    }//GEN-LAST:event_buttonRegresarActionPerformed
-
-    private void buttonCrearEnvioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCrearEnvioActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_buttonCrearEnvioActionPerformed
 
     private void buttonSeleccionarBodegaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSeleccionarBodegaActionPerformed
         // TODO add your handling code here:
@@ -249,9 +224,9 @@ public class ViewCrearEnvio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonCrearEnvio;
+    private javax.swing.JButton btnCrearEnvio;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JRadioButton buttonProceso;
-    private javax.swing.JButton buttonRegresar;
     private javax.swing.JButton buttonSeleccionarBodega;
     private javax.swing.JRadioButton buttonTerminado;
     private javax.swing.JLabel jLabel1;

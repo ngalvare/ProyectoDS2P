@@ -30,8 +30,6 @@ public class ViewConsultarDataGerente extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        buttonAsignar = new javax.swing.JButton();
-        buttonRegresar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -41,26 +39,12 @@ public class ViewConsultarDataGerente extends javax.swing.JFrame {
         buttonPorNombre = new javax.swing.JRadioButton();
         buttonCategoria = new javax.swing.JRadioButton();
         ButtonDescripcion = new javax.swing.JRadioButton();
+        btnRegresar = new javax.swing.JButton();
+        btnAsignarPedidos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(222, 149, 88));
-
-        buttonAsignar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/objetivo.png"))); // NOI18N
-        buttonAsignar.setText("Asignar Permisos");
-        buttonAsignar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAsignarActionPerformed(evt);
-            }
-        });
-
-        buttonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/regresarNegra.png"))); // NOI18N
-        buttonRegresar.setText("Regresar");
-        buttonRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRegresarActionPerformed(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("CONSULTA DATA");
@@ -96,17 +80,17 @@ public class ViewConsultarDataGerente extends javax.swing.JFrame {
 
         ButtonDescripcion.setText("Por Descripcion");
 
+        btnRegresar.setText("Regresar");
+
+        btnAsignarPedidos.setText("Asignar Permisos");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(buttonRegresar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonAsignar))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 906, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -133,6 +117,12 @@ public class ViewConsultarDataGerente extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(369, 369, 369))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(btnRegresar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAsignarPedidos)
+                .addGap(43, 43, 43))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,8 +143,8 @@ public class ViewConsultarDataGerente extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonRegresar)
-                    .addComponent(buttonAsignar))
+                    .addComponent(btnRegresar)
+                    .addComponent(btnAsignarPedidos))
                 .addContainerGap())
         );
 
@@ -164,7 +154,7 @@ public class ViewConsultarDataGerente extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 10, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,18 +169,6 @@ public class ViewConsultarDataGerente extends javax.swing.JFrame {
     private void buttonPorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPorNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonPorNombreActionPerformed
-
-    private void buttonAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAsignarActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Permisos Ortogados con exito!","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_buttonAsignarActionPerformed
-
-    private void buttonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegresarActionPerformed
-        // TODO add your handling code here:
-        ViewGerente v = new ViewGerente();
-        this.setVisible(false);
-        v.setVisible(true);
-    }//GEN-LAST:event_buttonRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -236,11 +214,11 @@ public class ViewConsultarDataGerente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton ButtonDescripcion;
-    private javax.swing.JButton buttonAsignar;
+    private javax.swing.JButton btnAsignarPedidos;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JRadioButton buttonCategoria;
     private javax.swing.JButton buttonMostrar;
     private javax.swing.JRadioButton buttonPorNombre;
-    private javax.swing.JButton buttonRegresar;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
