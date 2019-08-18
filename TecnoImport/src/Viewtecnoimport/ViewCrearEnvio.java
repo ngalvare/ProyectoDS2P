@@ -49,21 +49,27 @@ public class ViewCrearEnvio extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 170, 176));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("ENVIO");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("ID:");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("ID Venta:");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Fecha Emision: ");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(240, 240, 240));
         jLabel5.setText("Estado:");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Bodega:");
 
         buttonSeleccionarBodega.setText("Seleccionar Bodega");
@@ -73,8 +79,15 @@ public class ViewCrearEnvio extends javax.swing.JFrame {
             }
         });
 
+        buttonProceso.setForeground(new java.awt.Color(255, 255, 255));
         buttonProceso.setText("En Proceso");
+        buttonProceso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonProcesoActionPerformed(evt);
+            }
+        });
 
+        buttonTerminado.setForeground(new java.awt.Color(255, 255, 255));
         buttonTerminado.setText("Terminado");
 
         btnRegresar.setText("Regresar");
@@ -92,7 +105,7 @@ public class ViewCrearEnvio extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(55, 55, 55)
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel4)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -103,7 +116,7 @@ public class ViewCrearEnvio extends javax.swing.JFrame {
                                 .addComponent(buttonTerminado))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(18, 18, 18)
                                 .addComponent(buttonSeleccionarBodega)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -172,6 +185,10 @@ public class ViewCrearEnvio extends javax.swing.JFrame {
         ViewSeleccionarBodega v = new ViewSeleccionarBodega();
         v.setVisible(true);
     }//GEN-LAST:event_buttonSeleccionarBodegaActionPerformed
+
+    private void buttonProcesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonProcesoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonProcesoActionPerformed
 
     /**
      * @param args the command line arguments

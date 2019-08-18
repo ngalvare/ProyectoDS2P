@@ -41,13 +41,15 @@ public class ViewConsultarDataGerente extends javax.swing.JFrame {
         ButtonDescripcion = new javax.swing.JRadioButton();
         btnRegresar = new javax.swing.JButton();
         btnAsignarPedidos = new javax.swing.JButton();
+        btnCerrarSesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(222, 149, 88));
+        jPanel1.setBackground(new java.awt.Color(0, 51, 51));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("CONSULTA DATA");
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Datos del Sistema");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -63,12 +65,14 @@ public class ViewConsultarDataGerente extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Listado de ");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empleados", "Envios", "Ventas", "Productos" }));
 
         buttonMostrar.setText("Mostrar");
 
+        buttonPorNombre.setForeground(new java.awt.Color(255, 255, 255));
         buttonPorNombre.setText("Por Nombre");
         buttonPorNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,25 +80,38 @@ public class ViewConsultarDataGerente extends javax.swing.JFrame {
             }
         });
 
+        buttonCategoria.setForeground(new java.awt.Color(255, 255, 255));
         buttonCategoria.setText("Por Categoria");
 
+        ButtonDescripcion.setForeground(new java.awt.Color(255, 255, 255));
         ButtonDescripcion.setText("Por Descripcion");
 
         btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
 
         btnAsignarPedidos.setText("Asignar Permisos");
+
+        btnCerrarSesion.setText("Cerrar sesión");
+        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarSesionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 906, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(14, 14, 14)
@@ -111,7 +128,9 @@ public class ViewConsultarDataGerente extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(ButtonDescripcion)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(buttonCategoria)))))
+                                .addComponent(buttonCategoria)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnCerrarSesion)))))
                 .addContainerGap(26, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -138,7 +157,8 @@ public class ViewConsultarDataGerente extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonPorNombre)
                     .addComponent(buttonCategoria)
-                    .addComponent(ButtonDescripcion))
+                    .addComponent(ButtonDescripcion)
+                    .addComponent(btnCerrarSesion))
                 .addGap(25, 25, 25)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
@@ -169,6 +189,20 @@ public class ViewConsultarDataGerente extends javax.swing.JFrame {
     private void buttonPorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPorNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonPorNombreActionPerformed
+
+    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+        ViewLogin v = new ViewLogin();
+        v.setVisible(true);
+        v.setResizable(false);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCerrarSesionActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        ViewGerente v = new ViewGerente();
+        v.setVisible(true);
+        v.setResizable(false);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,6 +249,7 @@ public class ViewConsultarDataGerente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton ButtonDescripcion;
     private javax.swing.JButton btnAsignarPedidos;
+    private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JRadioButton buttonCategoria;
     private javax.swing.JButton buttonMostrar;

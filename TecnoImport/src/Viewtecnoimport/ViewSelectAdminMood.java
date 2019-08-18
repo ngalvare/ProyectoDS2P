@@ -50,7 +50,7 @@ public class ViewSelectAdminMood extends javax.swing.JFrame {
         jLabel2.setText("Ingresar");
 
         btnRegresar.setBackground(new java.awt.Color(193, 203, 240));
-        btnRegresar.setText("Regresar");
+        btnRegresar.setText("Cerrar sesión");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
@@ -86,16 +86,16 @@ public class ViewSelectAdminMood extends javax.swing.JFrame {
                 .addComponent(buttonPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(buttonAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btnRegresar)
-                .addContainerGap())
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdminActionPerformed
-        ViewAdmin v = new ViewAdmin();
+        ViewConsultarDataAdmin v = new ViewConsultarDataAdmin();
         v.setVisible(true);
         v.setResizable(false);
         this.setVisible(false);

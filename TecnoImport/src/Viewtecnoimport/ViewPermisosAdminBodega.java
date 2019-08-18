@@ -42,6 +42,7 @@ public class ViewPermisosAdminBodega extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(150, 155, 135));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("PERMISOS ADMIN");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -58,7 +59,8 @@ public class ViewPermisosAdminBodega extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("Empleados de Bodega (selecciona uno):");
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Empleados de Bodega");
 
         btnRegresar.setText("Regresar");
 

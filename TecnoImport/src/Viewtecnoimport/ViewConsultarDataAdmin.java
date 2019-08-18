@@ -40,13 +40,15 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
         buttonCategoria = new javax.swing.JRadioButton();
         ButtonDescripcion = new javax.swing.JRadioButton();
         btnRegresar = new javax.swing.JButton();
+        btnCerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(222, 218, 141));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 0));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("CONSULTA DATA");
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Datos del Sistema ");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -62,12 +64,14 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Listado de ");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empleados", "Productos", "Clientes" }));
 
         buttonMostrar.setText("Mostrar");
 
+        buttonPorNombre.setForeground(new java.awt.Color(255, 255, 255));
         buttonPorNombre.setText("Por Nombre");
         buttonPorNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,11 +79,25 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
             }
         });
 
+        buttonCategoria.setForeground(new java.awt.Color(255, 255, 255));
         buttonCategoria.setText("Por Categoria");
 
+        ButtonDescripcion.setForeground(new java.awt.Color(255, 255, 255));
         ButtonDescripcion.setText("Por Descripcion");
 
         btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+
+        btnCerrar.setText("Cerrar Sesión");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -105,15 +123,16 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(35, 35, 35)
-                                .addComponent(buttonMostrar))
+                                .addComponent(buttonMostrar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(ButtonDescripcion)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(buttonCategoria)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 846, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 53, Short.MAX_VALUE))))
+                                .addComponent(buttonCategoria)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnCerrar))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 846, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 53, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(btnRegresar)
@@ -133,7 +152,8 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonPorNombre)
                     .addComponent(buttonCategoria)
-                    .addComponent(ButtonDescripcion))
+                    .addComponent(ButtonDescripcion)
+                    .addComponent(btnCerrar))
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
@@ -160,6 +180,20 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
     private void buttonPorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPorNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonPorNombreActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        ViewSelectAdminMood v = new ViewSelectAdminMood();
+        v.setVisible(true);
+        v.setResizable(false);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        ViewLogin v = new ViewLogin();
+        v.setVisible(true);
+        v.setResizable(false);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,6 +247,7 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton ButtonDescripcion;
+    private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JRadioButton buttonCategoria;
     private javax.swing.JButton buttonMostrar;

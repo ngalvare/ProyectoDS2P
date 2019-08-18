@@ -41,7 +41,7 @@ public class ViewVendedor extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 170, 176));
 
-        buttonVentas.setBackground(new java.awt.Color(255, 255, 255));
+        buttonVentas.setBackground(new java.awt.Color(193, 203, 240));
         buttonVentas.setText("Ventas");
         buttonVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -49,6 +49,7 @@ public class ViewVendedor extends javax.swing.JFrame {
             }
         });
 
+        buttonClientes.setBackground(new java.awt.Color(193, 203, 240));
         buttonClientes.setText("Clientes");
         buttonClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,6 +57,7 @@ public class ViewVendedor extends javax.swing.JFrame {
             }
         });
 
+        buttonCotizaciones.setBackground(new java.awt.Color(193, 203, 240));
         buttonCotizaciones.setText("Cotizaciones");
         buttonCotizaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,6 +65,7 @@ public class ViewVendedor extends javax.swing.JFrame {
             }
         });
 
+        buttonNotasCredito.setBackground(new java.awt.Color(193, 203, 240));
         buttonNotasCredito.setText("Notas de Credito");
         buttonNotasCredito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,9 +74,15 @@ public class ViewVendedor extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Bienvenido");
 
         btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -102,7 +111,7 @@ public class ViewVendedor extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(buttonVentas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonClientes)
@@ -110,7 +119,7 @@ public class ViewVendedor extends javax.swing.JFrame {
                 .addComponent(buttonCotizaciones)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonNotasCredito)
-                .addGap(45, 45, 45)
+                .addGap(57, 57, 57)
                 .addComponent(btnRegresar)
                 .addGap(31, 31, 31))
         );
@@ -150,6 +159,10 @@ public class ViewVendedor extends javax.swing.JFrame {
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_buttonCotizacionesActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        ViewSelectAdminMood v = new ViewSelectAdminMood();
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments

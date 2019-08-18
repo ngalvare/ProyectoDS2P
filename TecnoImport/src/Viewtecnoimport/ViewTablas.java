@@ -136,10 +136,10 @@ public class ViewTablas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        ViewAdmin v = new ViewAdmin();
+        /*ViewAdmin v = new ViewAdmin();
         v.setVisible(true);
         v.setResizable(false);
-        this.setVisible(false);
+        this.setVisible(false);*/
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**

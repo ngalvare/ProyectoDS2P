@@ -37,7 +37,7 @@ public class ViewGerente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(222, 149, 88));
+        jPanel1.setBackground(new java.awt.Color(0, 51, 51));
 
         buttonConsultarData.setBackground(new java.awt.Color(255, 255, 255));
         buttonConsultarData.setText("Consultar Data");
@@ -55,9 +55,15 @@ public class ViewGerente extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Bienvenido");
 
-        btnRegresar.setText("Regresar");
+        btnRegresar.setText("Cerrar sesión");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -119,6 +125,13 @@ public class ViewGerente extends javax.swing.JFrame {
         this.setVisible(false);
         v.setVisible(true);
     }//GEN-LAST:event_buttonPeticionAbastecimientoActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        ViewLogin v = new ViewLogin();
+        v.setVisible(true);
+        v.setResizable(false);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments

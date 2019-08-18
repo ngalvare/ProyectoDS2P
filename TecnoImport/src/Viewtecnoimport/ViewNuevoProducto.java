@@ -84,7 +84,8 @@ public class ViewNuevoProducto extends javax.swing.JFrame {
                                         .addGap(10, 10, 10)
                                         .addComponent(precioProduct))
                                     .addComponent(descipProduct)
-                                    .addComponent(cateProduct))
+                                    .addComponent(cateProduct)
+                                    .addComponent(guardar, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGap(24, 24, 24)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -93,14 +94,12 @@ public class ViewNuevoProducto extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(limpiar)))
                         .addGap(83, 83, 83))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(guardar)
-                        .addGap(18, 18, 18)
-                        .addComponent(limpiar)
-                        .addGap(107, 107, 107)))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(49, 49, 49))
         );
         layout.setVerticalGroup(
@@ -131,10 +130,11 @@ public class ViewNuevoProducto extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel1)
                         .addGap(103, 103, 103)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardar)
                     .addComponent(limpiar))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
