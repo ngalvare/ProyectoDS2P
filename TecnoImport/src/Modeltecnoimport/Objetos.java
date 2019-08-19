@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  */
 public class Objetos {
     public static Usuario crearUser(ResultSet rs){
-        try {   System.out.println(rs.getString(2));
+        try {   
                 UsuarioBasico ub  = new UsuarioBasico(rs.getString(1), rs.getString(3), Database.getEmpleado(rs.getString(2)));
                 System.out.println(ub);
                 if(rs.getBoolean(4)){
@@ -54,5 +54,15 @@ public class Objetos {
             Logger.getLogger(Objetos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return e;
+    }
+
+    public static Producto crearProd(ResultSet rs) {
+        Producto p = null;
+        try {
+            p  = new Producto(rs.getInt(5), rs.getString(1), rs.getString(2),rs.getString(3),rs.getFloat(4));
+        } catch (SQLException ex) {
+            Logger.getLogger(Objetos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return p;
     }
 }
