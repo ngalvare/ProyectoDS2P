@@ -31,9 +31,9 @@ public class Database {
 
     private Database() {
         driver = "com.mysql.jdbc.Driver";
-        user = "arun"; //poner el usuario
-        password = "12345"; //poner la clave
-        url = "jdbc:mysql://186.178.113.43:3306/dbTecno"; 
+        user = "root"; //poner el usuario
+        password = "0928283373"; //poner la clave
+        url = "jdbc:mysql://localhost:3306/dbTecno"; 
     }
     
     public void conectar() {

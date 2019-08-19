@@ -5,6 +5,7 @@
  */
 package Viewtecnoimport;
 
+import Modeltecnoimport.Vendedor;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,11 +13,12 @@ import javax.swing.JOptionPane;
  * @author ANA
  */
 public class ViewVentas extends javax.swing.JFrame {
-
+    private static Vendedor vendedor;
     /**
      * Creates new form ViewVendedor
      */
-    public ViewVentas() {
+    public ViewVentas(Vendedor vendedor) {
+        this.vendedor = vendedor;
         initComponents();
     }
 
@@ -114,7 +116,7 @@ public class ViewVentas extends javax.swing.JFrame {
 
     private void buttonVentaPresencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVentaPresencialActionPerformed
         // TODO add your handling code here:
-        ViewVentaPresencial v = new ViewVentaPresencial();
+        ViewVentaPresencial v = new ViewVentaPresencial(vendedor);
         this.setVisible(false);
         v.setVisible(true);
         v.setResizable(false);
@@ -122,14 +124,14 @@ public class ViewVentas extends javax.swing.JFrame {
 
     private void buttonVentaDomicilioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVentaDomicilioActionPerformed
         // TODO add your handling code here:
-        ViewVentaDomicilio v = new ViewVentaDomicilio();
+        ViewVentaDomicilio v = new ViewVentaDomicilio(vendedor);
         this.setVisible(false);
         v.setVisible(true);
         v.setResizable(false);
     }//GEN-LAST:event_buttonVentaDomicilioActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        ViewVendedor v = new ViewVendedor();
+        ViewVendedor v = new ViewVendedor(vendedor);
         this.setVisible(false);
         v.setVisible(true);
         v.setResizable(false);
@@ -166,7 +168,7 @@ public class ViewVentas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewVentas().setVisible(true);
+                new ViewVentas(vendedor).setVisible(true);
             }
         });
     }

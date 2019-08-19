@@ -5,16 +5,19 @@
  */
 package Viewtecnoimport;
 
+import Modeltecnoimport.Usuario;
+
 /**
  *
  * @author Nicole Alvarez
  */
 public class ViewSelectAdminMood extends javax.swing.JFrame {
-
+    private static Usuario logueado;
     /**
      * Creates new form ViewSelectAdminMood
      */
-    public ViewSelectAdminMood() {
+    public ViewSelectAdminMood(Usuario logueado) {
+        this.logueado = logueado;
         initComponents();
     }
 
@@ -138,7 +141,7 @@ public class ViewSelectAdminMood extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewSelectAdminMood().setVisible(true);
+                new ViewSelectAdminMood(logueado).setVisible(true);
             }
         });
     }

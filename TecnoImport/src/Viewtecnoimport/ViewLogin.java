@@ -8,6 +8,7 @@ package Viewtecnoimport;
 import Modeltecnoimport.Database;
 import Modeltecnoimport.Usuario;
 import Modeltecnoimport.Vendedor;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -145,9 +146,9 @@ public class ViewLogin extends javax.swing.JFrame {
         //Por defecto va al admin sin embargo hay que hacer las validaciones por empleado         
         Usuario logueado = Database.validaInicio(txtUserName.getText(), txtContraseña.getText());
         if (logueado ==null){
-            
+            JOptionPane.showMessageDialog(null, "Usuario Incorrecto, Vuelva a intentar","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
         }else {
-            ViewSelectAdminMood m = new ViewSelectAdminMood();
+            ViewSelectAdminMood m = new ViewSelectAdminMood(logueado);
             m.setVisible(true);
             m.setResizable(false);
             this.setVisible(false);

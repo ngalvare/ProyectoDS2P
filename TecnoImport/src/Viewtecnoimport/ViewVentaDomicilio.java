@@ -5,6 +5,7 @@
  */
 package Viewtecnoimport;
 
+import Modeltecnoimport.Vendedor;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,11 +13,12 @@ import javax.swing.JOptionPane;
  * @author ANA
  */
 public class ViewVentaDomicilio extends javax.swing.JFrame {
-
+    private static Vendedor vendedor;
     /**
      * Creates new form ViewVendedor
      */
-    public ViewVentaDomicilio() {
+    public ViewVentaDomicilio(Vendedor vendedor) {
+        this.vendedor = vendedor;
         initComponents();
     }
 
@@ -230,7 +232,7 @@ public class ViewVentaDomicilio extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonGenerarDEActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        ViewVentas v = new ViewVentas();
+        ViewVentas v = new ViewVentas(vendedor);
         this.setVisible(false);
         v.setVisible(true);
         v.setResizable(false);
@@ -277,7 +279,7 @@ public class ViewVentaDomicilio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewVentaDomicilio().setVisible(true);
+                new ViewVentaDomicilio(vendedor).setVisible(true);
             }
         });
     }

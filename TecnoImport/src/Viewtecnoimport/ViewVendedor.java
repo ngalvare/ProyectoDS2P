@@ -156,7 +156,7 @@ public class ViewVendedor extends javax.swing.JFrame {
 
     private void buttonVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVentasActionPerformed
         // TODO add your handling code here:
-        ViewVentas v = new ViewVentas();
+        ViewVentas v = new ViewVentas(vendedor);
         this.setVisible(false);
         v.setVisible(true);
         v.setResizable(false);
