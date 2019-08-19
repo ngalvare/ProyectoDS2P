@@ -43,6 +43,9 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
         ButtonDescripcion = new javax.swing.JRadioButton();
         btnRegresar = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
+        btnActualizarStock = new javax.swing.JButton();
+        txtBuscador = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,6 +109,17 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
             }
         });
 
+        btnActualizarStock.setText("Actualizar Stock");
+        btnActualizarStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarStockActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Buscar :");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -115,34 +129,32 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(369, 369, 369))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(jLabel2)
-                                .addGap(23, 23, 23))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(buttonPorNombre)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(35, 35, 35)
-                                .addComponent(buttonMostrar))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(ButtonDescripcion)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(buttonCategoria)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnCerrar))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 846, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 53, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(btnRegresar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnRegresar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnActualizarStock))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 846, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCerrar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(23, 23, 23)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(buttonMostrar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addComponent(buttonPorNombre)
+                        .addGap(28, 28, 28)
+                        .addComponent(ButtonDescripcion)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonCategoria)))
+                .addGap(0, 39, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,14 +168,20 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
                     .addComponent(buttonMostrar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCerrar)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonPorNombre)
-                    .addComponent(buttonCategoria)
                     .addComponent(ButtonDescripcion)
-                    .addComponent(btnCerrar))
-                .addGap(27, 27, 27)
+                    .addComponent(buttonCategoria))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(btnRegresar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegresar)
+                    .addComponent(btnActualizarStock))
                 .addGap(20, 20, 20))
         );
 
@@ -183,16 +201,12 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonPorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPorNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonPorNombreActionPerformed
-
-    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        ViewSelectAdminMood v = new ViewSelectAdminMood(logueado);
+    private void btnActualizarStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarStockActionPerformed
+        ViewNuevoProducto v = new ViewNuevoProducto(logueado);
         v.setVisible(true);
         v.setResizable(false);
         this.setVisible(false);
-    }//GEN-LAST:event_btnRegresarActionPerformed
+    }//GEN-LAST:event_btnActualizarStockActionPerformed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         ViewLogin v = new ViewLogin();
@@ -201,17 +215,28 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnCerrarActionPerformed
 
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        ViewSelectAdminMood v = new ViewSelectAdminMood(logueado);
+        v.setVisible(true);
+        v.setResizable(false);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void buttonPorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPorNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonPorNombreActionPerformed
+
     private void buttonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMostrarActionPerformed
         switch(jComboBox1.getSelectedItem().toString()){
             case "Productos":
-                
-                break;
+
+            break;
             case "Empleados":
-                JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion!","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
-                break;
+            JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion!","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
+            break;
             case "Clientes":
-                JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion!","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
-                break;
+            JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion!","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
+            break;
         }
     }//GEN-LAST:event_buttonMostrarActionPerformed
 
@@ -267,6 +292,7 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton ButtonDescripcion;
+    private javax.swing.JButton btnActualizarStock;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JRadioButton buttonCategoria;
@@ -275,8 +301,10 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField txtBuscador;
     // End of variables declaration//GEN-END:variables
 }
