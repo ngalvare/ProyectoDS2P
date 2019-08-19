@@ -92,6 +92,7 @@ public class Database {
             ResultSet rs = consultaQuery(SelectQueries.getUser(usr, psw));
             while (rs.next()) {
                 u = Objetos.crearUser(rs);
+                
             }
 
         } catch (SQLException ex) {
@@ -102,21 +103,28 @@ public class Database {
     
     public static Empleado getEmpleado(String cedula){
         Empleado e = null;
-        List<String> cargos= Arrays.asList("JEFE","GERENTE","VENDEDOR");
+        List<String> cargos= Arrays.asList("GERENTE","JEFE","VENDEDOR");
         try{
             for(String c:cargos){
                 PreparedStatement ps = prepararQuery(SelectQueries.getEmpCargo(cedula, c));
                 ResultSet rs = ps.executeQuery();
-                System.out.println("reg: "+String.valueOf(rs.getRow()));
-                if (rs.getRow()!=0){
-                    e = Objetos.crearEmp(rs, c);
-                    break;
+                while(rs.next()){
+                    ResultSet rs2= consultaQuery(SelectQueries.getEmpSimple(cedula));
+                    while(rs2.next()){
+                        e = Objetos.crearEmp(rs2, c);
+                        break;
+                    }
                 }
             }
         }catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return e;
+    }
+    
+    public void getProdByName(Usuario usr,String nombre){
+        Empleado e = usr.getEmpleado();
+        
     }
     public void agregarClienteSQL(){
         System.out.println("base de dato agregarCliente");
@@ -217,5 +225,20 @@ public class Database {
     public void AsociarCliente(Cliente c){
         System.out.println("base de dato 16");
     }
+    
+//    public static void main(String[] args){
+//        Database.getInstance().conectar();
+//        String ced = "0928283456";
+//        try {
+//            PreparedStatement ps = prepararQuery("select * from tblUser where idUser=\'jpere1\' and psw=\'12345\'");
+//            ResultSet rs = ps.executeQuery();
+//            while(rs.next()){
+//                System.out.println(rs.getString(3));
+//            }
+//            System.out.println(rs.getRow());
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
     
 }
