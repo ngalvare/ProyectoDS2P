@@ -5,7 +5,12 @@
  */
 package Viewtecnoimport;
 
+import Modeltecnoimport.Gerente;
+import Modeltecnoimport.JefeBodega;
 import Modeltecnoimport.Usuario;
+import Modeltecnoimport.Vendedor;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  *
@@ -15,9 +20,10 @@ public class ViewSelectAdminMood extends javax.swing.JFrame {
     private static Usuario logueado;
     /**
      * Creates new form ViewSelectAdminMood
+     * @param logueado
      */
     public ViewSelectAdminMood(Usuario logueado) {
-        this.logueado = logueado;
+        ViewSelectAdminMood.logueado = logueado;
         initComponents();
     }
 
@@ -39,10 +45,15 @@ public class ViewSelectAdminMood extends javax.swing.JFrame {
         setFocusTraversalPolicyProvider(true);
 
         buttonPrincipal.setBackground(new java.awt.Color(193, 203, 240));
-        buttonPrincipal.setText("Principal");
+        buttonPrincipal.setText("Menu Principal");
+        buttonPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonPrincipalActionPerformed(evt);
+            }
+        });
 
         buttonAdmin.setBackground(new java.awt.Color(193, 203, 240));
-        buttonAdmin.setText("Administrador");
+        buttonAdmin.setText("Menu Administrador");
         buttonAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonAdminActionPerformed(evt);
@@ -97,8 +108,48 @@ public class ViewSelectAdminMood extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public static Usuario getLogueado() {
+        return logueado;
+    }
+
+    public static void setLogueado(Usuario logueado) {
+        ViewSelectAdminMood.logueado = logueado;
+    }
+
+    public JButton getBtnRegresar() {
+        return btnRegresar;
+    }
+
+    public void setBtnRegresar(JButton btnRegresar) {
+        this.btnRegresar = btnRegresar;
+    }
+
+    public JButton getButtonAdmin() {
+        return buttonAdmin;
+    }
+
+    public void setButtonAdmin(JButton buttonAdmin) {
+        this.buttonAdmin = buttonAdmin;
+    }
+
+    public JButton getButtonPrincipal() {
+        return buttonPrincipal;
+    }
+
+    public void setButtonPrincipal(JButton buttonPrincipal) {
+        this.buttonPrincipal = buttonPrincipal;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+    
     private void buttonAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdminActionPerformed
-        ViewConsultarDataAdmin v = new ViewConsultarDataAdmin();
+        ViewConsultarDataAdmin v = new ViewConsultarDataAdmin(logueado);
         v.setVisible(true);
         v.setResizable(false);
         this.setVisible(false);
@@ -110,6 +161,27 @@ public class ViewSelectAdminMood extends javax.swing.JFrame {
         v.setResizable(false);
         this.setVisible(false);
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void buttonPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPrincipalActionPerformed
+        System.out.println(logueado.getEmpleado().getNombre());
+        if(logueado.getEmpleado() instanceof JefeBodega){
+            System.out.println(logueado.getEmpleado().getNombre());
+            ViewJefeBodega v = new ViewJefeBodega(logueado);
+            v.setVisible(true);
+            v.setResizable(false);
+            this.setVisible(false);
+        }else if (logueado.getEmpleado() instanceof Gerente){
+            ViewGerente v = new ViewGerente(logueado);
+            v.setVisible(true);
+            v.setResizable(false);
+            this.setVisible(false);
+        }else if (logueado.getEmpleado() instanceof Vendedor){
+            ViewVendedor v = new ViewVendedor(logueado);
+            v.setVisible(true);
+            v.setResizable(false);
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_buttonPrincipalActionPerformed
 
     /**
      * @param args the command line arguments

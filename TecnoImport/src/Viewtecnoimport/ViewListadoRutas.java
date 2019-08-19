@@ -5,6 +5,7 @@
  */
 package Viewtecnoimport;
 
+import Modeltecnoimport.Usuario;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,11 +13,12 @@ import javax.swing.JOptionPane;
  * @author ANA
  */
 public class ViewListadoRutas extends javax.swing.JFrame {
-
+    private static Usuario logueado;
     /**
      * Creates new form ViewVendedor
      */
-    public ViewListadoRutas() {
+    public ViewListadoRutas(Usuario logueado) {
+        this.logueado = logueado;
         initComponents();
     }
 
@@ -110,7 +112,7 @@ public class ViewListadoRutas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistarActionPerformed
-       ViewRutaEntrega v = new ViewRutaEntrega();
+       ViewRutaEntrega v = new ViewRutaEntrega(logueado);
         this.setVisible(false);
         v.setVisible(true);
         v.setResizable(false);
@@ -149,7 +151,7 @@ public class ViewListadoRutas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewListadoRutas().setVisible(true);
+                new ViewListadoRutas(logueado).setVisible(true);
             }
         });
     }

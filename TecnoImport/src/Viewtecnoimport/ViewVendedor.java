@@ -5,6 +5,7 @@
  */
 package Viewtecnoimport;
 
+import Modeltecnoimport.Usuario;
 import Modeltecnoimport.Vendedor;
 import javax.swing.JOptionPane;
 
@@ -13,13 +14,13 @@ import javax.swing.JOptionPane;
  * @author ANA
  */
 public class ViewVendedor extends javax.swing.JFrame {
-    private static Vendedor vendedor;
+    private static Usuario logueado;
     /**
      * Creates new form ViewVendedor
      * @param vendedor
      */
-    public ViewVendedor(Vendedor vendedor) {
-        ViewVendedor.vendedor = vendedor;
+    public ViewVendedor(Usuario logueado) {
+        ViewVendedor.logueado = logueado;
         initComponents();
     }
 
@@ -156,7 +157,7 @@ public class ViewVendedor extends javax.swing.JFrame {
 
     private void buttonVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVentasActionPerformed
         // TODO add your handling code here:
-        ViewVentas v = new ViewVentas(vendedor);
+        ViewVentas v = new ViewVentas(logueado);
         this.setVisible(false);
         v.setVisible(true);
         v.setResizable(false);
@@ -178,7 +179,7 @@ public class ViewVendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonCotizacionesActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        ViewSelectAdminMood v = new ViewSelectAdminMood();
+        ViewSelectAdminMood v = new ViewSelectAdminMood(logueado);
         this.setVisible(false);
         v.setVisible(true);
         v.setResizable(false);
@@ -221,7 +222,7 @@ public class ViewVendedor extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewVendedor(vendedor).setVisible(true);
+                new ViewVendedor(logueado).setVisible(true);
             }
         });
     }

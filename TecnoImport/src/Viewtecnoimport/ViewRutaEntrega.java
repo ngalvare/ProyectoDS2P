@@ -5,6 +5,7 @@
  */
 package Viewtecnoimport;
 
+import Modeltecnoimport.Usuario;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,11 +13,12 @@ import javax.swing.JOptionPane;
  * @author ANA
  */
 public class ViewRutaEntrega extends javax.swing.JFrame {
-
+    private static Usuario logueado;
     /**
      * Creates new form ViewVendedor
      */
-    public ViewRutaEntrega() {
+    public ViewRutaEntrega(Usuario logueado) {
+        this.logueado = logueado;
         initComponents();
     }
 
@@ -112,7 +114,7 @@ public class ViewRutaEntrega extends javax.swing.JFrame {
 
     private void buttonNuevaRutaEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNuevaRutaEntregaActionPerformed
         // TODO add your handling code here:
-        ViewNuevaRutaEntrega v = new ViewNuevaRutaEntrega();
+        ViewNuevaRutaEntrega v = new ViewNuevaRutaEntrega(logueado);
         this.setVisible(false);
         v.setVisible(true);
         v.setResizable(false);
@@ -120,14 +122,14 @@ public class ViewRutaEntrega extends javax.swing.JFrame {
 
     private void buttonListadoRutasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonListadoRutasActionPerformed
         // TODO add your handling code here:
-        ViewListadoRutas v = new ViewListadoRutas();
+        ViewListadoRutas v = new ViewListadoRutas(logueado);
         this.setVisible(false);
         v.setVisible(true);
         v.setResizable(false);
     }//GEN-LAST:event_buttonListadoRutasActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-       ViewJefeBodega v = new ViewJefeBodega();
+       ViewJefeBodega v = new ViewJefeBodega(logueado);
        v.setVisible(true);
         v.setResizable(false);
         this.setVisible(false);
@@ -166,7 +168,7 @@ public class ViewRutaEntrega extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewRutaEntrega().setVisible(true);
+                new ViewRutaEntrega(logueado).setVisible(true);
             }
         });
     }

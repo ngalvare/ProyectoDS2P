@@ -5,6 +5,7 @@
  */
 package Viewtecnoimport;
 
+import Modeltecnoimport.Usuario;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,11 +13,12 @@ import javax.swing.JOptionPane;
  * @author ANA
  */
 public class ViewSeleccionarEnvios extends javax.swing.JFrame {
-
+    private static Usuario logueado;
     /**
      * Creates new form ViewVendedor
      */
-    public ViewSeleccionarEnvios() {
+    public ViewSeleccionarEnvios(Usuario logueado) {
+        this.logueado = logueado;
         initComponents();
     }
 
@@ -133,7 +135,7 @@ public class ViewSeleccionarEnvios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        ViewJefeBodega v = new ViewJefeBodega();
+        ViewJefeBodega v = new ViewJefeBodega(logueado);
         v.setVisible(true);
         v.setResizable(false);
         this.setVisible(false);
@@ -232,7 +234,7 @@ public class ViewSeleccionarEnvios extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewSeleccionarEnvios().setVisible(true);
+                new ViewSeleccionarEnvios(logueado).setVisible(true);
             }
         });
     }

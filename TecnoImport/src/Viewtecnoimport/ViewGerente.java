@@ -5,6 +5,7 @@
  */
 package Viewtecnoimport;
 
+import Modeltecnoimport.Usuario;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,11 +13,13 @@ import javax.swing.JOptionPane;
  * @author ANA
  */
 public class ViewGerente extends javax.swing.JFrame {
-
+    private static Usuario logueado;
+   
     /**
      * Creates new form ViewVendedor
      */
-    public ViewGerente() {
+    public ViewGerente(Usuario logueado) {
+        this.logueado=logueado;
         initComponents();
     }
 
@@ -114,14 +117,14 @@ public class ViewGerente extends javax.swing.JFrame {
 
     private void buttonConsultarDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConsultarDataActionPerformed
         // TODO add your handling code here
-        ViewConsultarDataGerente v = new ViewConsultarDataGerente();
+        ViewConsultarDataGerente v = new ViewConsultarDataGerente(logueado);
         this.setVisible(false);
         v.setVisible(true);
     }//GEN-LAST:event_buttonConsultarDataActionPerformed
 
     private void buttonPeticionAbastecimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPeticionAbastecimientoActionPerformed
         // TODO add your handling code here:
-        ViewPeticionAbastecimiento v = new ViewPeticionAbastecimiento();
+        ViewPeticionAbastecimiento v = new ViewPeticionAbastecimiento(logueado);
         this.setVisible(false);
         v.setVisible(true);
     }//GEN-LAST:event_buttonPeticionAbastecimientoActionPerformed
@@ -166,7 +169,7 @@ public class ViewGerente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewGerente().setVisible(true);
+                new ViewGerente(logueado).setVisible(true);
             }
         });
     }

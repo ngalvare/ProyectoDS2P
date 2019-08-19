@@ -5,6 +5,7 @@
  */
 package Viewtecnoimport;
 
+import Modeltecnoimport.Usuario;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,11 +13,12 @@ import javax.swing.JOptionPane;
  * @author ANA
  */
 public class ViewConsultarDataAdmin extends javax.swing.JFrame {
-
+    private static Usuario logueado;
     /**
      * Creates new form ViewVendedor
      */
-    public ViewConsultarDataAdmin() {
+    public ViewConsultarDataAdmin(Usuario logueado) {
+        this.logueado = logueado;
         initComponents();
     }
 
@@ -70,6 +72,11 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empleados", "Productos", "Clientes" }));
 
         buttonMostrar.setText("Mostrar");
+        buttonMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonMostrarActionPerformed(evt);
+            }
+        });
 
         buttonPorNombre.setForeground(new java.awt.Color(255, 255, 255));
         buttonPorNombre.setText("Por Nombre");
@@ -123,8 +130,7 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(35, 35, 35)
-                                .addComponent(buttonMostrar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(buttonMostrar))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(ButtonDescripcion)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -182,7 +188,7 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonPorNombreActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        ViewSelectAdminMood v = new ViewSelectAdminMood();
+        ViewSelectAdminMood v = new ViewSelectAdminMood(logueado);
         v.setVisible(true);
         v.setResizable(false);
         this.setVisible(false);
@@ -194,6 +200,20 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
         v.setResizable(false);
         this.setVisible(false);
     }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void buttonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMostrarActionPerformed
+        switch(jComboBox1.getSelectedItem().toString()){
+            case "Productos":
+                
+                break;
+            case "Empleados":
+                JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion!","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
+                break;
+            case "Clientes":
+                JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion!","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
+                break;
+        }
+    }//GEN-LAST:event_buttonMostrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,7 +260,7 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewConsultarDataAdmin().setVisible(true);
+                new ViewConsultarDataAdmin(logueado).setVisible(true);
             }
         });
     }

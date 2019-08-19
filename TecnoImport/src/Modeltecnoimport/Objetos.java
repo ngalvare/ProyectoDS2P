@@ -16,8 +16,8 @@ import java.util.logging.Logger;
  */
 public class Objetos {
     public static Usuario crearUser(ResultSet rs){
-        try {
-                UsuarioBasico ub  = new UsuarioBasico(rs.getString(1), rs.getString(2), Database.getEmpleado(rs.getString(3)));
+        try {   System.out.println(rs.getString(2));
+                UsuarioBasico ub  = new UsuarioBasico(rs.getString(1), rs.getString(3), Database.getEmpleado(rs.getString(2)));
                 if(rs.getBoolean(4)){
                     return new UsuarioAdmin(ub);
                 }else{
@@ -37,6 +37,7 @@ public class Objetos {
                 e = new Gerente(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
                 break;
             case "JEFE":
+                System.out.println("creando jefe");
                 e = new JefeBodega(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
                 break;
             case "VENDEDOR":

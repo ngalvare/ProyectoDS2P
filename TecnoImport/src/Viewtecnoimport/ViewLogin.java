@@ -6,7 +6,9 @@
 package Viewtecnoimport;
 
 import Modeltecnoimport.Database;
+import Modeltecnoimport.JefeBodega;
 import Modeltecnoimport.Usuario;
+import Modeltecnoimport.UsuarioAdmin;
 import Modeltecnoimport.Vendedor;
 import javax.swing.JOptionPane;
 
@@ -145,14 +147,18 @@ public class ViewLogin extends javax.swing.JFrame {
     private void iniciarSecionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarSecionActionPerformed
         //Por defecto va al admin sin embargo hay que hacer las validaciones por empleado         
         Usuario logueado = Database.validaInicio(txtUserName.getText(), txtContraseña.getText());
+        ViewSelectAdminMood m = null;
         if (logueado ==null){
             JOptionPane.showMessageDialog(null, "Usuario Incorrecto, Vuelva a intentar","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
         }else {
-            ViewSelectAdminMood m = new ViewSelectAdminMood(logueado);
-            m.setVisible(true);
-            m.setResizable(false);
-            this.setVisible(false);
+            m = new ViewSelectAdminMood(logueado);
         }
+        if (!(logueado instanceof UsuarioAdmin)){
+            m.getButtonAdmin().setVisible(false);
+        }
+        m.setVisible(true);
+        m.setResizable(false);
+        this.setVisible(false);
     }//GEN-LAST:event_iniciarSecionActionPerformed
 
     private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed

@@ -30,6 +30,7 @@ public class SelectQueries {
                 tabla = "tblRepartidor";
                 break;
         }
+        System.out.println("select * from "+tabla+" where cedulaEmp = \'"+ced+"\';");
         return "select * from "+tabla+" where cedulaEmp = \'"+ced+"\';";
     }
     

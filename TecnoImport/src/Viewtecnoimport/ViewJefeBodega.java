@@ -5,6 +5,7 @@
  */
 package Viewtecnoimport;
 
+import Modeltecnoimport.Usuario;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -13,11 +14,12 @@ import javax.swing.JOptionPane;
  * @author ANA
  */
 public class ViewJefeBodega extends javax.swing.JFrame {
-
+    private static Usuario logueado;
     /**
      * Creates new form ViewVendedor
      */
-    public ViewJefeBodega() {
+    public ViewJefeBodega(Usuario u) {
+        ViewJefeBodega.logueado = u;
         initComponents();
     }
 
@@ -138,21 +140,21 @@ public class ViewJefeBodega extends javax.swing.JFrame {
 
     private void buttonRutaEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRutaEntregaActionPerformed
         // TODO add your handling code here:
-        ViewRutaEntrega v = new ViewRutaEntrega();
+        ViewRutaEntrega v = new ViewRutaEntrega(logueado);
         this.setVisible(false);
         v.setVisible(true);
     }//GEN-LAST:event_buttonRutaEntregaActionPerformed
 
     private void buttonAsignarPermisosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAsignarPermisosActionPerformed
         // TODO add your handling code here:
-        ViewPermisosAdminBodega v = new ViewPermisosAdminBodega();
+        ViewPermisosAdminBodega v = new ViewPermisosAdminBodega(logueado);
         this.setVisible(false);
         v.setVisible(true);
     }//GEN-LAST:event_buttonAsignarPermisosActionPerformed
 
     private void buttonActualizarEnviosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActualizarEnviosActionPerformed
         // TODO add your handling code here:
-        ViewSeleccionarEnvios v = new ViewSeleccionarEnvios();
+        ViewSeleccionarEnvios v = new ViewSeleccionarEnvios(logueado);
         this.setVisible(false);
         v.setVisible(true);
         v.setResizable(false);
@@ -166,7 +168,7 @@ public class ViewJefeBodega extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        ViewSelectAdminMood v = new ViewSelectAdminMood();
+        ViewSelectAdminMood v = new ViewSelectAdminMood(logueado);
         this.setVisible(false);
         v.setVisible(true);
         v.setResizable(false);
@@ -203,7 +205,7 @@ public class ViewJefeBodega extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewJefeBodega().setVisible(true);
+                new ViewJefeBodega(logueado).setVisible(true);
             }
         });
     }

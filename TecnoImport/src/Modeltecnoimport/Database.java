@@ -92,10 +92,11 @@ public class Database {
     
     public static Empleado getEmpleado(String cedula){
         Empleado e = null;
-        List<String> cargos= Arrays.asList("GERENTE","JEFE","VENDEDOR");
+        List<String> cargos= Arrays.asList("JEFE","GERENTE","VENDEDOR");
         try{
             for(String c:cargos){
                 ResultSet rs = consultaQuery(SelectQueries.getEmpCargo(cedula, c));
+                System.out.println("reg: "+String.valueOf(rs.getRow()));
                 if (rs.getRow()!=0){
                     e = Objetos.crearEmp(rs, c);
                     break;
