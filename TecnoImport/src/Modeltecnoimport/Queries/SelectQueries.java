@@ -38,4 +38,15 @@ public class SelectQueries {
         return "select * from tblEmpleado where cedulaEmp=\'"+cedula+"\';";
     }
     
+    public static String getProducto(String data, String cedula,String search){
+        return "select distinct nombre,nombreCat,descripcion,precio,cantidad from \n" +
+        "tblEmpleado\n" +
+        "join tblLocal l using(idLocal)\n" +
+        "join tblInventario i using(idInventario)\n" +
+        "join tblProductoInv pi using (idInventario)\n" +
+        "join tblProducto p using(idProducto)\n" +
+        "join tblCategory using (idCat)\n" +
+        "where cedulaEmp = \'"+cedula+"\' and nombre like \'%"+search+"%\';";
+    }
+    
 }

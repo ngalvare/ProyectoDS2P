@@ -9,6 +9,7 @@ import Modeltecnoimport.Cliente;
 import Modeltecnoimport.Empleado;
 import Modeltecnoimport.Objetos;
 import Modeltecnoimport.PagoStrategy;
+import Modeltecnoimport.Producto;
 import Modeltecnoimport.Queries.SelectQueries;
 import Modeltecnoimport.Usuario;
 import java.sql.Connection;
@@ -122,10 +123,22 @@ public class Database {
         return e;
     }
     
-    public void getProdByName(Usuario usr,String nombre){
+    public ArrayList<Producto> getProdFilter(String dato,Usuario usr,String search){
+        ArrayList<Producto> ps = new ArrayList<>();
         Empleado e = usr.getEmpleado();
-        
+        ResultSet rs = consultaQuery(SelectQueries.getProducto(dato, e.getNumCedula(), search));
+        try {
+            while(rs.next()){
+                Producto p = Objetos.crearProd(rs);
+                ps.add(p);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ps;
     }
+    
+    
     public void agregarClienteSQL(){
         System.out.println("base de dato agregarCliente");
     }

@@ -229,7 +229,7 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
     private void buttonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMostrarActionPerformed
         switch(jComboBox1.getSelectedItem().toString()){
             case "Productos":
-
+//                this.jTable1.get
             break;
             case "Empleados":
             JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion!","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);

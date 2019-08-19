@@ -11,25 +11,17 @@ package Modeltecnoimport;
  */
 public class Producto {
     
-    private int id, stock;
+    private int  stock;
     private String nombre, categoria, descripcion;
     private float precio;
 
-    public Producto(int id, int stock, String nombre, String categoria, String descripcion, float precio) {
-        this.id = id;
+    public Producto(int stock, String nombre, String categoria, String descripcion, float precio) {
+        
         this.stock = stock;
         this.nombre = nombre;
         this.categoria = categoria;
         this.descripcion = descripcion;
         this.precio = precio;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getStock() {
