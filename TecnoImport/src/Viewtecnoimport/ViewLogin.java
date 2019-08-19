@@ -147,6 +147,7 @@ public class ViewLogin extends javax.swing.JFrame {
     private void iniciarSecionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarSecionActionPerformed
         //Por defecto va al admin sin embargo hay que hacer las validaciones por empleado         
         Usuario logueado = Database.validaInicio(txtUserName.getText(), txtContraseña.getText());
+        System.out.println(logueado.getIdUser()+logueado.getEmpleado().getNombre());
         ViewSelectAdminMood m = null;
         if (logueado ==null){
             JOptionPane.showMessageDialog(null, "Usuario Incorrecto, Vuelva a intentar","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);

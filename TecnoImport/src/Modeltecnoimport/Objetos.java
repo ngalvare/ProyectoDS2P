@@ -19,6 +19,7 @@ public class Objetos {
     public static Usuario crearUser(ResultSet rs){
         try {   System.out.println(rs.getString(2));
                 UsuarioBasico ub  = new UsuarioBasico(rs.getString(1), rs.getString(3), Database.getEmpleado(rs.getString(2)));
+                System.out.println(ub);
                 if(rs.getBoolean(4)){
                     return new UsuarioAdmin(ub);
                 }else{
@@ -52,6 +53,6 @@ public class Objetos {
         }catch (SQLException ex) {
             Logger.getLogger(Objetos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        return e;
     }
 }

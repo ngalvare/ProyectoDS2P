@@ -67,6 +67,11 @@ public class UsuarioBasico implements Usuario{
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return "UsuarioBasico{" + "idUser=" + idUser + ", password=" + password + ", empleado=" + empleado + '}';
+    }
+
     
     
     
