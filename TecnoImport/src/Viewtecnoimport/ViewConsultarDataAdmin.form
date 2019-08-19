@@ -205,6 +205,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Por Categoria"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCategoriaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="ButtonDescripcion">
           <Properties>
@@ -213,6 +216,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Por Descripcion"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonDescripcionActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnRegresar">
           <Properties>

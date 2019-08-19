@@ -123,7 +123,7 @@ public class Database {
         return e;
     }
     
-    public ArrayList<Producto> getProdFilter(String dato,Usuario usr,String search){
+    public static ArrayList<Producto> getProdFilter(String dato,Usuario usr,String search){
         ArrayList<Producto> ps = new ArrayList<>();
         Empleado e = usr.getEmpleado();
         ResultSet rs = consultaQuery(SelectQueries.getProducto(dato, e.getNumCedula(), search));

@@ -5,8 +5,13 @@
  */
 package Viewtecnoimport;
 
+import Modeltecnoimport.Producto;
+import Modeltecnoimport.Singleton.Database;
 import Modeltecnoimport.Usuario;
+import com.oracle.jrockit.jfr.Producer;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,11 +19,13 @@ import javax.swing.JOptionPane;
  */
 public class ViewConsultarDataAdmin extends javax.swing.JFrame {
     private static Usuario logueado;
+    private String search;
     /**
      * Creates new form ViewVendedor
      */
     public ViewConsultarDataAdmin(Usuario logueado) {
         this.logueado = logueado;
+        search = "";
         initComponents();
     }
 
@@ -91,9 +98,19 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
 
         buttonCategoria.setForeground(new java.awt.Color(255, 255, 255));
         buttonCategoria.setText("Por Categoria");
+        buttonCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCategoriaActionPerformed(evt);
+            }
+        });
 
         ButtonDescripcion.setForeground(new java.awt.Color(255, 255, 255));
         ButtonDescripcion.setText("Por Descripcion");
+        ButtonDescripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonDescripcionActionPerformed(evt);
+            }
+        });
 
         btnRegresar.setText("Regresar");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -223,13 +240,20 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void buttonPorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPorNombreActionPerformed
-        // TODO add your handling code here:
+        search="nombre";
     }//GEN-LAST:event_buttonPorNombreActionPerformed
 
     private void buttonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMostrarActionPerformed
         switch(jComboBox1.getSelectedItem().toString()){
             case "Productos":
-//                this.jTable1.get
+                DefaultTableModel m = (DefaultTableModel)jTable1.getModel();
+                String data  = this.txtBuscador.getText();
+                String busq = this.search;
+                ArrayList<Producto> prods = Database.getProdFilter(data, logueado, busq);
+                for(Producto p: prods){
+                    m.addRow(new Object[]{p.getNombre(),p.getClass(),p.getDescripcion(),p.getPrecio()});
+                }
+                
             break;
             case "Empleados":
             JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion!","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
@@ -239,6 +263,14 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
             break;
         }
     }//GEN-LAST:event_buttonMostrarActionPerformed
+
+    private void ButtonDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDescripcionActionPerformed
+        search="descripcion";
+    }//GEN-LAST:event_ButtonDescripcionActionPerformed
+
+    private void buttonCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCategoriaActionPerformed
+        search = "nombreCat";
+    }//GEN-LAST:event_buttonCategoriaActionPerformed
 
     /**
      * @param args the command line arguments
