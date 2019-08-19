@@ -73,6 +73,11 @@ public class ViewConsultarDataGerente extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empleados", "Envios", "Ventas", "Productos" }));
 
         buttonMostrar.setText("Mostrar");
+        buttonMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonMostrarActionPerformed(evt);
+            }
+        });
 
         buttonPorNombre.setForeground(new java.awt.Color(255, 255, 255));
         buttonPorNombre.setText("Por Nombre");
@@ -205,6 +210,10 @@ public class ViewConsultarDataGerente extends javax.swing.JFrame {
         v.setResizable(false);
         this.setVisible(false);
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void buttonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMostrarActionPerformed
+        JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_buttonMostrarActionPerformed
 
     /**
      * @param args the command line arguments
