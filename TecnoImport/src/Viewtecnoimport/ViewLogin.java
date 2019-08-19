@@ -5,7 +5,7 @@
  */
 package Viewtecnoimport;
 
-import Modeltecnoimport.Database;
+import Modeltecnoimport.Singleton.Database;
 import Modeltecnoimport.JefeBodega;
 import Modeltecnoimport.Usuario;
 import Modeltecnoimport.UsuarioAdmin;

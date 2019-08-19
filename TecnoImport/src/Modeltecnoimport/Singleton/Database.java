@@ -3,11 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modeltecnoimport;
+package Modeltecnoimport.Singleton;
 
+import Modeltecnoimport.Cliente;
+import Modeltecnoimport.Empleado;
+import Modeltecnoimport.Objetos;
+import Modeltecnoimport.PagoStrategy;
 import Modeltecnoimport.Queries.SelectQueries;
+import Modeltecnoimport.Usuario;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -75,6 +81,10 @@ public class Database {
         return rs;
     }
     
+    public static PreparedStatement prepararQuery(String query) throws SQLException{
+        return conn.prepareStatement(query);
+    }
+    
     public static Usuario validaInicio(String usr, String psw) {
         Usuario u = null;
         try {
@@ -95,7 +105,8 @@ public class Database {
         List<String> cargos= Arrays.asList("JEFE","GERENTE","VENDEDOR");
         try{
             for(String c:cargos){
-                ResultSet rs = consultaQuery(SelectQueries.getEmpCargo(cedula, c));
+                PreparedStatement ps = prepararQuery(SelectQueries.getEmpCargo(cedula, c));
+                ResultSet rs = ps.executeQuery();
                 System.out.println("reg: "+String.valueOf(rs.getRow()));
                 if (rs.getRow()!=0){
                     e = Objetos.crearEmp(rs, c);
