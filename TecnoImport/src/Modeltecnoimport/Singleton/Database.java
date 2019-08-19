@@ -130,6 +130,7 @@ public class Database {
         try {
             while(rs.next()){
                 Producto p = Objetos.crearProd(rs);
+                System.out.println(p);
                 ps.add(p);
             }
         } catch (SQLException ex) {

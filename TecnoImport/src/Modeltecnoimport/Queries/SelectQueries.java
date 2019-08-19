@@ -46,7 +46,7 @@ public class SelectQueries {
         "join tblProductoInv pi using (idInventario)\n" +
         "join tblProducto p using(idProducto)\n" +
         "join tblCategory using (idCat)\n" +
-        "where cedulaEmp = \'"+cedula+"\' and nombre like \'%"+search+"%\';";
+        "where cedulaEmp = \'"+cedula+"\' and "+search+" like \'%"+data+"%\';";
     }
     
 }
