@@ -5,6 +5,8 @@
  */
 package Modeltecnoimport.Queries;
 
+import Modeltecnoimport.EstadoEnvio;
+
 /**
  *
  * @author scmz2607
@@ -14,5 +16,29 @@ public class UpdateQueries {
         return "update tblUser "
                 +"set isAdmin="+setAdmin
                 +" where cedulaEmp=\'"+cedula+"\';";
+    }
+
+    
+    public static String getIdRepbyCed(String numCedula){
+        return "select idRepartidor from tblRepartidor where cedulaEmp="+numCedula+";";
+    }
+    public static String crearRuta(int idRep, boolean cerrada) {
+        return "insert into tblRuta(idRepartidor,cerrada) value (\'"+idRep+"\',"+cerrada+");";
+    }
+    
+    public static String idEstaRuta(){
+        return "select @idEstaRuta";
+    }
+    
+    public static String asignarRutaEnvio(int idEnvio, int idRuta){
+        return "update tblEnvio set idRuta="+idRuta+" where idEnvio = "+idEnvio+";";
+    }
+    
+    public static String cambiarEstadoEnvio(int idEnvio,EstadoEnvio estado){
+        return "update tblEnvio set estado=\'"+estado+"\' where idEnvio = "+idEnvio+";";
+    }
+
+    public static String cambiarDisponible(int idRep, boolean disponible) {
+        return "update tblRepartidor set disponible=\'"+disponible+"\' where idRepartidor = "+idRep+";";
     }
 }

@@ -37,11 +37,6 @@ import java.util.logging.Logger;
 public class Database {
 
     private static Connection conn = null;
-
-    
-
-    
-
     private final String driver;
     private final String user; //poner el usuario
     private final String password; //poner la clave
@@ -221,7 +216,6 @@ public class Database {
             while (rs.next()) {
                 Venta v = Objetos.crearVenta(rs);
                 ventas.add(v);
-
             }
         } catch (SQLException ex) {
             Logger.getLogger(Database.class
@@ -266,6 +260,31 @@ public class Database {
         return e;
     }
 
+    public static boolean crearRuta(String numCedula, ArrayList<Integer> idsEnvios) {
+        if(idsEnvios.isEmpty()) return false;
+        try {
+            PreparedStatement pst = conn.prepareStatement(UpdateQueries.getIdRepbyCed(numCedula));
+            ResultSet rs2 = pst.executeQuery();
+            while(rs2.next()){
+                PreparedStatement ps = conn.prepareStatement(UpdateQueries.crearRuta(rs2.getInt(1),false));
+                ps.execute();
+                PreparedStatement ps4 = conn.prepareStatement(UpdateQueries.cambiarDisponible(rs2.getInt(1),false));
+                ps4.execute();
+            }
+            int idRuta=idUltimaRuta();
+            for(int id: idsEnvios){
+                PreparedStatement ps2 = conn.prepareStatement(UpdateQueries.asignarRutaEnvio(id,idRuta));
+                ps2.execute();
+                PreparedStatement ps3 = conn.prepareStatement(UpdateQueries.cambiarEstadoEnvio(id,EstadoEnvio.encamino));
+                ps3.execute();
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return true;
+    }
+    
     public static ArrayList<Repartidor> getRepartidorF(Usuario usr) {
         ArrayList<Repartidor> ps = new ArrayList<>();
         Empleado e = usr.getEmpleado();
@@ -302,6 +321,18 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
+    }
+    
+    public static int idUltimaRuta() {
+        try {
+            ResultSet rs = consultaQuery(UpdateQueries.idEstaRuta());
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
     }
 
     public void agregarClienteSQL() {

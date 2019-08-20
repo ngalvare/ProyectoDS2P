@@ -58,11 +58,11 @@ public class Objetos {
         try{
             switch (tipo){
             case "DOM":
-                e = new EnvioDomicilio(rt.getInt(1), estado, Database.getVenta(rt.getInt(3)));
+                e = new EnvioDomicilio(rt.getInt(2), estado, Database.getVenta(rt.getInt(3)));
                 System.out.println("creando domicilio");
                 break;
             case "ABAS":
-                e = new EnvioAbastecimiento(rt.getInt(1), Date.valueOf(rt.getString(2)), estado, Database.getLocal(rt.getInt(4)));
+                e = new EnvioAbastecimiento(rt.getInt(3), Date.valueOf(rt.getString(2)), estado, Database.getLocal(rt.getInt(4)));
                 System.out.println("creando abas");
                 break;
             }

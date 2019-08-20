@@ -13,19 +13,13 @@ import java.util.List;
  */
 public class Bodega extends Local{
     
-    List<RutaEntrega> rutas;
+//    List<RutaEntrega> rutas;
     
     public Bodega(int id, String direccion) {
         super(id, direccion);
     }
 
-    public List<RutaEntrega> getRutas() {
-        return rutas;
-    }
-
-    public void setRutas(List<RutaEntrega> rutas) {
-        this.rutas = rutas;
-    }
+    
     
     
     

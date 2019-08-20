@@ -7,8 +7,13 @@ package Viewtecnoimport;
 
 import Modeltecnoimport.Gerente;
 import Modeltecnoimport.JefeBodega;
+import Modeltecnoimport.Repartidor;
+import Modeltecnoimport.Singleton.Database;
 import Modeltecnoimport.Usuario;
 import Modeltecnoimport.Vendedor;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -17,9 +22,12 @@ import javax.swing.JLabel;
  * @author Nicole Alvarez
  */
 public class ViewSelectAdminMood extends javax.swing.JFrame {
+    static Queue<Repartidor> repartidores;
     private static Usuario logueado;
+
     /**
      * Creates new form ViewSelectAdminMood
+     *
      * @param logueado
      */
     public ViewSelectAdminMood(Usuario logueado) {
@@ -147,7 +155,7 @@ public class ViewSelectAdminMood extends javax.swing.JFrame {
     public void setjLabel2(JLabel jLabel2) {
         this.jLabel2 = jLabel2;
     }
-    
+
     private void buttonAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdminActionPerformed
         ViewConsultarDataAdmin v = new ViewConsultarDataAdmin(logueado);
         v.setVisible(true);
@@ -163,17 +171,23 @@ public class ViewSelectAdminMood extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void buttonPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPrincipalActionPerformed
-        if(logueado.getEmpleado() instanceof JefeBodega){
+        if (logueado.getEmpleado() instanceof JefeBodega) {
+            repartidores= new LinkedList<>();
             ViewJefeBodega v = new ViewJefeBodega(logueado);
+            ArrayList<Repartidor> reps = Database.getRepartidorF(logueado);
+            
+            for (Repartidor r : reps) {
+                repartidores.offer(r);
+            }
             v.setVisible(true);
             v.setResizable(false);
             this.setVisible(false);
-        }else if (logueado.getEmpleado() instanceof Gerente){
+        } else if (logueado.getEmpleado() instanceof Gerente) {
             ViewGerente v = new ViewGerente(logueado);
             v.setVisible(true);
             v.setResizable(false);
             this.setVisible(false);
-        }else if (logueado.getEmpleado() instanceof Vendedor){
+        } else if (logueado.getEmpleado() instanceof Vendedor) {
             ViewVendedor v = new ViewVendedor(logueado);
             v.setVisible(true);
             v.setResizable(false);

@@ -27,12 +27,21 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
     private static Usuario logueado;
+    private Repartidor rep;
     private String select;
+    private ArrayList<Integer> idsEnvios;
     /**
      * Creates new form ViewVendedor
      */
+    
+    
+    public void setRep(Repartidor rep) {
+        this.rep =rep;
+    }
+
     public ViewNuevaRutaEntrega(Usuario logueado) {
         this.logueado =logueado;
+        this.idsEnvios = new ArrayList<>();
         initComponents();
     }
 
@@ -51,7 +60,6 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jComboBoxRep = new javax.swing.JComboBox<>();
         btnRegresar = new javax.swing.JButton();
         btnCrearRuta = new javax.swing.JToggleButton();
         btnDetalleEnivo = new javax.swing.JButton();
@@ -90,12 +98,6 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jComboBoxRep.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxRepActionPerformed(evt);
-            }
-        });
-
         btnRegresar.setText("Regresar");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,7 +112,7 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
             }
         });
 
-        btnDetalleEnivo.setText("Detalle del envio");
+        btnDetalleEnivo.setText("Agregar envio");
         btnDetalleEnivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDetalleEnivoActionPerformed(evt);
@@ -131,8 +133,6 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jComboBoxRep, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnDetalleEnivo))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -148,10 +148,9 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jComboBoxRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDetalleEnivo))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnDetalleEnivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCrearRuta)
                 .addGap(26, 26, 26)
@@ -174,14 +173,15 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrearRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearRutaActionPerformed
-        int Rselect = this.jTable1.getSelectedRow();
-        if(Rselect==-1){
-            JOptionPane.showMessageDialog(null, "Elija usuario primero!","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
+        if(rep==null || !Database.crearRuta(rep.getNumCedula(),idsEnvios)){
+            JOptionPane.showMessageDialog(null, "Debe agregar envios y existir repartidores disponibles!","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
         }else{
-            DefaultTableModel m= (DefaultTableModel)jTable1.getModel();
-            System.out.println(String.valueOf(m.getValueAt(Rselect, 0)));
-            
-        }
+            JOptionPane.showMessageDialog(null, "Ruta creada con exito!","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
+            ViewRutaEntrega v = new ViewRutaEntrega(logueado);
+            v.setVisible(true);
+            this.setVisible(false);
+        };
+        
     }//GEN-LAST:event_btnCrearRutaActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
@@ -191,12 +191,17 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
         v.setResizable(false);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
-    private void jComboBoxRepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxRepActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxRepActionPerformed
-
     private void btnDetalleEnivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalleEnivoActionPerformed
-        JOptionPane.showMessageDialog(null, "Funcionalidad en construcción","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
+        idsEnvios= new ArrayList<>();
+        int Rselect = this.jTable1.getSelectedRow();
+        if(Rselect==-1){
+            JOptionPane.showMessageDialog(null, "Elija envio primero!","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            DefaultTableModel m= (DefaultTableModel)jTable1.getModel();
+            int idEnv = Integer.parseInt(String.valueOf(m.getValueAt(Rselect, 0)));
+            idsEnvios.add(idEnv);
+            JOptionPane.showMessageDialog(null, "Envio agregado!","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_btnDetalleEnivoActionPerformed
 
     /**
@@ -328,7 +333,6 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnCrearRuta;
     private javax.swing.JButton btnDetalleEnivo;
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JComboBox<String> jComboBoxRep;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
