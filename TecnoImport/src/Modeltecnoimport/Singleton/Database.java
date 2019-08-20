@@ -11,6 +11,7 @@ import Modeltecnoimport.Objetos;
 import Modeltecnoimport.PagoStrategy;
 import Modeltecnoimport.Producto;
 import Modeltecnoimport.Queries.SelectQueries;
+import Modeltecnoimport.Queries.UpdateQueries;
 import Modeltecnoimport.Repartidor;
 import Modeltecnoimport.Usuario;
 import java.sql.Connection;
@@ -32,6 +33,8 @@ import java.util.logging.Logger;
 public class Database {
 
     private static Connection conn = null;
+
+    
     private final String driver;
     private final String user; //poner el usuario
     private final String password; //poner la clave
@@ -181,6 +184,23 @@ public class Database {
                     .getName()).log(Level.SEVERE, null, ex);
         }
         return ps;
+    }
+    
+    public static boolean getPrivAdmin(String cedula) {
+        ResultSet rs;
+        rs = consultaQuery(SelectQueries.getUsrbyCed(cedula));
+        try {
+            while(rs.next()){
+                if(!rs.getBoolean(4)){
+                    PreparedStatement ps = conn.prepareStatement(UpdateQueries.cambiarIsAdmin(cedula, true));
+                    int count = ps.executeUpdate();
+                    if(count>0) return true;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 
     public void agregarClienteSQL() {

@@ -76,4 +76,7 @@ public class SelectQueries {
 "        where cedulaEmp not in (select cedulaEmp from tblRepartidor) and cedulaEmp <> \'"+numCedula+"\';";
     }
     
+    public static String getUsrbyCed(String ced){
+        return "select * from tblUser where cedulaEmp = \'"+ced+"\';";
+    }
 }

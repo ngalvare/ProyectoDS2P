@@ -5,6 +5,7 @@
  */
 package Viewtecnoimport;
 
+import Modeltecnoimport.Singleton.Database;
 import Modeltecnoimport.Usuario;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -142,9 +143,14 @@ public class ViewPermisosAdminBodega extends javax.swing.JFrame {
 
     private void btnAsignarPermisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarPermisoActionPerformed
         int Rselect = this.jTable1.getSelectedRow();
-        int Cselect = this.jTable1.getSelectedColumn();
-        DefaultTableModel m= (DefaultTableModel)jTable1.getModel();
-        m.getValueAt(Rselect, Cselect);
+        if(Rselect==-1){
+            JOptionPane.showMessageDialog(null, "Elija usuario primero!","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            DefaultTableModel m= (DefaultTableModel)jTable1.getModel();
+            System.out.println(String.valueOf(m.getValueAt(Rselect, 0)));
+            if(Database.getPrivAdmin(String.valueOf(m.getValueAt(Rselect, 0)))) JOptionPane.showMessageDialog(null, "Permisos otorgados!","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);;
+        }
+        
     }//GEN-LAST:event_btnAsignarPermisoActionPerformed
 
     /**

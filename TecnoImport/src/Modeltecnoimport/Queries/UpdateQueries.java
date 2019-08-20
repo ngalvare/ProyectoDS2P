@@ -10,5 +10,9 @@ package Modeltecnoimport.Queries;
  * @author scmz2607
  */
 public class UpdateQueries {
-    
+    public static String cambiarIsAdmin(String cedula, boolean setAdmin){
+        return "update tblUser "
+                +"set isAdmin="+setAdmin
+                +" where cedulaEmp=\'"+cedula+"\';";
+    }
 }
