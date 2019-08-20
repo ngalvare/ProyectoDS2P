@@ -5,6 +5,9 @@
  */
 package Viewtecnoimport;
 
+import Modeltecnoimport.Envio;
+import Modeltecnoimport.EnvioAbastecimiento;
+import Modeltecnoimport.EnvioDomicilio;
 import Modeltecnoimport.Producto;
 import Modeltecnoimport.Repartidor;
 import Modeltecnoimport.Singleton.Database;
@@ -139,11 +142,20 @@ public class ViewRutaEntrega extends javax.swing.JFrame {
         ViewNuevaRutaEntrega ve =v;
         DefaultTableModel m = (DefaultTableModel)v.getjTable1().getModel();
         Object[] rows = new Object[4];
-        ArrayList<Venta> ventas = Database.getVentas(logueado);
-                for(Venta ven: ventas){
-                    rows[0]=ven.getId();
-                    rows[1]=ven.getCliente().getAddress();
-                    rows[2]=ven.getFecha();
+        ArrayList<Envio> envios = Database.getVentas(logueado);
+                for(Envio e: envios){
+                    if(e instanceof EnvioDomicilio){
+                        EnvioDomicilio ed =(EnvioDomicilio)e; 
+                        rows[0]=ed.getId();
+                        rows[1]=ed.getVenta().getCliente().getAddress();
+                        rows[2]=ed.getVenta().getFecha();
+                    }else if(e instanceof EnvioAbastecimiento){
+                        EnvioAbastecimiento ea =(EnvioAbastecimiento)e; 
+                        rows[0]=ea.getId();
+                        rows[1]=ea.getLugarDestino();
+                        rows[2]=ea.getFechaEmision();
+                    }
+                    
                 }
          m.addRow(rows);
     

@@ -13,11 +13,13 @@ import java.util.Date;
  */
 public class EnvioAbastecimiento extends Envio {
     private Local lugarDestino;
+    private Date fechaEmision;
 
 
-    public EnvioAbastecimiento(int id, Date fechaEmision, EstadoEnvio estado, Empleado originador, Bodega Bodega, Local local,Empleado originario) {
-        super(id, fechaEmision, estado, originador, Bodega);
+    public EnvioAbastecimiento(int id, Date fechaEmision, EstadoEnvio estado, Local local,Empleado originario) {
+        super(id,estado);
         this.lugarDestino = local;
+        this.fechaEmision=fechaEmision;
         
     }
 
@@ -27,6 +29,14 @@ public class EnvioAbastecimiento extends Envio {
 
     public void setLugarDestino(Local lugarDestino) {
         this.lugarDestino = lugarDestino;
+    }
+
+    public Date getFechaEmision() {
+        return fechaEmision;
+    }
+
+    public void setFechaEmision(Date fechaEmision) {
+        this.fechaEmision = fechaEmision;
     }
     
     

@@ -77,7 +77,7 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id Venta", "Adress", "Fecha"
+                "Id Envio", "Adress", "Fecha"
             }
         ) {
             boolean[] canEdit = new boolean [] {

@@ -14,17 +14,11 @@ import java.util.List;
  */
 public class Envio {
     protected int id;
-    protected Date fechaEmision;
     protected EstadoEnvio estado;
-    protected Empleado originador;
-    protected Bodega Bodega;
 
-    public Envio(int id, Date fechaEmision, EstadoEnvio estado, Empleado originador, Bodega Bodega) {
+    public Envio(int id, EstadoEnvio estado) {
         this.id = id;
-        this.fechaEmision = fechaEmision;
         this.estado = estado;
-        this.originador = originador;
-        this.Bodega = Bodega;
     }
     
     
@@ -46,13 +40,6 @@ public class Envio {
         this.id = id;
     }
 
-    public Date getFechaEmision() {
-        return fechaEmision;
-    }
-
-    public void setFechaEmision(Date fechaEmision) {
-        this.fechaEmision = fechaEmision;
-    }
 
     public EstadoEnvio getEstado() {
         return estado;
@@ -61,24 +48,6 @@ public class Envio {
     public void setEstado(EstadoEnvio estado) {
         this.estado = estado;
     }
-
-    public Empleado getOriginador() {
-        return originador;
-    }
-
-    public void setOriginador(Empleado originador) {
-        this.originador = originador;
-    }
-
-    public Bodega getBodega() {
-        return Bodega;
-    }
-
-    public void setBodega(Bodega Bodega) {
-        this.Bodega = Bodega;
-    }
-
-    
     
     
 }
