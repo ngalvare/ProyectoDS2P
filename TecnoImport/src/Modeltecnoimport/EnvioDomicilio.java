@@ -14,7 +14,7 @@ import java.util.Date;
 public class EnvioDomicilio extends Envio{
     private Venta venta;
 
-    public EnvioDomicilio(int id, Date fechaEmision, EstadoEnvio estado,Venta venta) {
+    public EnvioDomicilio(int id, EstadoEnvio estado,Venta venta) {
         super(id, estado);
         this.venta = venta;
     }

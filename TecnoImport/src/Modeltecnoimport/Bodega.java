@@ -15,8 +15,8 @@ public class Bodega extends Local{
     
     List<RutaEntrega> rutas;
     
-    public Bodega(int id, String direccion, Inventario inventario, List<Empleado> empleados) {
-        super(id, direccion, inventario, empleados);
+    public Bodega(int id, String direccion) {
+        super(id, direccion);
     }
 
     public List<RutaEntrega> getRutas() {

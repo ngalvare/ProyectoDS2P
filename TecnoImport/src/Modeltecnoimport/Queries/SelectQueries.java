@@ -94,4 +94,37 @@ public class SelectQueries {
     public static String getUsrbyCed(String ced){
         return "select * from tblUser where cedulaEmp = \'"+ced+"\';";
     }
+
+    public static String getAllEnvios() {
+        return "select * from tblEnvio where estado =\'pedido\';";
+    }
+
+    public static String getEnvTipo(int idEnvio, String tipo) {
+        String tabla = "";
+        switch (tipo){
+            case "DOM":
+                tabla = "tblEnvioDom";
+                break;
+            case "ABAS":
+                tabla = "tblEnvioAbas";
+                break;
+        }
+        return "select * from "+tabla+" where idEnvio=\'"+idEnvio+"\';";
+    }
+
+    public static String getEnvSimple(int idEnvio) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static String getVenta(int idVenta) {
+        return "select * from tblVenta where idVenta = \'"+idVenta+"\';";
+    }
+
+    public static String getCliente(int idCliente) {
+        return "select * from tblCliente where idCliente = \'"+idCliente+"\';";
+    }
+
+    public static String getLocal(int idLocal) {
+        return "select * from tblLocal where idLocal = \'"+idLocal+"\';";
+    }
 }

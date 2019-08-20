@@ -10,11 +10,10 @@ package Modeltecnoimport;
  * @author scmz2607
  */
 public class Cliente {
-    String cedula, numRuc, nombre, address, numTlf;
+    String cedula, nombre, address, numTlf;
 
-    public Cliente(String cedula, String numRuc, String nombre, String address, String numTlf) {
+    public Cliente(String cedula,  String nombre, String address, String numTlf) {
         this.cedula = cedula;
-        this.numRuc = numRuc;
         this.nombre = nombre;
         this.address = address;
         this.numTlf = numTlf;
@@ -28,13 +27,7 @@ public class Cliente {
         this.cedula = cedula;
     }
 
-    public String getNumRuc() {
-        return numRuc;
-    }
-
-    public void setNumRuc(String numRuc) {
-        this.numRuc = numRuc;
-    }
+    
 
     public String getNombre() {
         return nombre;

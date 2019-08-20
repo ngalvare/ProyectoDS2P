@@ -13,8 +13,8 @@ import java.util.List;
  */
 public class Matriz extends Local{
     
-    public Matriz(int id, String direccion, Inventario inventario, List<Empleado> empleados) {
-        super(id, direccion, inventario, empleados);
+    public Matriz(int id, String direccion) {
+        super(id, direccion);
     }
     
 }

@@ -6,6 +6,7 @@
 package Modeltecnoimport;
 
 import Modeltecnoimport.Singleton.Database;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -30,19 +31,6 @@ public class Objetos {
         return null;
     }
     
-    public static Usuario crearUserComplete(ResultSet rs){
-        try {   
-                UsuarioBasico ub  = new UsuarioBasico(rs.getString(1), rs.getString(2), new Empleado(rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)));
-                if(rs.getBoolean(7)){
-                    return new UsuarioAdmin(ub);
-                }else{
-                    return new UsuarioDecorator(ub);
-                }
-        } catch (SQLException ex) {
-            Logger.getLogger(Objetos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
     
     public static Empleado crearEmp(ResultSet rs,String cargo){
         Empleado e = null;
@@ -65,6 +53,22 @@ public class Objetos {
         return e;
     }
 
+    public static Envio crearEnvio(EstadoEnvio estado,ResultSet rt,String tipo) {
+        Envio e = null;
+        try{
+            switch (tipo){
+            case "DOM":
+                e = new EnvioDomicilio(rt.getInt(1), estado, Database.getVenta(rt.getInt(3)));
+                break;
+            case "ABAS":
+                e = new EnvioAbastecimiento(rt.getInt(1), Date.valueOf(rt.getString(2)), estado, Database.getLocal(rt.getInt(4)));
+                break;
+            }
+        }catch (SQLException ex) {
+            Logger.getLogger(Objetos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return e;
+    }
     public static Producto crearProd(ResultSet rs) {
         Producto p = null;
         try {
@@ -78,8 +82,7 @@ public class Objetos {
     public static Venta crearVenta(ResultSet rs) {
         Venta v = null;
         try {
-            //aqui hay que poner las cosas de la query de ventas
-            v  = new Venta();
+            v  = new Venta(rs.getInt(1),Database.getCliente(rs.getInt(2)), Date.valueOf(rs.getString(5)));
         } catch (SQLException ex) {
             Logger.getLogger(Objetos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -97,4 +100,26 @@ public class Objetos {
         }
         return r;
     }
+
+    public static Cliente crearCliente(ResultSet rs) {
+        Cliente c = null;
+        try {
+            c  = new Cliente(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4));
+        } catch (SQLException ex) {
+            Logger.getLogger(Objetos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return c;
+    }
+
+    public static Local crearLocal(ResultSet rs) {
+        Local l = null;
+        try {
+            l  = new Local(rs.getInt(1),rs.getString(3));
+        } catch (SQLException ex) {
+            Logger.getLogger(Objetos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return l;
+    }
+
+    
 }
