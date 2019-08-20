@@ -119,18 +119,20 @@ public class Database {
         try {
             PreparedStatement ps = prepararQuery(SelectQueries.getVenta(idVenta));
             ResultSet rs = ps.executeQuery();
-            v=Objetos.crearVenta(rs);
+            while(rs.next())
+                v=Objetos.crearVenta(rs);
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return v;
     }
-    public static Cliente getCliente(int idCliente) {
+    public static Cliente getCliente(String cedCl) {
         Cliente c=null;
         try {
-            PreparedStatement ps = prepararQuery(SelectQueries.getCliente(idCliente));
+            PreparedStatement ps = prepararQuery(SelectQueries.getCliente(cedCl));
             ResultSet rs = ps.executeQuery();
-            c=Objetos.crearCliente(rs);
+            while(rs.next())
+                c=Objetos.crearCliente(rs);
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -142,7 +144,8 @@ public class Database {
         try {
             PreparedStatement ps = prepararQuery(SelectQueries.getLocal(idLocal));
             ResultSet rs = ps.executeQuery();
-            l=Objetos.crearLocal(rs);
+            while(rs.next())
+                l=Objetos.crearLocal(rs);
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -232,7 +235,9 @@ public class Database {
         Envio e = null;
         try {
             ResultSet rs = consultaQuery(SelectQueries.getAllEnvios());
+            int i=0;
             while (rs.next()) {
+                System.out.println("creando"+i);
                 e = getEnvio(rs);
                 envios.add(e);
             }
@@ -240,6 +245,7 @@ public class Database {
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println(envios.size());
         return envios;
     }
 

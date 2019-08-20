@@ -59,9 +59,11 @@ public class Objetos {
             switch (tipo){
             case "DOM":
                 e = new EnvioDomicilio(rt.getInt(1), estado, Database.getVenta(rt.getInt(3)));
+                System.out.println("creando domicilio");
                 break;
             case "ABAS":
                 e = new EnvioAbastecimiento(rt.getInt(1), Date.valueOf(rt.getString(2)), estado, Database.getLocal(rt.getInt(4)));
+                System.out.println("creando abas");
                 break;
             }
         }catch (SQLException ex) {
@@ -82,7 +84,7 @@ public class Objetos {
     public static Venta crearVenta(ResultSet rs) {
         Venta v = null;
         try {
-            v  = new Venta(rs.getInt(1),Database.getCliente(rs.getInt(2)), Date.valueOf(rs.getString(5)));
+            v  = new Venta(rs.getInt(1),Database.getCliente(rs.getString(2)), Date.valueOf(rs.getString(5)));
         } catch (SQLException ex) {
             Logger.getLogger(Objetos.class.getName()).log(Level.SEVERE, null, ex);
         }

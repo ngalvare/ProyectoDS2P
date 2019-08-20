@@ -120,8 +120,8 @@ public class SelectQueries {
         return "select * from tblVenta where idVenta = \'"+idVenta+"\';";
     }
 
-    public static String getCliente(int idCliente) {
-        return "select * from tblCliente where idCliente = \'"+idCliente+"\';";
+    public static String getCliente(String cedulaCl) {
+        return "select * from tblCliente where cedulaCl = \'"+cedulaCl+"\';";
     }
 
     public static String getLocal(int idLocal) {
