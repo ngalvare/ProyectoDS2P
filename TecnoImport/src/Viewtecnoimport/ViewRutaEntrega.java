@@ -142,7 +142,7 @@ public class ViewRutaEntrega extends javax.swing.JFrame {
         ViewNuevaRutaEntrega ve =v;
         DefaultTableModel m = (DefaultTableModel)v.getjTable1().getModel();
         Object[] rows = new Object[4];
-        ArrayList<Envio> envios = Database.getVentas(logueado);
+        ArrayList<Envio> envios = Database.getEnvios();
                 for(Envio e: envios){
                     if(e instanceof EnvioDomicilio){
                         EnvioDomicilio ed =(EnvioDomicilio)e; 
