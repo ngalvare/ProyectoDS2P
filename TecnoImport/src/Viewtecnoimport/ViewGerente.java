@@ -5,8 +5,11 @@
  */
 package Viewtecnoimport;
 
+import Modeltecnoimport.Singleton.Database;
 import Modeltecnoimport.Usuario;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -32,11 +35,21 @@ public class ViewGerente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonAsignarPermisos1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         buttonConsultarData = new javax.swing.JButton();
         buttonPeticionAbastecimiento = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
+        buttonAsignarPermisos2 = new javax.swing.JButton();
+        buttonAsignarPermisos = new javax.swing.JButton();
+
+        buttonAsignarPermisos1.setText("Asignar Permisos Administrador");
+        buttonAsignarPermisos1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAsignarPermisos1ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,6 +81,13 @@ public class ViewGerente extends javax.swing.JFrame {
             }
         });
 
+        buttonAsignarPermisos2.setText("Asignar Permisos Administrador");
+        buttonAsignarPermisos2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAsignarPermisos2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -78,13 +98,14 @@ public class ViewGerente extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnRegresar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(57, 57, 57)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(buttonPeticionAbastecimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonConsultarData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnRegresar)))
+                            .addComponent(buttonConsultarData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonAsignarPermisos2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -96,20 +117,39 @@ public class ViewGerente extends javax.swing.JFrame {
                 .addComponent(buttonConsultarData)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonPeticionAbastecimiento)
-                .addGap(57, 57, 57)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonAsignarPermisos2)
+                .addGap(28, 28, 28)
                 .addComponent(btnRegresar)
                 .addGap(20, 20, 20))
         );
+
+        buttonAsignarPermisos.setText("Asignar Permisos Administrador");
+        buttonAsignarPermisos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAsignarPermisosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(64, 64, 64)
+                    .addComponent(buttonAsignarPermisos)
+                    .addContainerGap(65, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(119, 119, 119)
+                    .addComponent(buttonAsignarPermisos)
+                    .addContainerGap(120, Short.MAX_VALUE)))
         );
 
         pack();
@@ -135,6 +175,28 @@ public class ViewGerente extends javax.swing.JFrame {
         v.setResizable(false);
         this.setVisible(false);
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void buttonAsignarPermisosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAsignarPermisosActionPerformed
+        // TODO add your handling code here:
+        ViewPermisosAdminBodega v = new ViewPermisosAdminBodega(logueado);
+        this.setVisible(false);
+        v.setVisible(true);
+        DefaultTableModel m = (DefaultTableModel) v.getjTable1().getModel();
+        ArrayList<Usuario> usrs = Database.getUsrsAdminLocal(logueado);
+        System.out.println(usrs.size());
+        for (Usuario u : usrs) {
+
+            m.addRow(new Object[]{u.getEmpleado().getNumCedula(),u.getEmpleado().getNombre()});
+        }
+    }//GEN-LAST:event_buttonAsignarPermisosActionPerformed
+
+    private void buttonAsignarPermisos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAsignarPermisos1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonAsignarPermisos1ActionPerformed
+
+    private void buttonAsignarPermisos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAsignarPermisos2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonAsignarPermisos2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,6 +238,9 @@ public class ViewGerente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegresar;
+    private javax.swing.JButton buttonAsignarPermisos;
+    private javax.swing.JButton buttonAsignarPermisos1;
+    private javax.swing.JButton buttonAsignarPermisos2;
     private javax.swing.JButton buttonConsultarData;
     private javax.swing.JButton buttonPeticionAbastecimiento;
     private javax.swing.JLabel jLabel1;
