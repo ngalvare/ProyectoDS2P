@@ -5,11 +5,14 @@
  */
 package Viewtecnoimport;
 
+import Modeltecnoimport.Producto;
 import Modeltecnoimport.Repartidor;
 import Modeltecnoimport.Singleton.Database;
 import Modeltecnoimport.Usuario;
+import Modeltecnoimport.Venta;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -123,13 +126,31 @@ public class ViewRutaEntrega extends javax.swing.JFrame {
         this.setVisible(false);
         v.setVisible(true);
         v.setResizable(false);
+        llenarTable(v);
         ArrayList<Repartidor> reps = Database.getRepartidorF(logueado);
-        for (Repartidor r : reps) {
-            
+        for (Repartidor r : reps) {            
             v.getjComboBoxRep().addItem(r.toString());
         }
+       
+        
     }//GEN-LAST:event_buttonNuevaRutaEntregaActionPerformed
-
+    
+    private void llenarTable(ViewNuevaRutaEntrega v){
+        ViewNuevaRutaEntrega ve =v;
+        DefaultTableModel m = (DefaultTableModel)v.getjTable1().getModel();
+        Object[] rows = new Object[4];
+        ArrayList<Venta> ventas = Database.getVentas(logueado);
+                for(Venta ven: ventas){
+                    rows[0]=ven.getId();
+                    rows[1]=ven.getCliente().getAddress();
+                    rows[2]=ven.getFecha();
+                }
+         m.addRow(rows);
+    
+    }
+    
+    
+    
     private void buttonListadoRutasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonListadoRutasActionPerformed
         // TODO add your handling code here:
         ViewListadoRutas v = new ViewListadoRutas(logueado);

@@ -60,6 +60,21 @@ public class SelectQueries {
         "where cedulaEmp = \'"+cedula+"\'";
     }
     
+    
+    /*  ESTAAAA MALLLL INGRESARRR LA QUERY CORRECTA*/
+    public static String getVentasAll(String cedula){
+        return "select distinct nombre,nombreCat,descripcion,precio,cantidad from \n" +
+        "tblEmpleado\n" +
+        "join tblLocal l using(idLocal)\n" +
+        "join tblInventario i using(idInventario)\n" +
+        "join tblProductoInv pi using (idInventario)\n" +
+        "join tblProducto p using(idProducto)\n" +
+        "join tblCategory using (idCat)\n" +
+        "where cedulaEmp = \'"+cedula+"\'";
+    }
+    
+    
+      
     public static String getRepartidores(String cedulaUsr){
         return "select distinct cedulaEmp,nombreEmp,direccion,telefono,disponible from \n" +
 "        tblEmpleado\n" +

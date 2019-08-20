@@ -14,6 +14,7 @@ import Modeltecnoimport.Queries.SelectQueries;
 import Modeltecnoimport.Queries.UpdateQueries;
 import Modeltecnoimport.Repartidor;
 import Modeltecnoimport.Usuario;
+import Modeltecnoimport.Venta;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -45,7 +46,7 @@ public class Database {
         driver = "com.mysql.jdbc.Driver";
         user = "arun"; //poner el usuario
         password = "12345"; //poner la clave
-        url = "jdbc:mysql://192.168.1.8:3306/dbTecno";
+        url = "jdbc:mysql://172.20.138.163:3306/dbTecno";
     }
 
     public void conectar() {
@@ -166,6 +167,28 @@ public class Database {
         }
         return ps;
     }
+    
+    
+    public static ArrayList<Venta> getVentas(Usuario usr) {
+        ArrayList<Venta> ventas = new ArrayList<>();
+        Empleado e = usr.getEmpleado();
+        ResultSet rs;
+        rs = consultaQuery(SelectQueries.getProductAll(e.getNumCedula()));
+        try {
+            while (rs.next()) {
+                Venta v = Objetos.crearVenta(rs);
+                ventas.add(v);
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return ventas;
+    }
+    
+    
+    
 
     public static ArrayList<Repartidor> getRepartidorF(Usuario usr) {
         ArrayList<Repartidor> ps = new ArrayList<>();

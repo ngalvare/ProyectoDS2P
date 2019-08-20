@@ -75,6 +75,19 @@ public class Objetos {
         return p;
     }
     
+    public static Venta crearVenta(ResultSet rs) {
+        Venta v = null;
+        try {
+            //aqui hay que poner las cosas de la query de ventas
+            v  = new Venta();
+        } catch (SQLException ex) {
+            Logger.getLogger(Objetos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return v;
+    }
+    
+    
+    
     public static Repartidor crearRep(ResultSet rs) {
         Repartidor r = null;
         try {

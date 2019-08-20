@@ -272,7 +272,6 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
                 String data  = this.txtBuscador.getText();
                 String busq = this.search;
                 ArrayList<Producto> prods = Database.getProdFilter(data, logueado, busq);
-                System.out.println(prods.size());
                 for(Producto p: prods){
                     m.addRow(new Object[]{p.getNombre(),p.getCategoria(),p.getDescripcion(),p.getPrecio(),p.getStock()});
                 }

@@ -19,6 +19,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -26,6 +27,7 @@ import javax.swing.JToggleButton;
  */
 public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
     private static Usuario logueado;
+    private String select;
     /**
      * Creates new form ViewVendedor
      */
@@ -45,18 +47,14 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
         jComboBoxRep = new javax.swing.JComboBox<>();
-        buttonProceso = new javax.swing.JRadioButton();
-        buttonFinalizada = new javax.swing.JRadioButton();
         btnRegresar = new javax.swing.JButton();
         btnCrearRuta = new javax.swing.JToggleButton();
+        btnDetalleEnivo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,10 +64,6 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("RUTA DE ENTREGA");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("ID:");
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Envios: ");
@@ -78,21 +72,22 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Repartidor:");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Estado:");
-
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id Venta", "Adress", "Fecha"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jComboBoxRep.addActionListener(new java.awt.event.ActionListener() {
@@ -100,17 +95,6 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
                 jComboBoxRepActionPerformed(evt);
             }
         });
-
-        buttonProceso.setForeground(new java.awt.Color(255, 255, 255));
-        buttonProceso.setText("En Proceso");
-        buttonProceso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonProcesoActionPerformed(evt);
-            }
-        });
-
-        buttonFinalizada.setForeground(new java.awt.Color(255, 255, 255));
-        buttonFinalizada.setText("Finalizada");
 
         btnRegresar.setText("Regresar");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -126,6 +110,13 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
             }
         });
 
+        btnDetalleEnivo.setText("Detalle del envio");
+        btnDetalleEnivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDetalleEnivoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -133,75 +124,64 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnRegresar)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(buttonProceso)
-                                .addGap(7, 7, 7)
-                                .addComponent(buttonFinalizada))
-                            .addComponent(btnCrearRuta)))
+                    .addComponent(btnRegresar)
+                    .addComponent(btnCrearRuta)
                     .addComponent(jLabel1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBoxRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel3)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(74, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel4)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jComboBoxRep, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnDetalleEnivo))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jLabel1)
-                .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(31, 31, 31)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jComboBoxRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonProceso)
-                    .addComponent(buttonFinalizada)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
+                    .addComponent(jComboBoxRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDetalleEnivo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCrearRuta)
-                .addGap(21, 21, 21)
+                .addGap(26, 26, 26)
                 .addComponent(btnRegresar)
-                .addGap(25, 25, 25))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrearRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearRutaActionPerformed
-        JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
+        int Rselect = this.jTable1.getSelectedRow();
+        if(Rselect==-1){
+            JOptionPane.showMessageDialog(null, "Elija usuario primero!","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            DefaultTableModel m= (DefaultTableModel)jTable1.getModel();
+            System.out.println(String.valueOf(m.getValueAt(Rselect, 0)));
+            
+        }
     }//GEN-LAST:event_btnCrearRutaActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
@@ -211,13 +191,13 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
         v.setResizable(false);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
-    private void buttonProcesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonProcesoActionPerformed
-        JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_buttonProcesoActionPerformed
-
     private void jComboBoxRepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxRepActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxRepActionPerformed
+
+    private void btnDetalleEnivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalleEnivoActionPerformed
+        JOptionPane.showMessageDialog(null, "Funcionalidad en construcción","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btnDetalleEnivoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -286,22 +266,6 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
         this.btnRegresar = btnRegresar;
     }
 
-    public JRadioButton getButtonFinalizada() {
-        return buttonFinalizada;
-    }
-
-    public void setButtonFinalizada(JRadioButton buttonFinalizada) {
-        this.buttonFinalizada = buttonFinalizada;
-    }
-
-    public JRadioButton getButtonProceso() {
-        return buttonProceso;
-    }
-
-    public void setButtonProceso(JRadioButton buttonProceso) {
-        this.buttonProceso = buttonProceso;
-    }
-
     public JComboBox<String> getjComboBoxRep() {
         return jComboBoxRep;
     }
@@ -318,14 +282,7 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
         this.jLabel1 = jLabel1;
     }
 
-    public JLabel getjLabel2() {
-        return jLabel2;
-    }
-
-    public void setjLabel2(JLabel jLabel2) {
-        this.jLabel2 = jLabel2;
-    }
-
+ 
     public JLabel getjLabel3() {
         return jLabel3;
     }
@@ -340,14 +297,6 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
 
     public void setjLabel4(JLabel jLabel4) {
         this.jLabel4 = jLabel4;
-    }
-
-    public JLabel getjLabel5() {
-        return jLabel5;
-    }
-
-    public void setjLabel5(JLabel jLabel5) {
-        this.jLabel5 = jLabel5;
     }
 
     public JPanel getjPanel1() {
@@ -374,28 +323,17 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
         this.jTable1 = jTable1;
     }
 
-    public JTextField getjTextField1() {
-        return jTextField1;
-    }
-
-    public void setjTextField1(JTextField jTextField1) {
-        this.jTextField1 = jTextField1;
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnCrearRuta;
+    private javax.swing.JButton btnDetalleEnivo;
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JRadioButton buttonFinalizada;
-    private javax.swing.JRadioButton buttonProceso;
     private javax.swing.JComboBox<String> jComboBoxRep;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
