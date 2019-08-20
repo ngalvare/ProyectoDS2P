@@ -42,7 +42,6 @@ public class ViewGerente extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
         buttonAsignarPermisos2 = new javax.swing.JButton();
-        buttonAsignarPermisos = new javax.swing.JButton();
 
         buttonAsignarPermisos1.setText("Asignar Permisos Administrador");
         buttonAsignarPermisos1.addActionListener(new java.awt.event.ActionListener() {
@@ -106,50 +105,33 @@ public class ViewGerente extends javax.swing.JFrame {
                             .addComponent(buttonPeticionAbastecimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buttonConsultarData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buttonAsignarPermisos2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(buttonConsultarData)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonPeticionAbastecimiento)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buttonAsignarPermisos2)
-                .addGap(28, 28, 28)
+                .addGap(23, 23, 23)
                 .addComponent(btnRegresar)
                 .addGap(20, 20, 20))
         );
-
-        buttonAsignarPermisos.setText("Asignar Permisos Administrador");
-        buttonAsignarPermisos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAsignarPermisosActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(64, 64, 64)
-                    .addComponent(buttonAsignarPermisos)
-                    .addContainerGap(65, Short.MAX_VALUE)))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(119, 119, 119)
-                    .addComponent(buttonAsignarPermisos)
-                    .addContainerGap(120, Short.MAX_VALUE)))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -176,8 +158,11 @@ public class ViewGerente extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
-    private void buttonAsignarPermisosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAsignarPermisosActionPerformed
+    private void buttonAsignarPermisos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAsignarPermisos1ActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_buttonAsignarPermisos1ActionPerformed
+
+    private void buttonAsignarPermisos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAsignarPermisos2ActionPerformed
         ViewPermisosAdminBodega v = new ViewPermisosAdminBodega(logueado);
         this.setVisible(false);
         v.setVisible(true);
@@ -185,17 +170,9 @@ public class ViewGerente extends javax.swing.JFrame {
         ArrayList<Usuario> usrs = Database.getUsrsAdminLocal(logueado);
         System.out.println(usrs.size());
         for (Usuario u : usrs) {
-
+            
             m.addRow(new Object[]{u.getEmpleado().getNumCedula(),u.getEmpleado().getNombre()});
         }
-    }//GEN-LAST:event_buttonAsignarPermisosActionPerformed
-
-    private void buttonAsignarPermisos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAsignarPermisos1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonAsignarPermisos1ActionPerformed
-
-    private void buttonAsignarPermisos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAsignarPermisos2ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_buttonAsignarPermisos2ActionPerformed
 
     /**
@@ -238,7 +215,6 @@ public class ViewGerente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JButton buttonAsignarPermisos;
     private javax.swing.JButton buttonAsignarPermisos1;
     private javax.swing.JButton buttonAsignarPermisos2;
     private javax.swing.JButton buttonConsultarData;
