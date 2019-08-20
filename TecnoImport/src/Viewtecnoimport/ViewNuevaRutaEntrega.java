@@ -63,6 +63,7 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
         btnRegresar = new javax.swing.JButton();
         btnCrearRuta = new javax.swing.JToggleButton();
         btnDetalleEnivo = new javax.swing.JButton();
+        txtRepartidor = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -119,6 +120,8 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
             }
         });
 
+        txtRepartidor.setEditable(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -133,6 +136,8 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel4)
+                            .addGap(91, 91, 91)
+                            .addComponent(txtRepartidor, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnDetalleEnivo))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -149,8 +154,10 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnDetalleEnivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnDetalleEnivo, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtRepartidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCrearRuta)
                 .addGap(26, 26, 26)
@@ -271,13 +278,7 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
         this.btnRegresar = btnRegresar;
     }
 
-    public JComboBox<String> getjComboBoxRep() {
-        return jComboBoxRep;
-    }
-
-    public void setjComboBoxRep(JComboBox<String> jComboBoxRep) {
-        this.jComboBoxRep = jComboBoxRep;
-    }
+   
 
     public JLabel getjLabel1() {
         return jLabel1;
@@ -339,5 +340,6 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField txtRepartidor;
     // End of variables declaration//GEN-END:variables
 }
