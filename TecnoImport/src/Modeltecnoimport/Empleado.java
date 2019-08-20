@@ -9,7 +9,7 @@ package Modeltecnoimport;
  *
  * @author Nicole Alvarez
  */
-public abstract class Empleado {
+public class Empleado {
     protected String numCedula, nombre, direccion, numTelefono;
   
 

@@ -49,4 +49,31 @@ public class SelectQueries {
         "where cedulaEmp = \'"+cedula+"\' and "+search+" like \'%"+data+"%\';";
     }
     
+    public static String getProductAll(String cedula){
+        return "select distinct nombre,nombreCat,descripcion,precio,cantidad from \n" +
+        "tblEmpleado\n" +
+        "join tblLocal l using(idLocal)\n" +
+        "join tblInventario i using(idInventario)\n" +
+        "join tblProductoInv pi using (idInventario)\n" +
+        "join tblProducto p using(idProducto)\n" +
+        "join tblCategory using (idCat)\n" +
+        "where cedulaEmp = \'"+cedula+"\'";
+    }
+    
+    public static String getRepartidores(String cedulaUsr){
+        return "select distinct cedulaEmp,nombreEmp,direccion,telefono,disponible from \n" +
+"        tblEmpleado\n" +
+"        join tblRepartidor r using(cedulaEmp)\n" +
+"        join (select l.idLocal as idLocal from tblLocal l join tblEmpleado using (idLocal) where cedulaEmp = \'"+cedulaUsr+"\')a \n" +
+"        using(idLocal) where disponible = 1;";
+    }
+
+    public static String getUsrsByLocal(String numCedula) {
+        return "select distinct idUser,cedulaEmp,psw,isAdmin from \n" +
+"        tblEmpleado join tblUser using (cedulaEmp)\n" +
+"        join (select l.idLocal as idLocal from tblLocal l join tblEmpleado using (idLocal) where cedulaEmp = \'"+numCedula+"\')a \n" +
+"        using(idLocal)\n" +
+"        where cedulaEmp not in (select cedulaEmp from tblRepartidor) and cedulaEmp <> \'"+numCedula+"\';";
+    }
+    
 }

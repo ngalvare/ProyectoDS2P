@@ -50,9 +50,10 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
         ButtonDescripcion = new javax.swing.JRadioButton();
         btnRegresar = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
-        btnActualizarStock = new javax.swing.JButton();
+        btnAddProduct = new javax.swing.JButton();
         txtBuscador = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        btnActualizarStock = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,15 +65,20 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                jTable1InputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                jTable1CaretPositionChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -126,16 +132,23 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
             }
         });
 
-        btnActualizarStock.setText("Actualizar Stock");
-        btnActualizarStock.addActionListener(new java.awt.event.ActionListener() {
+        btnAddProduct.setText("Agregar Producto");
+        btnAddProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarStockActionPerformed(evt);
+                btnAddProductActionPerformed(evt);
             }
         });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Buscar :");
+
+        btnActualizarStock.setText("Actualizar Stock");
+        btnActualizarStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarStockActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -151,7 +164,9 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnRegresar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnActualizarStock))
+                        .addComponent(btnActualizarStock)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAddProduct))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 846, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -198,8 +213,9 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegresar)
+                    .addComponent(btnAddProduct)
                     .addComponent(btnActualizarStock))
-                .addGap(20, 20, 20))
+                .addGap(61, 61, 61))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -218,12 +234,12 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnActualizarStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarStockActionPerformed
+    private void btnAddProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProductActionPerformed
         ViewNuevoProducto v = new ViewNuevoProducto(logueado);
         v.setVisible(true);
         v.setResizable(false);
         this.setVisible(false);
-    }//GEN-LAST:event_btnActualizarStockActionPerformed
+    }//GEN-LAST:event_btnAddProductActionPerformed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         ViewLogin v = new ViewLogin();
@@ -241,22 +257,26 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
 
     private void buttonPorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPorNombreActionPerformed
         search="nombre";
+        this.buttonCategoria.setSelected(false);
+        this.ButtonDescripcion.setSelected(false);
     }//GEN-LAST:event_buttonPorNombreActionPerformed
 
     private void buttonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMostrarActionPerformed
+        DefaultTableModel m = (DefaultTableModel)jTable1.getModel();
         switch(jComboBox1.getSelectedItem().toString()){
             case "Productos":
-                DefaultTableModel m = (DefaultTableModel)jTable1.getModel();
+                m.setColumnIdentifiers(new Object[]{"Nombre","Categoría","Descripcción","Precio","Cantidad"});
+                m.setNumRows(5);
                 String data  = this.txtBuscador.getText();
                 String busq = this.search;
                 ArrayList<Producto> prods = Database.getProdFilter(data, logueado, busq);
                 System.out.println(prods.size());
                 for(Producto p: prods){
                     System.out.println(p);
-                    m.addRow(new Object[]{p.getNombre(),p.getCategoria(),p.getDescripcion(),p.getPrecio()});
+                    m.addRow(new Object[]{p.getNombre(),p.getCategoria(),p.getDescripcion(),p.getPrecio(),p.getStock()});
                 }
                 
-            break;
+                break;
             case "Empleados":
             JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion!","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
             break;
@@ -268,11 +288,28 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
 
     private void ButtonDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDescripcionActionPerformed
         search="descripcion";
+        this.buttonCategoria.setSelected(false);
+        this.buttonPorNombre.setSelected(false);
     }//GEN-LAST:event_ButtonDescripcionActionPerformed
 
     private void buttonCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCategoriaActionPerformed
         search = "nombreCat";
+        this.ButtonDescripcion.setSelected(false);
+        this.buttonPorNombre.setSelected(false);
     }//GEN-LAST:event_buttonCategoriaActionPerformed
+
+    private void btnActualizarStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarStockActionPerformed
+        JOptionPane.showMessageDialog(null, "Stock actualizado!","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
+        this.btnActualizarStock.setVisible(false);
+    }//GEN-LAST:event_btnActualizarStockActionPerformed
+
+    private void jTable1InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTable1InputMethodTextChanged
+        this.btnActualizarStock.setVisible(true);
+    }//GEN-LAST:event_jTable1InputMethodTextChanged
+
+    private void jTable1CaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTable1CaretPositionChanged
+        this.btnActualizarStock.setVisible(true);
+    }//GEN-LAST:event_jTable1CaretPositionChanged
 
     /**
      * @param args the command line arguments
@@ -327,6 +364,7 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton ButtonDescripcion;
     private javax.swing.JButton btnActualizarStock;
+    private javax.swing.JButton btnAddProduct;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JRadioButton buttonCategoria;

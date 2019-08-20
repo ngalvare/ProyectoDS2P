@@ -163,9 +163,7 @@ public class ViewSelectAdminMood extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void buttonPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPrincipalActionPerformed
-        System.out.println(logueado.getEmpleado().getNombre());
         if(logueado.getEmpleado() instanceof JefeBodega){
-            System.out.println(logueado.getEmpleado().getNombre());
             ViewJefeBodega v = new ViewJefeBodega(logueado);
             v.setVisible(true);
             v.setResizable(false);

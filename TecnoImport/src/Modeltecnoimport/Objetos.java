@@ -19,8 +19,21 @@ public class Objetos {
     public static Usuario crearUser(ResultSet rs){
         try {   
                 UsuarioBasico ub  = new UsuarioBasico(rs.getString(1), rs.getString(3), Database.getEmpleado(rs.getString(2)));
-                System.out.println(ub);
                 if(rs.getBoolean(4)){
+                    return new UsuarioAdmin(ub);
+                }else{
+                    return new UsuarioDecorator(ub);
+                }
+        } catch (SQLException ex) {
+            Logger.getLogger(Objetos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public static Usuario crearUserComplete(ResultSet rs){
+        try {   
+                UsuarioBasico ub  = new UsuarioBasico(rs.getString(1), rs.getString(2), new Empleado(rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)));
+                if(rs.getBoolean(7)){
                     return new UsuarioAdmin(ub);
                 }else{
                     return new UsuarioDecorator(ub);
@@ -41,13 +54,9 @@ public class Objetos {
             case "JEFE":
                 System.out.println("creando jefe");
                 e = new JefeBodega(rs.getString(1), rs.getString(3), rs.getString(4), rs.getString(5));
-                System.out.println(e.getNombre());
                 break;
             case "VENDEDOR":
                 e = new Vendedor(rs.getString(1), rs.getString(3), rs.getString(4), rs.getString(5));
-                break;
-            case "REPARTIDOR":
-                e = new Repartidor(rs.getString(1), rs.getString(3), rs.getString(4), rs.getString(5));
                 break;
             }
         }catch (SQLException ex) {
@@ -64,5 +73,15 @@ public class Objetos {
             Logger.getLogger(Objetos.class.getName()).log(Level.SEVERE, null, ex);
         }
         return p;
+    }
+    
+    public static Repartidor crearRep(ResultSet rs) {
+        Repartidor r = null;
+        try {
+            r  = new Repartidor(rs.getString(1), rs.getString(2), rs.getString(3),rs.getString(4),rs.getBoolean(5));
+        } catch (SQLException ex) {
+            Logger.getLogger(Objetos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return r;
     }
 }

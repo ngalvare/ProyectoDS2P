@@ -5,7 +5,10 @@
  */
 package Viewtecnoimport;
 
+import Modeltecnoimport.Repartidor;
+import Modeltecnoimport.Singleton.Database;
 import Modeltecnoimport.Usuario;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,7 +16,9 @@ import javax.swing.JOptionPane;
  * @author ANA
  */
 public class ViewRutaEntrega extends javax.swing.JFrame {
+
     private static Usuario logueado;
+
     /**
      * Creates new form ViewVendedor
      */
@@ -118,6 +123,11 @@ public class ViewRutaEntrega extends javax.swing.JFrame {
         this.setVisible(false);
         v.setVisible(true);
         v.setResizable(false);
+        ArrayList<Repartidor> reps = Database.getRepartidorF(logueado);
+        for (Repartidor r : reps) {
+            
+            v.getjComboBoxRep().addItem(r.toString());
+        }
     }//GEN-LAST:event_buttonNuevaRutaEntregaActionPerformed
 
     private void buttonListadoRutasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonListadoRutasActionPerformed
@@ -129,8 +139,8 @@ public class ViewRutaEntrega extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonListadoRutasActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-       ViewJefeBodega v = new ViewJefeBodega(logueado);
-       v.setVisible(true);
+        ViewJefeBodega v = new ViewJefeBodega(logueado);
+        v.setVisible(true);
         v.setResizable(false);
         this.setVisible(false);
     }//GEN-LAST:event_btnRegresarActionPerformed

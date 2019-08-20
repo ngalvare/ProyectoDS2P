@@ -6,7 +6,13 @@
 package Viewtecnoimport;
 
 import Modeltecnoimport.Usuario;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -44,15 +50,20 @@ public class ViewPermisosAdminBodega extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre", "Cargo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -67,6 +78,11 @@ public class ViewPermisosAdminBodega extends javax.swing.JFrame {
         });
 
         btnAsignarPermiso.setText("Asignar Permiso");
+        btnAsignarPermiso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAsignarPermisoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -124,6 +140,13 @@ public class ViewPermisosAdminBodega extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
+    private void btnAsignarPermisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarPermisoActionPerformed
+        int Rselect = this.jTable1.getSelectedRow();
+        int Cselect = this.jTable1.getSelectedColumn();
+        DefaultTableModel m= (DefaultTableModel)jTable1.getModel();
+        m.getValueAt(Rselect, Cselect);
+    }//GEN-LAST:event_btnAsignarPermisoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -166,6 +189,63 @@ public class ViewPermisosAdminBodega extends javax.swing.JFrame {
         });
     }
 
+    public static Usuario getLogueado() {
+        return logueado;
+    }
+
+    public static void setLogueado(Usuario logueado) {
+        ViewPermisosAdminBodega.logueado = logueado;
+    }
+
+    public JButton getBtnAsignarPermiso() {
+        return btnAsignarPermiso;
+    }
+
+    public void setBtnAsignarPermiso(JButton btnAsignarPermiso) {
+        this.btnAsignarPermiso = btnAsignarPermiso;
+    }
+
+    public JButton getBtnRegresar() {
+        return btnRegresar;
+    }
+
+    public void setBtnRegresar(JButton btnRegresar) {
+        this.btnRegresar = btnRegresar;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JTable getjTable1() {
+        return jTable1;
+    }
+
+    public void setjTable1(JTable jTable1) {
+        this.jTable1 = jTable1;
+    }
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAsignarPermiso;
     private javax.swing.JButton btnRegresar;

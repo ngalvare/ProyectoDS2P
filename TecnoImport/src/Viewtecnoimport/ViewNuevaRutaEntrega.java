@@ -5,8 +5,20 @@
  */
 package Viewtecnoimport;
 
+import Modeltecnoimport.Repartidor;
+import Modeltecnoimport.Singleton.Database;
 import Modeltecnoimport.Usuario;
+import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.JToggleButton;
 
 /**
  *
@@ -40,7 +52,7 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxRep = new javax.swing.JComboBox<>();
         buttonProceso = new javax.swing.JRadioButton();
         buttonFinalizada = new javax.swing.JRadioButton();
         btnRegresar = new javax.swing.JButton();
@@ -83,7 +95,11 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxRep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxRepActionPerformed(evt);
+            }
+        });
 
         buttonProceso.setForeground(new java.awt.Color(255, 255, 255));
         buttonProceso.setText("En Proceso");
@@ -132,7 +148,7 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jComboBoxRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -157,7 +173,7 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxRep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonProceso)
@@ -199,6 +215,10 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_buttonProcesoActionPerformed
 
+    private void jComboBoxRepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxRepActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxRepActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -236,9 +256,130 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewNuevaRutaEntrega(logueado).setVisible(true);
+                ViewNuevaRutaEntrega rn=new ViewNuevaRutaEntrega(logueado);
+                rn.setVisible(true);
             }
         });
+    }
+
+    public static Usuario getLogueado() {
+        return logueado;
+    }
+
+    public static void setLogueado(Usuario logueado) {
+        ViewNuevaRutaEntrega.logueado = logueado;
+    }
+
+    public JToggleButton getBtnCrearRuta() {
+        return btnCrearRuta;
+    }
+
+    public void setBtnCrearRuta(JToggleButton btnCrearRuta) {
+        this.btnCrearRuta = btnCrearRuta;
+    }
+
+    public JButton getBtnRegresar() {
+        return btnRegresar;
+    }
+
+    public void setBtnRegresar(JButton btnRegresar) {
+        this.btnRegresar = btnRegresar;
+    }
+
+    public JRadioButton getButtonFinalizada() {
+        return buttonFinalizada;
+    }
+
+    public void setButtonFinalizada(JRadioButton buttonFinalizada) {
+        this.buttonFinalizada = buttonFinalizada;
+    }
+
+    public JRadioButton getButtonProceso() {
+        return buttonProceso;
+    }
+
+    public void setButtonProceso(JRadioButton buttonProceso) {
+        this.buttonProceso = buttonProceso;
+    }
+
+    public JComboBox<String> getjComboBoxRep() {
+        return jComboBoxRep;
+    }
+
+    public void setjComboBoxRep(JComboBox<String> jComboBoxRep) {
+        this.jComboBoxRep = jComboBoxRep;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public void setjLabel4(JLabel jLabel4) {
+        this.jLabel4 = jLabel4;
+    }
+
+    public JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    public void setjLabel5(JLabel jLabel5) {
+        this.jLabel5 = jLabel5;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JTable getjTable1() {
+        return jTable1;
+    }
+
+    public void setjTable1(JTable jTable1) {
+        this.jTable1 = jTable1;
+    }
+
+    public JTextField getjTextField1() {
+        return jTextField1;
+    }
+
+    public void setjTextField1(JTextField jTextField1) {
+        this.jTextField1 = jTextField1;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -246,7 +387,7 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
     private javax.swing.JButton btnRegresar;
     private javax.swing.JRadioButton buttonFinalizada;
     private javax.swing.JRadioButton buttonProceso;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBoxRep;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
