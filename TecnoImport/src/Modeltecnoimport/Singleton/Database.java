@@ -7,6 +7,9 @@ package Modeltecnoimport.Singleton;
 
 import Modeltecnoimport.Cliente;
 import Modeltecnoimport.Empleado;
+import Modeltecnoimport.Envio;
+import Modeltecnoimport.EstadoEnvio;
+import Modeltecnoimport.Local;
 import Modeltecnoimport.Objetos;
 import Modeltecnoimport.PagoStrategy;
 import Modeltecnoimport.Producto;
@@ -36,6 +39,9 @@ public class Database {
     private static Connection conn = null;
 
     
+
+    
+
     private final String driver;
     private final String user; //poner el usuario
     private final String password; //poner la clave
@@ -46,7 +52,7 @@ public class Database {
         driver = "com.mysql.jdbc.Driver";
         user = "arun"; //poner el usuario
         password = "12345"; //poner la clave
-        url = "jdbc:mysql://172.20.138.163:3306/dbTecno";
+        url = "jdbc:mysql://localhost:3306/dbTecno";
     }
 
     public void conectar() {
@@ -108,6 +114,41 @@ public class Database {
         return u;
     }
 
+    public static Venta getVenta(int idVenta) {
+        Venta v=null;
+        try {
+            PreparedStatement ps = prepararQuery(SelectQueries.getVenta(idVenta));
+            ResultSet rs = ps.executeQuery();
+            v=Objetos.crearVenta(rs);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return v;
+    }
+    public static Cliente getCliente(int idCliente) {
+        Cliente c=null;
+        try {
+            PreparedStatement ps = prepararQuery(SelectQueries.getCliente(idCliente));
+            ResultSet rs = ps.executeQuery();
+            c=Objetos.crearCliente(rs);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return c;
+    }
+
+    public static Local getLocal(int idLocal) {
+        Local l=null;
+        try {
+            PreparedStatement ps = prepararQuery(SelectQueries.getLocal(idLocal));
+            ResultSet rs = ps.executeQuery();
+            l=Objetos.crearLocal(rs);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return l;
+    }
+    
     public static Empleado getEmpleado(String cedula) {
         Empleado e = null;
         List<String> cargos = Arrays.asList("GERENTE", "JEFE", "VENDEDOR");
@@ -167,8 +208,7 @@ public class Database {
         }
         return ps;
     }
-    
-    
+
     public static ArrayList<Venta> getVentas(Usuario usr) {
         ArrayList<Venta> ventas = new ArrayList<>();
         Empleado e = usr.getEmpleado();
@@ -186,9 +226,39 @@ public class Database {
         }
         return ventas;
     }
-    
-    
-    
+
+    public static ArrayList<Envio> getEnvios() {
+        ArrayList<Envio> envios = new ArrayList<>();
+        Envio e = null;
+        try {
+            ResultSet rs = consultaQuery(SelectQueries.getAllEnvios());
+            while (rs.next()) {
+                e = getEnvio(rs);
+                envios.add(e);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return envios;
+    }
+
+    public static Envio getEnvio(ResultSet rs) {
+        Envio e = null;
+        List<String> tipoE = Arrays.asList("DOM", "ABAS");
+        try {
+            for (String t : tipoE) {
+                PreparedStatement ps = prepararQuery(SelectQueries.getEnvTipo(rs.getInt(1), t));
+                ResultSet rt = ps.executeQuery();
+                while (rt.next()) {
+                    e = Objetos.crearEnvio(EstadoEnvio.valueOf(rs.getString(3)), rt, t);
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return e;
+    }
 
     public static ArrayList<Repartidor> getRepartidorF(Usuario usr) {
         ArrayList<Repartidor> ps = new ArrayList<>();
@@ -208,16 +278,18 @@ public class Database {
         }
         return ps;
     }
-    
+
     public static boolean getPrivAdmin(String cedula) {
         ResultSet rs;
         rs = consultaQuery(SelectQueries.getUsrbyCed(cedula));
         try {
-            while(rs.next()){
-                if(!rs.getBoolean(4)){
+            while (rs.next()) {
+                if (!rs.getBoolean(4)) {
                     PreparedStatement ps = conn.prepareStatement(UpdateQueries.cambiarIsAdmin(cedula, true));
                     int count = ps.executeUpdate();
-                    if(count>0) return true;
+                    if (count > 0) {
+                        return true;
+                    }
                 }
             }
         } catch (SQLException ex) {

@@ -13,8 +13,8 @@ import java.util.List;
  */
 public class Sucursal extends Local{
     
-    public Sucursal(int id, String direccion, Inventario inventario, List<Empleado> empleados) {
-        super(id, direccion, inventario, empleados);
+    public Sucursal(int id, String direccion) {
+        super(id, direccion);
     }
     
 }

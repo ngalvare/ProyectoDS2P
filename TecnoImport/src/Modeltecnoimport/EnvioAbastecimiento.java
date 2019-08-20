@@ -16,7 +16,7 @@ public class EnvioAbastecimiento extends Envio {
     private Date fechaEmision;
 
 
-    public EnvioAbastecimiento(int id, Date fechaEmision, EstadoEnvio estado, Local local,Empleado originario) {
+    public EnvioAbastecimiento(int id, Date fechaEmision, EstadoEnvio estado, Local local) {
         super(id,estado);
         this.lugarDestino = local;
         this.fechaEmision=fechaEmision;
