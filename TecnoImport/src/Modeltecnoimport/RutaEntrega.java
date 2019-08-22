@@ -15,14 +15,14 @@ import java.util.List;
 public class RutaEntrega {
     
     private int id;
-    private List<Envio> envios;
-    private Repartidor repartidor;
+//    private List<Envio> envios;
+//    private Repartidor repartidor;
+    private String nombreRep;
     private boolean esExitosa;
 
-    public RutaEntrega(int id, List<Envio> envios, Repartidor repartidor, boolean esExitosa) {
+    public RutaEntrega(int id, String nombreRep, boolean esExitosa) {
         this.id = id;
-        this.envios = envios;
-        this.repartidor = repartidor;
+        this.nombreRep = nombreRep;
         this.esExitosa = esExitosa;
     }
 
@@ -34,22 +34,15 @@ public class RutaEntrega {
         this.id = id;
     }
 
-    public List<Envio> getEnvios() {
-        return envios;
+    public String getNombreRep() {
+        return nombreRep;
     }
 
-    public void setEnvios(List<Envio> envios) {
-        this.envios = envios;
+    public void setNombreRep(String nombreRep) {
+        this.nombreRep = nombreRep;
     }
 
-    public Repartidor getRepartidor() {
-        return repartidor;
-    }
-
-    public void setRepartidor(Repartidor repartidor) {
-        this.repartidor = repartidor;
-    }
-
+    
     public boolean isEsExitosa() {
         return esExitosa;
     }

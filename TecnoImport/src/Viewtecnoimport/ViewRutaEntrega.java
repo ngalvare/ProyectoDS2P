@@ -10,6 +10,7 @@ import Modeltecnoimport.EnvioAbastecimiento;
 import Modeltecnoimport.EnvioDomicilio;
 import Modeltecnoimport.Producto;
 import Modeltecnoimport.Repartidor;
+import Modeltecnoimport.RutaEntrega;
 import Modeltecnoimport.Singleton.Database;
 import Modeltecnoimport.Usuario;
 import java.util.ArrayList;
@@ -129,7 +130,7 @@ public class ViewRutaEntrega extends javax.swing.JFrame {
         v.setResizable(false);
         llenarTable(v);
         v.setRep(ViewSelectAdminMood.repartidores.peek());
-
+        v.getTxtRepartidor().setText(ViewSelectAdminMood.repartidores.peek().toString());
 
     }//GEN-LAST:event_buttonNuevaRutaEntregaActionPerformed
 
@@ -154,7 +155,6 @@ public class ViewRutaEntrega extends javax.swing.JFrame {
             }
 
         }
-        
 
     }
 
@@ -163,6 +163,14 @@ public class ViewRutaEntrega extends javax.swing.JFrame {
         // TODO add your handling code here:
         ViewListadoRutas v = new ViewListadoRutas(logueado);
         this.setVisible(false);
+        DefaultTableModel m = (DefaultTableModel) v.getjTable1().getModel();
+        Object[] rows = new Object[2];
+        ArrayList<RutaEntrega> rutas = Database.getRutas();
+        for (RutaEntrega r : rutas) {
+            rows[0] = r.getId();
+            rows[1] = r.getNombreRep();
+            m.addRow(rows);
+        }
         v.setVisible(true);
         v.setResizable(false);
     }//GEN-LAST:event_buttonListadoRutasActionPerformed

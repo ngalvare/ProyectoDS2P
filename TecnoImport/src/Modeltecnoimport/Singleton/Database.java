@@ -16,8 +16,10 @@ import Modeltecnoimport.Producto;
 import Modeltecnoimport.Queries.SelectQueries;
 import Modeltecnoimport.Queries.UpdateQueries;
 import Modeltecnoimport.Repartidor;
+import Modeltecnoimport.RutaEntrega;
 import Modeltecnoimport.Usuario;
 import Modeltecnoimport.Venta;
+import Viewtecnoimport.ViewSelectAdminMood;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -37,6 +39,7 @@ import java.util.logging.Logger;
 public class Database {
 
     private static Connection conn = null;
+
     private final String driver;
     private final String user; //poner el usuario
     private final String password; //poner la clave
@@ -110,24 +113,27 @@ public class Database {
     }
 
     public static Venta getVenta(int idVenta) {
-        Venta v=null;
+        Venta v = null;
         try {
             PreparedStatement ps = prepararQuery(SelectQueries.getVenta(idVenta));
             ResultSet rs = ps.executeQuery();
-            while(rs.next())
-                v=Objetos.crearVenta(rs);
+            while (rs.next()) {
+                v = Objetos.crearVenta(rs);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return v;
     }
+
     public static Cliente getCliente(String cedCl) {
-        Cliente c=null;
+        Cliente c = null;
         try {
             PreparedStatement ps = prepararQuery(SelectQueries.getCliente(cedCl));
             ResultSet rs = ps.executeQuery();
-            while(rs.next())
-                c=Objetos.crearCliente(rs);
+            while (rs.next()) {
+                c = Objetos.crearCliente(rs);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -135,18 +141,19 @@ public class Database {
     }
 
     public static Local getLocal(int idLocal) {
-        Local l=null;
+        Local l = null;
         try {
             PreparedStatement ps = prepararQuery(SelectQueries.getLocal(idLocal));
             ResultSet rs = ps.executeQuery();
-            while(rs.next())
-                l=Objetos.crearLocal(rs);
+            while (rs.next()) {
+                l = Objetos.crearLocal(rs);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return l;
     }
-    
+
     public static Empleado getEmpleado(String cedula) {
         Empleado e = null;
         List<String> cargos = Arrays.asList("GERENTE", "JEFE", "VENDEDOR");
@@ -229,9 +236,9 @@ public class Database {
         Envio e = null;
         try {
             ResultSet rs = consultaQuery(SelectQueries.getAllEnvios());
-            int i=0;
+            int i = 0;
             while (rs.next()) {
-                System.out.println("creando"+i);
+                System.out.println("creando" + i);
                 e = getEnvio(rs);
                 envios.add(e);
             }
@@ -260,31 +267,35 @@ public class Database {
         return e;
     }
 
-    public static boolean crearRuta(String numCedula, ArrayList<Integer> idsEnvios) {
-        if(idsEnvios.isEmpty()) return false;
+    public static boolean crearRuta(Repartidor r, ArrayList<Integer> idsEnvios) {
+        if (idsEnvios.isEmpty()) {
+            return false;
+        }
         try {
-            PreparedStatement pst = conn.prepareStatement(UpdateQueries.getIdRepbyCed(numCedula));
+            PreparedStatement pst = conn.prepareStatement(UpdateQueries.getIdRepbyCed(r.getNumCedula()));
             ResultSet rs2 = pst.executeQuery();
-            while(rs2.next()){
-                PreparedStatement ps = conn.prepareStatement(UpdateQueries.crearRuta(rs2.getInt(1),false));
+            while (rs2.next()) {
+                PreparedStatement ps = conn.prepareStatement(UpdateQueries.crearRuta(rs2.getInt(1), false));
                 ps.execute();
-                PreparedStatement ps4 = conn.prepareStatement(UpdateQueries.cambiarDisponible(rs2.getInt(1),false));
+                PreparedStatement ps4 = conn.prepareStatement(UpdateQueries.cambiarDisponible(rs2.getInt(1), 0));
                 ps4.execute();
+                ViewSelectAdminMood.repartidores.poll();
+                break;
             }
-            int idRuta=idUltimaRuta();
-            for(int id: idsEnvios){
-                PreparedStatement ps2 = conn.prepareStatement(UpdateQueries.asignarRutaEnvio(id,idRuta));
+            int idRuta = idUltimaRuta();
+            for (int id : idsEnvios) {
+                PreparedStatement ps2 = conn.prepareStatement(UpdateQueries.asignarRutaEnvio(id, idRuta));
                 ps2.execute();
-                PreparedStatement ps3 = conn.prepareStatement(UpdateQueries.cambiarEstadoEnvio(id,EstadoEnvio.encamino));
+                PreparedStatement ps3 = conn.prepareStatement(UpdateQueries.cambiarEstadoEnvio(id, EstadoEnvio.encamino));
                 ps3.execute();
-                
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return true;
     }
-    
+
     public static ArrayList<Repartidor> getRepartidorF(Usuario usr) {
         ArrayList<Repartidor> ps = new ArrayList<>();
         Empleado e = usr.getEmpleado();
@@ -322,7 +333,21 @@ public class Database {
         }
         return false;
     }
-    
+
+    public static ArrayList<RutaEntrega> getRutas() {
+        ArrayList<RutaEntrega> rutas = new ArrayList<>();
+        ResultSet rs = consultaQuery(SelectQueries.getRutas());
+        try {
+            while (rs.next()) {
+                RutaEntrega r = new RutaEntrega(rs.getInt(1), rs.getString(2), false);
+                rutas.add(r);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rutas;
+    }
+
     public static int idUltimaRuta() {
         try {
             ResultSet rs = consultaQuery(UpdateQueries.idEstaRuta());
@@ -333,6 +358,26 @@ public class Database {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
+    }
+
+    public static void completarRuta(int idRuta) {
+        try {
+            PreparedStatement ps = conn.prepareStatement(UpdateQueries.cambiarEstadoRuta(idRuta, 1));
+            ps.executeUpdate();
+            PreparedStatement ps2 = conn.prepareStatement(UpdateQueries.cambiarEstadoEnviosRuta(idRuta, EstadoEnvio.entregado));
+            ps2.executeUpdate();
+            PreparedStatement ps3 = conn.prepareStatement(UpdateQueries.cambiarDisponibleRep(idRuta, 1));
+            ps3.executeUpdate();
+            ResultSet rs2 = consultaQuery(SelectQueries.getRepbyRuta(idRuta));
+            Repartidor r = null;
+
+            while (rs2.next()) {
+                r = new Repartidor(rs2.getString(1), rs2.getString(2), rs2.getString(3), rs2.getString(4), rs2.getBoolean(5));
+            }
+            ViewSelectAdminMood.repartidores.offer(r);
+        } catch (SQLException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void agregarClienteSQL() {

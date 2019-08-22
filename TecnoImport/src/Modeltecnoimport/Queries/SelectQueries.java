@@ -127,4 +127,15 @@ public class SelectQueries {
     public static String getLocal(int idLocal) {
         return "select * from tblLocal where idLocal = \'"+idLocal+"\';";
     }
+    
+    public static String getRutas(){
+        return "select distinct idRuta, nombreEmp from tblRuta join tblRepartidor using(idRepartidor)\n" +
+"join tblEmpleado using(cedulaEmp) where tblRuta.cerrada=0;";
+    }
+    
+    public static String getRepbyRuta(int idRuta){
+        return "select distinct cedulaEmp, nombreEmp, direccion, telefono, disponible from \n" +
+"tblRuta join tblRepartidor using(idRepartidor)\n" +
+"join tblEmpleado using(cedulaEmp) where idRuta =\'"+idRuta+"\';";
+    }
 }

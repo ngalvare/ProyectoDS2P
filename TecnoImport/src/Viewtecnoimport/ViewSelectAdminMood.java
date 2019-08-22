@@ -22,7 +22,7 @@ import javax.swing.JLabel;
  * @author Nicole Alvarez
  */
 public class ViewSelectAdminMood extends javax.swing.JFrame {
-    static Queue<Repartidor> repartidores;
+    public static Queue<Repartidor> repartidores;
     private static Usuario logueado;
 
     /**

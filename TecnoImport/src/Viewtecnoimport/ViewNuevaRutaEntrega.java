@@ -180,7 +180,7 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrearRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearRutaActionPerformed
-        if(rep==null || !Database.crearRuta(rep.getNumCedula(),idsEnvios)){
+        if(rep==null || !Database.crearRuta(rep,idsEnvios)){
             JOptionPane.showMessageDialog(null, "Debe agregar envios y existir repartidores disponibles!","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
         }else{
             JOptionPane.showMessageDialog(null, "Ruta creada con exito!","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
@@ -254,6 +254,14 @@ public class ViewNuevaRutaEntrega extends javax.swing.JFrame {
         });
     }
 
+    public JTextField getTxtRepartidor() {
+        return txtRepartidor;
+    }
+
+    public void setTxtRepartidor(JTextField txtRepartidor) {
+        this.txtRepartidor = txtRepartidor;
+    }
+    
     public static Usuario getLogueado() {
         return logueado;
     }

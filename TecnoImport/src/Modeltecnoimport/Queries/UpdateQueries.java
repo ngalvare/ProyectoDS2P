@@ -38,7 +38,19 @@ public class UpdateQueries {
         return "update tblEnvio set estado=\'"+estado+"\' where idEnvio = "+idEnvio+";";
     }
 
-    public static String cambiarDisponible(int idRep, boolean disponible) {
+    public static String cambiarDisponible(int idRep, int disponible) {
         return "update tblRepartidor set disponible=\'"+disponible+"\' where idRepartidor = "+idRep+";";
+    }
+    
+    public static String cambiarEstadoRuta(int idRuta, int cerrada){
+        return "update tblRuta set cerrada=\'"+cerrada+"\' where idRuta = "+idRuta+";";
+    }
+    
+    public static String cambiarEstadoEnviosRuta(int idRuta, EstadoEnvio estado){
+        return "update tblEnvio set estado=\'"+estado+"\' where idRuta = "+idRuta+";";
+    }
+    
+    public static String cambiarDisponibleRep(int idRuta, int disp){
+        return "update tblRepartidor set disponible=\'"+disp+"\' where idRepartidor = (select idRepartidor from tblRuta where idRuta = \'"+idRuta+"\');";
     }
 }
