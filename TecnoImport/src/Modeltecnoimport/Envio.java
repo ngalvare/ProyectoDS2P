@@ -1,6 +1,5 @@
 package Modeltecnoimport;
 
-import java.util.List;
 
 /**
  *

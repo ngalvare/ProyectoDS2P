@@ -272,7 +272,7 @@ public class Database {
             for (int id : idsEnvios) {
                 PreparedStatement ps2 = conn.prepareStatement(UpdateQueries.asignarRutaEnvio(id, idRuta));
                 ps2.execute();
-                PreparedStatement ps3 = conn.prepareStatement(UpdateQueries.cambiarEstadoEnvio(id, EstadoEnvio.encamino));
+                PreparedStatement ps3 = conn.prepareStatement(UpdateQueries.cambiarEstadoEnvio(id, EstadoEnvio.ENCAMINO));
                 ps3.execute();
 
             }
@@ -349,7 +349,7 @@ public class Database {
         try {
             PreparedStatement ps = conn.prepareStatement(UpdateQueries.cambiarEstadoRuta(idRuta, 1));
             ps.executeUpdate();
-            PreparedStatement ps2 = conn.prepareStatement(UpdateQueries.cambiarEstadoEnviosRuta(idRuta, EstadoEnvio.entregado));
+            PreparedStatement ps2 = conn.prepareStatement(UpdateQueries.cambiarEstadoEnviosRuta(idRuta, EstadoEnvio.ENTREGADO));
             ps2.executeUpdate();
             PreparedStatement ps3 = conn.prepareStatement(UpdateQueries.cambiarDisponibleRep(idRuta, 1));
             ps3.executeUpdate();

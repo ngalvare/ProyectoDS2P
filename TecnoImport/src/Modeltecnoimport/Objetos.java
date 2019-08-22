@@ -51,14 +51,11 @@ public class Objetos {
     public static Envio crearEnvio(EstadoEnvio estado,ResultSet rt,String tipo) {
         Envio e = null;
         try{
-            switch (tipo){
-                case "DOM":
-                    e = new EnvioDomicilio(rt.getInt(2), estado, Database.getVenta(rt.getInt(3)));
-                    break;
-                default:
-                    e = new EnvioAbastecimiento(rt.getInt(3), Date.valueOf(rt.getString(2)), estado, Database.getLocal(rt.getInt(4)));
-                    break;
-                }
+            if(tipo == "DOM"){
+                e = new EnvioDomicilio(rt.getInt(2), estado, Database.getVenta(rt.getInt(3)));
+            }else{
+                e = new EnvioAbastecimiento(rt.getInt(3), Date.valueOf(rt.getString(2)), estado, Database.getLocal(rt.getInt(4)));
+            }
         }catch (SQLException ex) {
             Logger.getLogger(Objetos.class.getName()).log(Level.SEVERE, null, ex);
         }
