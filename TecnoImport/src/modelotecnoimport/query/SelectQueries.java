@@ -16,6 +16,11 @@ public class SelectQueries {
         "join tblCategory using (idCat)\n" +
         "where cedulaEmp = \'";
     
+    static String allEnvios = "select * from tblEnvio where estado =\'pedido\';";
+    
+    private SelectQueries() {
+        throw new IllegalStateException("Utility class");
+    } 
     
     public static String getUser(String id, String psw){
         return "select * from tblUser where idUser=\'"+id+"\' and psw=\'"+psw+"\';";
@@ -82,7 +87,7 @@ public class SelectQueries {
     }
 
     public static String getAllEnvios() {
-        return "select * from tblEnvio where estado =\'pedido\';";
+        return allEnvios;
     }
 
     public static String getEnvTipo(int idEnvio, String tipo) {

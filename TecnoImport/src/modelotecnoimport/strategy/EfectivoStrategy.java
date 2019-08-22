@@ -25,5 +25,21 @@ public class EfectivoStrategy implements PagoStrategy{
     public void pagar(Currency monto) {
         throw new UnsupportedOperationException("Not supported yet."); 
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Currency getMonto() {
+        return monto;
+    }
+
+    public void setMonto(Currency monto) {
+        this.monto = monto;
+    }
     
 }

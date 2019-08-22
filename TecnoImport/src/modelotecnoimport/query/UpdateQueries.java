@@ -12,6 +12,12 @@ import modelotecnoimport.EstadoEnvio;
  * @author scmz2607
  */
 public class UpdateQueries {
+    static String idRuta = "select @idEstaRuta";
+    
+    private UpdateQueries() {
+        throw new IllegalStateException("Utility class");
+    }   
+    
     public static String cambiarIsAdmin(String cedula, boolean setAdmin){
         return "update tblUser "
                 +"set isAdmin="+setAdmin
@@ -27,7 +33,7 @@ public class UpdateQueries {
     }
     
     public static String idEstaRuta(){
-        return "select @idEstaRuta";
+        return idRuta;
     }
     
     public static String asignarRutaEnvio(int idEnvio, int idRuta){
