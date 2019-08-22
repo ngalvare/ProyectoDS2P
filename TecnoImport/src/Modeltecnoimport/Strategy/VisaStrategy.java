@@ -1,5 +1,6 @@
 
-package Modeltecnoimport;
+package Modeltecnoimport.Strategy;
+
 
 import java.util.Currency;
 

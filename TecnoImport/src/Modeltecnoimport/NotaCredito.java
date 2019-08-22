@@ -1,6 +1,7 @@
 
 package Modeltecnoimport;
 
+import Modeltecnoimport.Strategy.PagoStrategy;
 import java.util.Date;
 
 /**
