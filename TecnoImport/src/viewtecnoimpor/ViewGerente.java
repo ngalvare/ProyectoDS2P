@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package viewtecnoimpor;
 
 import medelotecnoimpor.singleton.Database;
@@ -138,14 +134,14 @@ public class ViewGerente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonConsultarDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConsultarDataActionPerformed
-        // TODO add your handling code here
+
         ViewConsultarDataGerente v = new ViewConsultarDataGerente(logueado);
         this.setVisible(false);
         v.setVisible(true);
     }//GEN-LAST:event_buttonConsultarDataActionPerformed
 
     private void buttonPeticionAbastecimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPeticionAbastecimientoActionPerformed
-        // TODO add your handling code here:
+
         ViewPeticionAbastecimiento v = new ViewPeticionAbastecimiento(logueado);
         this.setVisible(false);
         v.setVisible(true);
@@ -159,7 +155,7 @@ public class ViewGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void buttonAsignarPermisos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAsignarPermisos1ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_buttonAsignarPermisos1ActionPerformed
 
     private void buttonAsignarPermisos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAsignarPermisos2ActionPerformed
@@ -168,7 +164,7 @@ public class ViewGerente extends javax.swing.JFrame {
         v.setVisible(true);
         DefaultTableModel m = (DefaultTableModel) v.getjTable1().getModel();
         List<Usuario> usrs = Database.getUsrsAdminLocal(logueado);
-        System.out.println(usrs.size());
+
         usrs.forEach((u) -> {
             m.addRow(new Object[]{u.getEmpleado().getNumCedula(),u.getEmpleado().getNombre()});
         });

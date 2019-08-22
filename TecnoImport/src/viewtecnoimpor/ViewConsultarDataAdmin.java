@@ -305,7 +305,7 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
             for(int i=0; i<a; i++)
                 temp.removeRow(0);
         }catch(Exception e){
-            System.out.println(e);
+            
         }
     }
     

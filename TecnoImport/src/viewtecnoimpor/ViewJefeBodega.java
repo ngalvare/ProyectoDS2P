@@ -144,27 +144,26 @@ public class ViewJefeBodega extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonRutaEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRutaEntregaActionPerformed
-        // TODO add your handling code here:
+
         ViewRutaEntrega v = new ViewRutaEntrega(logueado);
         this.setVisible(false);
         v.setVisible(true);
     }//GEN-LAST:event_buttonRutaEntregaActionPerformed
 
     private void buttonAsignarPermisosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAsignarPermisosActionPerformed
-        // TODO add your handling code here:
+
         ViewPermisosAdminBodega v = new ViewPermisosAdminBodega(logueado);
         this.setVisible(false);
         v.setVisible(true);
         DefaultTableModel m = (DefaultTableModel) v.getjTable1().getModel();
         List<Usuario> usrs = Database.getUsrsAdminLocal(logueado);
-        System.out.println(usrs.size());
         usrs.forEach((u) -> {
             m.addRow(new Object[]{u.getEmpleado().getNumCedula(),u.getEmpleado().getNombre()});
         });
     }//GEN-LAST:event_buttonAsignarPermisosActionPerformed
 
     private void buttonActualizarEnviosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActualizarEnviosActionPerformed
-        // TODO add your handling code here:
+
         ViewSeleccionarEnvios v = new ViewSeleccionarEnvios(logueado);
         this.setVisible(false);
         v.setVisible(true);
@@ -189,11 +188,8 @@ public class ViewJefeBodega extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+      
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -210,10 +206,9 @@ public class ViewJefeBodega extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ViewJefeBodega.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
+       
+      
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             new ViewJefeBodega(logueado).setVisible(true);
         });
