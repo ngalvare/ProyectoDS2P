@@ -252,7 +252,7 @@ public class Database {
         return e;
     }
 
-    public static boolean crearRuta(Repartidor r, ArrayList<Integer> idsEnvios) {
+    public static boolean crearRuta(Repartidor r, List<Integer> idsEnvios) {
         if (idsEnvios.isEmpty()) {
             return false;
         }
