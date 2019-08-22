@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Modeltecnoimport;
 
 /**
@@ -15,20 +11,6 @@ public class Gerente extends Empleado{
         super(numCedula, nombre, direccion, numTelefono);
     }
     
-    public void agregarPedidoAbastecimiento(){
-        System.out.println("Clase Gerente Metodo agregarPedidoAbastecimiento");
-    }
     
-    public void consultarEmpleados(){
-        System.out.println("Clase Gerente Metodo consultarEmpleados");
-    }
-    
-    public void consultarClientes(){
-        System.out.println("Clase Gerente Metodo consultarClientes");
-    }
-    
-    public void consultarEnvio(){
-        System.out.println("Clase Gerente Metodo consultarEnvio");
-    }
     
 }

@@ -23,7 +23,7 @@ public class EfectivoStrategy implements PagoStrategy{
     
     @Override
     public void pagar(Currency monto) {
-        System.out.println("Clase EfectivoStrategy metodo pagar");
+        
     }
     
 }

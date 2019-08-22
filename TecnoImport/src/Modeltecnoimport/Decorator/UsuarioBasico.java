@@ -22,17 +22,17 @@ public class UsuarioBasico implements Usuario{
 
     @Override
     public void iniciarSesion() {
-        System.out.println("iniciarSecionUsuarioBasico"); 
+         
     }
 
     @Override
     public void cambiarPsw() {
-        System.out.println("cambiarPswUsuarioBasico");
+        
     }
 
     @Override
     public void consultarProductos() {
-        System.out.println("consultarProdutosUsuarioBasico");
+        
     }
     
    

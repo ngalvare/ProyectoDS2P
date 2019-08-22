@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Modeltecnoimport;
 
 import Modeltecnoimport.Singleton.Database;
@@ -40,7 +36,6 @@ public class Objetos {
                 e = new Gerente(rs.getString(1), rs.getString(3), rs.getString(4), rs.getString(5));
                 break;
             case "JEFE":
-                System.out.println("creando jefe");
                 e = new JefeBodega(rs.getString(1), rs.getString(3), rs.getString(4), rs.getString(5));
                 break;
             case "VENDEDOR":
@@ -59,11 +54,11 @@ public class Objetos {
             switch (tipo){
             case "DOM":
                 e = new EnvioDomicilio(rt.getInt(2), estado, Database.getVenta(rt.getInt(3)));
-                System.out.println("creando domicilio");
+                
                 break;
             case "ABAS":
                 e = new EnvioAbastecimiento(rt.getInt(3), Date.valueOf(rt.getString(2)), estado, Database.getLocal(rt.getInt(4)));
-                System.out.println("creando abas");
+                
                 break;
             }
         }catch (SQLException ex) {

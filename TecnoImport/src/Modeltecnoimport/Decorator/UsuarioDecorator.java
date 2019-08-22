@@ -22,17 +22,17 @@ public class UsuarioDecorator implements Usuario{
     
     @Override
     public void iniciarSesion() {
-        System.out.println("iniciarSecionUsuarioDecorator"); 
+        
     }
 
     @Override
     public void cambiarPsw() {
-        System.out.println("cambiarPswUsuarioDecorator");
+        
     }
 
     @Override
     public void consultarProductos() {
-        System.out.println("consultarProdutosUsuarioDecorator");
+        
     }
 
     @Override

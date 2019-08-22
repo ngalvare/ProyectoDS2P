@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Modeltecnoimport;
 
 import java.util.ArrayList;
@@ -10,13 +6,11 @@ import java.util.List;
 
 /**
  *
- * @author ANA
+ * @author Nicole Alvarez
  */
 public class RutaEntrega {
     
     private int id;
-//    private List<Envio> envios;
-//    private Repartidor repartidor;
     private String nombreRep;
     private boolean esExitosa;
 
@@ -51,16 +45,5 @@ public class RutaEntrega {
         this.esExitosa = esExitosa;
     }
     
-    public void agregarEnvio(Envio e){
-        System.out.println("Clase RutaEntrega Metodo agregarEnvio");
-    }
-    
-    public void actualizarEnvios(){
-        System.out.println("Clase RutaEntrega Metodo actualizarEnvios");
-    }
-    
-    public List<Envio> obtenerEnviosFallidos(){
-        System.out.println("Clase RutaEntrega Metodo obtenerEnviosFallidos");
-        return new ArrayList<>();
-    }
+   
 }

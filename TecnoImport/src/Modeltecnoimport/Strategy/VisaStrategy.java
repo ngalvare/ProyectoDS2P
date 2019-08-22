@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Modeltecnoimport;
 
 import java.util.Currency;
@@ -29,7 +25,7 @@ public class VisaStrategy implements PagoStrategy{
     
     @Override
     public void pagar(Currency monto) {
-        System.out.println("Clase VisaStrategy metodo pagar");
+       
     }
     
 }

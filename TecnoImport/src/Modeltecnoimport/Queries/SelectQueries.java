@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Modeltecnoimport.Queries;
 
 /**
@@ -30,7 +26,6 @@ public class SelectQueries {
                 tabla = "tblRepartidor";
                 break;
         }
-//        System.out.println("select * from "+tabla+" where cedulaEmp=\'"+ced+"\';");
         return "select * from "+tabla+" where cedulaEmp=\'"+ced+"\';";
     }
     
@@ -61,7 +56,6 @@ public class SelectQueries {
     }
     
     
-    /*  ESTAAAA MALLLL INGRESARRR LA QUERY CORRECTA*/
     public static String getVentasAll(String cedula){
         return "select distinct nombre,nombreCat,descripcion,precio,cantidad from \n" +
         "tblEmpleado\n" +
