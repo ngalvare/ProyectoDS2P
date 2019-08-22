@@ -16,14 +16,12 @@ public class Envio {
     }
     
     
-    public void cambiarEstadoEnvio(EstadoEnvio estado){
-    
-        System.out.println("EnvioCambiarEstadoEnvio");
+    public void cambiarEstadoEnvio(){
+        //falta implementar
     }
     
-    public void solicitar(List<Producto> productos){
-    
-        System.out.println("Enviosolicitar");
+    public void solicitar(){
+        //falta implementar
     }
 
     public int getId() {

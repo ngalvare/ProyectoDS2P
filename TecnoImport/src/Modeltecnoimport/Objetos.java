@@ -32,15 +32,15 @@ public class Objetos {
         Empleado e = null;
         try{
             switch (cargo){
-            case "GERENTE":
-                e = new Gerente(rs.getString(1), rs.getString(3), rs.getString(4), rs.getString(5));
-                break;
-            case "JEFE":
-                e = new JefeBodega(rs.getString(1), rs.getString(3), rs.getString(4), rs.getString(5));
-                break;
-            case "VENDEDOR":
-                e = new Vendedor(rs.getString(1), rs.getString(3), rs.getString(4), rs.getString(5));
-                break;
+                case "GERENTE":
+                    e = new Gerente(rs.getString(1), rs.getString(3), rs.getString(4), rs.getString(5));
+                    break;
+                case "JEFE":
+                    e = new JefeBodega(rs.getString(1), rs.getString(3), rs.getString(4), rs.getString(5));
+                    break;
+                default:
+                    e = new Vendedor(rs.getString(1), rs.getString(3), rs.getString(4), rs.getString(5));
+                    break;
             }
         }catch (SQLException ex) {
             Logger.getLogger(Objetos.class.getName()).log(Level.SEVERE, null, ex);
@@ -52,15 +52,13 @@ public class Objetos {
         Envio e = null;
         try{
             switch (tipo){
-            case "DOM":
-                e = new EnvioDomicilio(rt.getInt(2), estado, Database.getVenta(rt.getInt(3)));
-                
-                break;
-            case "ABAS":
-                e = new EnvioAbastecimiento(rt.getInt(3), Date.valueOf(rt.getString(2)), estado, Database.getLocal(rt.getInt(4)));
-                
-                break;
-            }
+                case "DOM":
+                    e = new EnvioDomicilio(rt.getInt(2), estado, Database.getVenta(rt.getInt(3)));
+                    break;
+                default:
+                    e = new EnvioAbastecimiento(rt.getInt(3), Date.valueOf(rt.getString(2)), estado, Database.getLocal(rt.getInt(4)));
+                    break;
+                }
         }catch (SQLException ex) {
             Logger.getLogger(Objetos.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -10,7 +10,8 @@ import java.util.Date;
  */
 public class NotaCredito extends DocumentoElectronico{
     
-    private float porcentajeDescuento, valorGastoIncurrido;
+    private float porcentajeDescuento;
+    private float valorGastoIncurrido;
     private Factura facturaAnulada;
 
     public NotaCredito(int id, PagoStrategy pago, Cliente cliente, Date fecha, String detalle,float porcentajeDescuento, float valorGastoIncurrido, Factura facturaAnulada) {

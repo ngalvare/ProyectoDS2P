@@ -5,7 +5,10 @@ package Modeltecnoimport;
  * @author scmz2607
  */
 public class Cliente {
-    String cedula, nombre, address, numTlf;
+    String cedula;
+    String nombre;
+    String address;
+    String numTlf;
 
     public Cliente(String cedula,  String nombre, String address, String numTlf) {
         this.cedula = cedula;
@@ -21,8 +24,6 @@ public class Cliente {
     public void setCedula(String cedula) {
         this.cedula = cedula;
     }
-
-    
 
     public String getNombre() {
         return nombre;

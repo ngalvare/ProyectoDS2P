@@ -5,7 +5,10 @@ package Modeltecnoimport;
  * @author Nicole Alvarez
  */
 public class Empleado {
-    protected String numCedula, nombre, direccion, numTelefono;
+    protected String numCedula;
+    protected String nombre;
+    protected String direccion;
+    protected String numTelefono;
   
 
     public Empleado(String numCedula, String nombre, String direccion, String numTelefono) {

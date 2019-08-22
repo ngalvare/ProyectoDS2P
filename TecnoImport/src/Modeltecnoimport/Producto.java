@@ -8,7 +8,9 @@ package Modeltecnoimport;
 public class Producto {
     
     private int  stock;
-    private String nombre, categoria, descripcion;
+    private String nombre;
+    private String categoria;
+    private String descripcion;
     private float precio;
 
     public Producto(int stock, String nombre, String categoria, String descripcion, float precio) {

@@ -6,6 +6,17 @@ package Modeltecnoimport.Queries;
  * @author scmz2607
  */
 public class SelectQueries {
+    
+    static String q1 = "select distinct nombre,nombreCat,descripcion,precio,cantidad from \n" +
+        "tblEmpleado\n" +
+        "join tblLocal l using(idLocal)\n" +
+        "join tblInventario i using(idInventario)\n" +
+        "join tblProductoInv pi using (idInventario)\n" +
+        "join tblProducto p using(idProducto)\n" +
+        "join tblCategory using (idCat)\n" +
+        "where cedulaEmp = \'";
+    
+    
     public static String getUser(String id, String psw){
         return "select * from tblUser where idUser=\'"+id+"\' and psw=\'"+psw+"\';";
     }
@@ -25,6 +36,8 @@ public class SelectQueries {
             case "REPARTIDOR":
                 tabla = "tblRepartidor";
                 break;
+            default:
+                break;
         }
         return "select * from "+tabla+" where cedulaEmp=\'"+ced+"\';";
     }
@@ -34,37 +47,16 @@ public class SelectQueries {
     }
     
     public static String getProducto(String data, String cedula,String search){
-        return "select distinct nombre,nombreCat,descripcion,precio,cantidad from \n" +
-        "tblEmpleado\n" +
-        "join tblLocal l using(idLocal)\n" +
-        "join tblInventario i using(idInventario)\n" +
-        "join tblProductoInv pi using (idInventario)\n" +
-        "join tblProducto p using(idProducto)\n" +
-        "join tblCategory using (idCat)\n" +
-        "where cedulaEmp = \'"+cedula+"\' and "+search+" like \'%"+data+"%\';";
+        return q1+cedula+"\' and "+search+" like \'%"+data+"%\';";
     }
     
     public static String getProductAll(String cedula){
-        return "select distinct nombre,nombreCat,descripcion,precio,cantidad from \n" +
-        "tblEmpleado\n" +
-        "join tblLocal l using(idLocal)\n" +
-        "join tblInventario i using(idInventario)\n" +
-        "join tblProductoInv pi using (idInventario)\n" +
-        "join tblProducto p using(idProducto)\n" +
-        "join tblCategory using (idCat)\n" +
-        "where cedulaEmp = \'"+cedula+"\'";
+        return q1+cedula+"\'";
     }
     
     
     public static String getVentasAll(String cedula){
-        return "select distinct nombre,nombreCat,descripcion,precio,cantidad from \n" +
-        "tblEmpleado\n" +
-        "join tblLocal l using(idLocal)\n" +
-        "join tblInventario i using(idInventario)\n" +
-        "join tblProductoInv pi using (idInventario)\n" +
-        "join tblProducto p using(idProducto)\n" +
-        "join tblCategory using (idCat)\n" +
-        "where cedulaEmp = \'"+cedula+"\'";
+        return q1+cedula+"\'";
     }
     
     
@@ -101,6 +93,8 @@ public class SelectQueries {
                 break;
             case "ABAS":
                 tabla = "tblEnvioAbas";
+                break;
+            default:
                 break;
         }
         return "select * from "+tabla+" where idEnvio=\'"+idEnvio+"\';";
