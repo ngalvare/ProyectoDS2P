@@ -1,4 +1,3 @@
-
 package modelotecnoimport;
 
 /**
@@ -14,6 +13,10 @@ public class UsuarioDecorator implements Usuario{
         this.idUser = usuario.getIdUser();
         this.password = usuario.getPassword();
         this.empleado = usuario.getEmpleado();
+    }
+    
+    public void permisosAdmin(){
+        //falta implementar
     }
     
     @Override

@@ -13,6 +13,11 @@ import java.util.logging.Logger;
  * @author scmz2607
  */
 public class Objetos {
+    
+    private Objetos() {
+        throw new IllegalStateException("Utility class");
+    }
+    
     public static Usuario crearUser(ResultSet rs){
         try {   
                 UsuarioBasico ub  = new UsuarioBasico(rs.getString(1), rs.getString(3), Database.getEmpleado(rs.getString(2)));

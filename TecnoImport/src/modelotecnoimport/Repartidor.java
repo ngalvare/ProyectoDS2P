@@ -16,4 +16,13 @@ public class Repartidor extends Empleado{
     public String toString() {
         return super.getNombre();
     }
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
+    
 }
