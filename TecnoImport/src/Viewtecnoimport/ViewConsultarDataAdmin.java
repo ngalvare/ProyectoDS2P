@@ -8,8 +8,7 @@ package Viewtecnoimport;
 import Modeltecnoimport.Producto;
 import Modeltecnoimport.Singleton.Database;
 import Modeltecnoimport.Usuario;
-import com.oracle.jrockit.jfr.Producer;
-import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,9 +21,10 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
     private String search;
     /**
      * Creates new form ViewVendedor
+     * @param logueado
      */
     public ViewConsultarDataAdmin(Usuario logueado) {
-        this.logueado = logueado;
+        ViewConsultarDataAdmin.logueado = logueado;
         search = "";
         initComponents();
     }
@@ -271,7 +271,7 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
                 //m.setNumRows(5);
                 String data  = this.txtBuscador.getText();
                 String busq = this.search;
-                ArrayList<Producto> prods = Database.getProdFilter(data, logueado, busq);
+                List<Producto> prods = Database.getProdFilter(data, logueado, busq);
                 for(Producto p: prods){
                     m.addRow(new Object[]{p.getNombre(),p.getCategoria(),p.getDescripcion(),p.getPrecio(),p.getStock()});
                 }
@@ -358,10 +358,8 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ViewConsultarDataAdmin(logueado).setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new ViewConsultarDataAdmin(logueado).setVisible(true);
         });
     }
 

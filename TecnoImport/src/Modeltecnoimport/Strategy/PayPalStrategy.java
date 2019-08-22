@@ -1,5 +1,5 @@
 
-package Modeltecnoimport;
+package Modeltecnoimport.Strategy;
 
 import java.util.Currency;
 
@@ -21,7 +21,7 @@ public class PayPalStrategy implements PagoStrategy{
    
     @Override
     public void pagar(Currency monto) {
-        
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
     
 }

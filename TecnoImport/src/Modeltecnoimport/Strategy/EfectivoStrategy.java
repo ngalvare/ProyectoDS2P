@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modeltecnoimport;
+package Modeltecnoimport.Strategy;
 
 import java.util.Currency;
 
@@ -23,7 +23,7 @@ public class EfectivoStrategy implements PagoStrategy{
     
     @Override
     public void pagar(Currency monto) {
-        
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
     
 }

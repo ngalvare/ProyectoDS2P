@@ -5,12 +5,10 @@
  */
 package Viewtecnoimport;
 
-import Modeltecnoimport.Producto;
 import Modeltecnoimport.Singleton.Database;
 import Modeltecnoimport.Usuario;
-import java.awt.Color;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,6 +21,7 @@ public class ViewJefeBodega extends javax.swing.JFrame {
 
     /**
      * Creates new form ViewVendedor
+     * @param u
      */
     public ViewJefeBodega(Usuario u) {
         ViewJefeBodega.logueado = u;
@@ -157,12 +156,11 @@ public class ViewJefeBodega extends javax.swing.JFrame {
         this.setVisible(false);
         v.setVisible(true);
         DefaultTableModel m = (DefaultTableModel) v.getjTable1().getModel();
-        ArrayList<Usuario> usrs = Database.getUsrsAdminLocal(logueado);
+        List<Usuario> usrs = Database.getUsrsAdminLocal(logueado);
         System.out.println(usrs.size());
-        for (Usuario u : usrs) {
-            
+        usrs.forEach((u) -> {
             m.addRow(new Object[]{u.getEmpleado().getNumCedula(),u.getEmpleado().getNombre()});
-        }
+        });
     }//GEN-LAST:event_buttonAsignarPermisosActionPerformed
 
     private void buttonActualizarEnviosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActualizarEnviosActionPerformed
@@ -216,10 +214,8 @@ public class ViewJefeBodega extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ViewJefeBodega(logueado).setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new ViewJefeBodega(logueado).setVisible(true);
         });
     }
 

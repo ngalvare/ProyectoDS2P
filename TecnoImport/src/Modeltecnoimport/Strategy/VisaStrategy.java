@@ -10,11 +10,11 @@ import java.util.Currency;
  */
 public class VisaStrategy implements PagoStrategy{
     
-    private String nombre;
-    private String numeroTarjeta;
-    private String cvv;
-    private String fechaExpiracion;
-    private Currency monto;
+    private final String nombre;
+    private final String numeroTarjeta;
+    private final String cvv;
+    private final String fechaExpiracion;
+    private final Currency monto;
 
     public VisaStrategy(String nombre, String numeroTarjeta, String cvv, String fechaExpiracion, Currency monto) {
         this.nombre = nombre;
@@ -23,10 +23,11 @@ public class VisaStrategy implements PagoStrategy{
         this.fechaExpiracion = fechaExpiracion;
         this.monto = monto;
     }
-    
+
     @Override
     public void pagar(Currency monto) {
-       
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
+    
     
 }

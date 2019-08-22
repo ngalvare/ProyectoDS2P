@@ -1,4 +1,3 @@
-
 package Modeltecnoimport.Singleton;
 
 import Modeltecnoimport.Cliente;
@@ -7,7 +6,6 @@ import Modeltecnoimport.Envio;
 import Modeltecnoimport.EstadoEnvio;
 import Modeltecnoimport.Local;
 import Modeltecnoimport.Objetos;
-import Modeltecnoimport.PagoStrategy;
 import Modeltecnoimport.Producto;
 import Modeltecnoimport.Queries.SelectQueries;
 import Modeltecnoimport.Queries.UpdateQueries;
@@ -37,15 +35,15 @@ public class Database {
     private static Connection conn = null;
 
     private final String driver;
-    private final String user; 
-    private final String password; 
+    private final String user;
+    private final String password;
     private final String url;
     private static Database instance;
 
     private Database() {
         driver = "com.mysql.jdbc.Driver";
-        user = "arun"; 
-        password = "12345"; 
+        user = "arun";
+        password = "12345";
         url = "jdbc:mysql://localhost:3306/dbTecno";
     }
 
@@ -53,9 +51,6 @@ public class Database {
         try {
             Class.forName(driver);
             conn = DriverManager.getConnection(url, user, password);
-            if (conn != null) {
-                Logger.getLogger("Conexion Exitosa").log(Level.SEVERE, null, new Exception());
-            }
         } catch (ClassNotFoundException | SQLException e) {
             Logger.getLogger("No se pudo Conectar").log(Level.SEVERE, null, new Exception());
         }
@@ -63,10 +58,6 @@ public class Database {
 
     public Connection getConection() {
         return conn;
-    }
-
-    public void desconectar() {
-        conn = null;
     }
 
     public static Database getInstance() {
@@ -77,10 +68,8 @@ public class Database {
     }
 
     public static ResultSet consultaQuery(String comando) {
-        Statement st;
         ResultSet rs = null;
-        try {
-            st = conn.createStatement();
+        try (Statement st = conn.createStatement()) {
             rs = st.executeQuery(comando);
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
@@ -95,7 +84,6 @@ public class Database {
     public static Usuario validaInicio(String usr, String psw) {
         Usuario u = null;
         try {
-
             ResultSet rs = consultaQuery(SelectQueries.getUser(usr, psw));
             while (rs.next()) {
                 u = Objetos.crearUser(rs);
@@ -112,9 +100,10 @@ public class Database {
         Venta v = null;
         try {
             PreparedStatement ps = prepararQuery(SelectQueries.getVenta(idVenta));
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                v = Objetos.crearVenta(rs);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    v = Objetos.crearVenta(rs);
+                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
@@ -126,9 +115,10 @@ public class Database {
         Cliente c = null;
         try {
             PreparedStatement ps = prepararQuery(SelectQueries.getCliente(cedCl));
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                c = Objetos.crearCliente(rs);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    c = Objetos.crearCliente(rs);
+                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
@@ -140,9 +130,10 @@ public class Database {
         Local l = null;
         try {
             PreparedStatement ps = prepararQuery(SelectQueries.getLocal(idLocal));
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                l = Objetos.crearLocal(rs);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    l = Objetos.crearLocal(rs);
+                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
@@ -156,12 +147,13 @@ public class Database {
         try {
             for (String c : cargos) {
                 PreparedStatement ps = prepararQuery(SelectQueries.getEmpCargo(cedula, c));
-                ResultSet rs = ps.executeQuery();
-                while (rs.next()) {
-                    ResultSet rs2 = consultaQuery(SelectQueries.getEmpSimple(cedula));
-                    while (rs2.next()) {
-                        e = Objetos.crearEmp(rs2, c);
-                        break;
+                try (ResultSet rs = ps.executeQuery()) {
+                    while (rs.next()) {
+                        ResultSet rs2 = consultaQuery(SelectQueries.getEmpSimple(cedula));
+                        while (rs2.next()) {
+                            e = Objetos.crearEmp(rs2, c);
+                            break;
+                        }
                     }
                 }
             }
@@ -171,24 +163,24 @@ public class Database {
         return e;
     }
 
-    public static ArrayList<Usuario> getUsrsAdminLocal(Usuario usr) {
-        ArrayList<Usuario> usrs = new ArrayList<>();
+    public static List<Usuario> getUsrsAdminLocal(Usuario usr) {
+        List<Usuario> usrs = new ArrayList<>();
         try {
             Empleado e = usr.getEmpleado();
             PreparedStatement ps = prepararQuery(SelectQueries.getUsrsByLocal(e.getNumCedula()));
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                usrs.add(Objetos.crearUser(rs));
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    usrs.add(Objetos.crearUser(rs));
+                }
             }
-
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
         return usrs;
     }
 
-    public static ArrayList<Producto> getProdFilter(String dato, Usuario usr, String search) {
-        ArrayList<Producto> ps = new ArrayList<>();
+    public static List<Producto> getProdFilter(String dato, Usuario usr, String search) {
+        List<Producto> ps = new ArrayList<>();
         Empleado e = usr.getEmpleado();
         ResultSet rs;
         if (search.equals("")) {
@@ -209,8 +201,8 @@ public class Database {
         return ps;
     }
 
-    public static ArrayList<Venta> getVentas(Usuario usr) {
-        ArrayList<Venta> ventas = new ArrayList<>();
+    public static List<Venta> getVentas(Usuario usr) {
+        List<Venta> ventas = new ArrayList<>();
         Empleado e = usr.getEmpleado();
         ResultSet rs;
         rs = consultaQuery(SelectQueries.getProductAll(e.getNumCedula()));
@@ -226,12 +218,11 @@ public class Database {
         return ventas;
     }
 
-    public static ArrayList<Envio> getEnvios() {
-        ArrayList<Envio> envios = new ArrayList<>();
+    public static List<Envio> getEnvios() {
+        List<Envio> envios = new ArrayList<>();
         Envio e = null;
         try {
             ResultSet rs = consultaQuery(SelectQueries.getAllEnvios());
-            int i = 0;
             while (rs.next()) {
                 e = getEnvio(rs);
                 envios.add(e);
@@ -249,9 +240,10 @@ public class Database {
         try {
             for (String t : tipoE) {
                 PreparedStatement ps = prepararQuery(SelectQueries.getEnvTipo(rs.getInt(1), t));
-                ResultSet rt = ps.executeQuery();
-                while (rt.next()) {
-                    e = Objetos.crearEnvio(EstadoEnvio.valueOf(rs.getString(3)), rt, t);
+                try (ResultSet rt = ps.executeQuery()) {
+                    while (rt.next()) {
+                        e = Objetos.crearEnvio(EstadoEnvio.valueOf(rs.getString(3)), rt, t);
+                    }
                 }
             }
         } catch (SQLException ex) {
@@ -266,14 +258,15 @@ public class Database {
         }
         try {
             PreparedStatement pst = conn.prepareStatement(UpdateQueries.getIdRepbyCed(r.getNumCedula()));
-            ResultSet rs2 = pst.executeQuery();
-            while (rs2.next()) {
-                PreparedStatement ps = conn.prepareStatement(UpdateQueries.crearRuta(rs2.getInt(1), false));
-                ps.execute();
-                PreparedStatement ps4 = conn.prepareStatement(UpdateQueries.cambiarDisponible(rs2.getInt(1), 0));
-                ps4.execute();
-                ViewSelectAdminMood.repartidores.poll();
-                break;
+            try (ResultSet rs2 = pst.executeQuery()) {
+                while (rs2.next()) {
+                    PreparedStatement ps = conn.prepareStatement(UpdateQueries.crearRuta(rs2.getInt(1), false));
+                    ps.execute();
+                    PreparedStatement ps4 = conn.prepareStatement(UpdateQueries.cambiarDisponible(rs2.getInt(1), 0));
+                    ps4.execute();
+                    ViewSelectAdminMood.repartidores.poll();
+                    break;
+                }
             }
             int idRuta = idUltimaRuta();
             for (int id : idsEnvios) {
@@ -289,8 +282,8 @@ public class Database {
         return true;
     }
 
-    public static ArrayList<Repartidor> getRepartidorF(Usuario usr) {
-        ArrayList<Repartidor> ps = new ArrayList<>();
+    public static List<Repartidor> getRepartidorF(Usuario usr) {
+        List<Repartidor> ps = new ArrayList<>();
         Empleado e = usr.getEmpleado();
         ResultSet rs;
         rs = consultaQuery(SelectQueries.getRepartidores(e.getNumCedula()));
@@ -326,8 +319,8 @@ public class Database {
         return false;
     }
 
-    public static ArrayList<RutaEntrega> getRutas() {
-        ArrayList<RutaEntrega> rutas = new ArrayList<>();
+    public static List<RutaEntrega> getRutas() {
+        List<RutaEntrega> rutas = new ArrayList<>();
         ResultSet rs = consultaQuery(SelectQueries.getRutas());
         try {
             while (rs.next()) {
@@ -372,7 +365,4 @@ public class Database {
         }
     }
 
-    
-
-   
 }

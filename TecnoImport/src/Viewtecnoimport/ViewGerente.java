@@ -7,8 +7,7 @@ package Viewtecnoimport;
 
 import Modeltecnoimport.Singleton.Database;
 import Modeltecnoimport.Usuario;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,9 +19,10 @@ public class ViewGerente extends javax.swing.JFrame {
    
     /**
      * Creates new form ViewVendedor
+     * @param logueado
      */
     public ViewGerente(Usuario logueado) {
-        this.logueado=logueado;
+        ViewGerente.logueado=logueado;
         initComponents();
     }
 
@@ -168,12 +168,11 @@ public class ViewGerente extends javax.swing.JFrame {
         this.setVisible(false);
         v.setVisible(true);
         DefaultTableModel m = (DefaultTableModel) v.getjTable1().getModel();
-        ArrayList<Usuario> usrs = Database.getUsrsAdminLocal(logueado);
+        List<Usuario> usrs = Database.getUsrsAdminLocal(logueado);
         System.out.println(usrs.size());
-        for (Usuario u : usrs) {
-            
+        usrs.forEach((u) -> {
             m.addRow(new Object[]{u.getEmpleado().getNumCedula(),u.getEmpleado().getNombre()});
-        }
+        });
     }//GEN-LAST:event_buttonAsignarPermisos2ActionPerformed
 
     /**
@@ -207,10 +206,8 @@ public class ViewGerente extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ViewGerente(logueado).setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new ViewGerente(logueado).setVisible(true);
         });
     }
 

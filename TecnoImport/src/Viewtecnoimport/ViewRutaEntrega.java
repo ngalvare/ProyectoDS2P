@@ -8,12 +8,10 @@ package Viewtecnoimport;
 import Modeltecnoimport.Envio;
 import Modeltecnoimport.EnvioAbastecimiento;
 import Modeltecnoimport.EnvioDomicilio;
-import Modeltecnoimport.Producto;
-import Modeltecnoimport.Repartidor;
 import Modeltecnoimport.RutaEntrega;
 import Modeltecnoimport.Singleton.Database;
 import Modeltecnoimport.Usuario;
-import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -26,9 +24,10 @@ public class ViewRutaEntrega extends javax.swing.JFrame {
 
     /**
      * Creates new form ViewVendedor
+     * @param logueado
      */
     public ViewRutaEntrega(Usuario logueado) {
-        this.logueado = logueado;
+        ViewRutaEntrega.logueado = logueado;
         initComponents();
     }
 
@@ -138,8 +137,8 @@ public class ViewRutaEntrega extends javax.swing.JFrame {
         ViewNuevaRutaEntrega ve = v;
         DefaultTableModel m = (DefaultTableModel) v.getjTable1().getModel();
         Object[] rows = new Object[4];
-        ArrayList<Envio> envios = Database.getEnvios();
-        for (Envio e : envios) {
+        List<Envio> envios = Database.getEnvios();
+        envios.forEach((e) -> {
             if (e instanceof EnvioDomicilio) {
                 EnvioDomicilio ed = (EnvioDomicilio) e;
                 rows[0] = ed.getId();
@@ -153,8 +152,7 @@ public class ViewRutaEntrega extends javax.swing.JFrame {
                 rows[2] = ea.getFechaEmision();
                 m.addRow(rows);
             }
-
-        }
+        });
 
     }
 
@@ -165,12 +163,16 @@ public class ViewRutaEntrega extends javax.swing.JFrame {
         this.setVisible(false);
         DefaultTableModel m = (DefaultTableModel) v.getjTable1().getModel();
         Object[] rows = new Object[2];
-        ArrayList<RutaEntrega> rutas = Database.getRutas();
-        for (RutaEntrega r : rutas) {
+        List<RutaEntrega> rutas = Database.getRutas();
+        rutas.stream().map((r) -> {
             rows[0] = r.getId();
+            return r;
+        }).map((r) -> {
             rows[1] = r.getNombreRep();
+            return r;
+        }).forEachOrdered((_item) -> {
             m.addRow(rows);
-        }
+        });
         v.setVisible(true);
         v.setResizable(false);
     }//GEN-LAST:event_buttonListadoRutasActionPerformed
@@ -213,10 +215,8 @@ public class ViewRutaEntrega extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ViewRutaEntrega(logueado).setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new ViewRutaEntrega(logueado).setVisible(true);
         });
     }
 

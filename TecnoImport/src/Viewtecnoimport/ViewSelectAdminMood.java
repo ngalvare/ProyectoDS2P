@@ -13,6 +13,7 @@ import Modeltecnoimport.Usuario;
 import Modeltecnoimport.Vendedor;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -174,11 +175,11 @@ public class ViewSelectAdminMood extends javax.swing.JFrame {
         if (logueado.getEmpleado() instanceof JefeBodega) {
             repartidores= new LinkedList<>();
             ViewJefeBodega v = new ViewJefeBodega(logueado);
-            ArrayList<Repartidor> reps = Database.getRepartidorF(logueado);
+            List<Repartidor> reps = Database.getRepartidorF(logueado);
             
-            for (Repartidor r : reps) {
+            reps.forEach((r) -> {
                 repartidores.offer(r);
-            }
+            });
             v.setVisible(true);
             v.setResizable(false);
             this.setVisible(false);
@@ -223,10 +224,8 @@ public class ViewSelectAdminMood extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ViewSelectAdminMood(logueado).setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new ViewSelectAdminMood(logueado).setVisible(true);
         });
     }
 
