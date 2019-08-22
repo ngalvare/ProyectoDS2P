@@ -6,10 +6,8 @@
 package Viewtecnoimport;
 
 import Modeltecnoimport.Singleton.Database;
-import Modeltecnoimport.JefeBodega;
 import Modeltecnoimport.Usuario;
 import Modeltecnoimport.UsuarioAdmin;
-import Modeltecnoimport.Vendedor;
 import javax.swing.JOptionPane;
 
 /**
@@ -149,10 +147,10 @@ public class ViewLogin extends javax.swing.JFrame {
         Usuario logueado = Database.validaInicio(txtUserName.getText(), txtContraseña.getText());
         System.out.println(logueado.getIdUser()+logueado.getEmpleado().getNombre());
         ViewSelectAdminMood m = null;
-        if (logueado ==null){
-            JOptionPane.showMessageDialog(null, "Usuario Incorrecto, Vuelva a intentar","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
-        }else {
+        if (logueado !=null){
             m = new ViewSelectAdminMood(logueado);
+        }else {
+            JOptionPane.showMessageDialog(null, "Usuario Incorrecto, Vuelva a intentar","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
         }
         if (!(logueado instanceof UsuarioAdmin)){
             m.getButtonAdmin().setVisible(false);

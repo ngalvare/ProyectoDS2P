@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Viewtecnoimport;
 
 import Modeltecnoimport.Producto;
@@ -24,7 +19,7 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
      * @param logueado
      */
     public ViewConsultarDataAdmin(Usuario logueado) {
-        ViewConsultarDataAdmin.logueado = logueado;
+        this.logueado = logueado;
         search = "";
         initComponents();
     }
@@ -268,21 +263,21 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
             case "Productos":
                 eliminar(m);
                 m.setColumnIdentifiers(new Object[]{"Nombre","Categoría","Descripcción","Precio","Cantidad"});
-                //m.setNumRows(5);
                 String data  = this.txtBuscador.getText();
                 String busq = this.search;
                 List<Producto> prods = Database.getProdFilter(data, logueado, busq);
                 for(Producto p: prods){
                     m.addRow(new Object[]{p.getNombre(),p.getCategoria(),p.getDescripcion(),p.getPrecio(),p.getStock()});
                 }
-                
                 break;
             case "Empleados":
-            JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion!","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
-            break;
+                JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion!","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
+                break;
             case "Clientes":
-            JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion!","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
-            break;
+                JOptionPane.showMessageDialog(null, "Funcionalidad en Construccion!","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
+                break;
+            default:
+                break;
         }
     }//GEN-LAST:event_buttonMostrarActionPerformed
 
@@ -308,11 +303,10 @@ public class ViewConsultarDataAdmin extends javax.swing.JFrame {
             DefaultTableModel temp = t;
             int a =temp.getRowCount();
             for(int i=0; i<a; i++)
-                temp.removeRow(0); //aquí estaba el error, antes pasaba la i como parametro.... soy un bacín  XD
+                temp.removeRow(0);
         }catch(Exception e){
             System.out.println(e);
-        } 
-        //cargaTicket();
+        }
     }
     
     /**
