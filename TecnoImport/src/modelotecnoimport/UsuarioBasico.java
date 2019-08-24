@@ -15,21 +15,7 @@ public class UsuarioBasico implements Usuario{
         this.empleado = empleado;
     }
     
-    @Override
-    public void iniciarSesion() {
-         //falta implementar
-    }
-    
-    @Override
-    public void cambiarPsw() {
-        //falta implementar
-    }
-    
-    @Override
-    public void consultarProductos() {
-        //falta implementar
-    }
-    
+   
     @Override
     public Empleado getEmpleado() {
         return empleado;

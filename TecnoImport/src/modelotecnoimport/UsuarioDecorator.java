@@ -16,23 +16,9 @@ public class UsuarioDecorator implements Usuario{
     }
     
     public void permisosAdmin(){
-        //falta implementar
+        throw new UnsupportedClassVersionError();
     }
     
-    @Override
-    public void iniciarSesion() {
-        //falta implementar
-    }
-
-    @Override
-    public void cambiarPsw() {
-        //falta implementar
-    }
-
-    @Override
-    public void consultarProductos() {
-        //falta implementar
-    }
 
     @Override
     public String getIdUser() {

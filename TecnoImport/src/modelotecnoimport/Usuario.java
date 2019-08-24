@@ -11,10 +11,6 @@ package modelotecnoimport;
  * @author Nicole Alvarez
  */
 public interface Usuario {
-
-    public void iniciarSesion();
-    public void cambiarPsw();
-    public void consultarProductos();
     public String getIdUser();
     public void setIdUser(String idUser);
     public Empleado getEmpleado();
