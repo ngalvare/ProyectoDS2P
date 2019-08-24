@@ -5,6 +5,7 @@
  */
 package viewtecnoimpor;
 
+import javax.swing.JOptionPane;
 import modelotecnoimport.Usuario;
 
 /**
@@ -110,19 +111,13 @@ public class ViewVentas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonVentaPresencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVentaPresencialActionPerformed
+                JOptionPane.showMessageDialog(null, "Funicionalidad en construccion","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
 
-        ViewVentaPresencial v = new ViewVentaPresencial(logueado);
-        this.setVisible(false);
-        v.setVisible(true);
-        v.setResizable(false);
     }//GEN-LAST:event_buttonVentaPresencialActionPerformed
 
     private void buttonVentaDomicilioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVentaDomicilioActionPerformed
        
-        ViewVentaDomicilio v = new ViewVentaDomicilio(logueado);
-        this.setVisible(false);
-        v.setVisible(true);
-        v.setResizable(false);
+        JOptionPane.showMessageDialog(null, "Funicionalidad en construccion","Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_buttonVentaDomicilioActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed

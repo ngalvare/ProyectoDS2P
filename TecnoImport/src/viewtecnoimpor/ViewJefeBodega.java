@@ -7,7 +7,6 @@ package viewtecnoimpor;
 
 import medelotecnoimpor.singleton.Database;
 import modelotecnoimport.Usuario;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -40,7 +39,6 @@ public class ViewJefeBodega extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         buttonRutaEntrega = new javax.swing.JButton();
         buttonAsignarPermisos = new javax.swing.JButton();
-        buttonActualizarEnvios = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
@@ -61,13 +59,6 @@ public class ViewJefeBodega extends javax.swing.JFrame {
         buttonAsignarPermisos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonAsignarPermisosActionPerformed(evt);
-            }
-        });
-
-        buttonActualizarEnvios.setText("Envios");
-        buttonActualizarEnvios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonActualizarEnviosActionPerformed(evt);
             }
         });
 
@@ -97,8 +88,7 @@ public class ViewJefeBodega extends javax.swing.JFrame {
                 .addGap(96, 96, 96)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buttonAsignarPermisos)
-                    .addComponent(buttonRutaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonActualizarEnvios, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonRutaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 97, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
@@ -120,11 +110,9 @@ public class ViewJefeBodega extends javax.swing.JFrame {
                     .addComponent(btnRegresar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(buttonRutaEntrega)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(38, 38, 38)
                 .addComponent(buttonAsignarPermisos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonActualizarEnvios)
-                .addGap(41, 41, 41)
+                .addGap(50, 50, 50)
                 .addComponent(btnVolver)
                 .addGap(29, 29, 29))
         );
@@ -161,14 +149,6 @@ public class ViewJefeBodega extends javax.swing.JFrame {
             m.addRow(new Object[]{u.getEmpleado().getNumCedula(),u.getEmpleado().getNombre()});
         });
     }//GEN-LAST:event_buttonAsignarPermisosActionPerformed
-
-    private void buttonActualizarEnviosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonActualizarEnviosActionPerformed
-
-        ViewSeleccionarEnvios v = new ViewSeleccionarEnvios(logueado);
-        this.setVisible(false);
-        v.setVisible(true);
-        v.setResizable(false);
-    }//GEN-LAST:event_buttonActualizarEnviosActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         ViewLogin v = new ViewLogin();
@@ -217,7 +197,6 @@ public class ViewJefeBodega extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegresar;
     private javax.swing.JButton btnVolver;
-    private javax.swing.JButton buttonActualizarEnvios;
     private javax.swing.JButton buttonAsignarPermisos;
     private javax.swing.JButton buttonRutaEntrega;
     private javax.swing.JLabel jLabel1;

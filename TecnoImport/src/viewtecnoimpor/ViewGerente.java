@@ -34,7 +34,6 @@ public class ViewGerente extends javax.swing.JFrame {
         buttonAsignarPermisos1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         buttonConsultarData = new javax.swing.JButton();
-        buttonPeticionAbastecimiento = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
         buttonAsignarPermisos2 = new javax.swing.JButton();
@@ -55,13 +54,6 @@ public class ViewGerente extends javax.swing.JFrame {
         buttonConsultarData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonConsultarDataActionPerformed(evt);
-            }
-        });
-
-        buttonPeticionAbastecimiento.setText("Nueva Peticion de Abastecimiento");
-        buttonPeticionAbastecimiento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonPeticionAbastecimientoActionPerformed(evt);
             }
         });
 
@@ -95,7 +87,6 @@ public class ViewGerente extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(57, 57, 57)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(buttonPeticionAbastecimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buttonConsultarData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buttonAsignarPermisos2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -108,11 +99,9 @@ public class ViewGerente extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addComponent(buttonConsultarData)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonPeticionAbastecimiento)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(34, 34, 34)
                 .addComponent(buttonAsignarPermisos2)
                 .addGap(23, 23, 23)
                 .addComponent(btnRegresar)
@@ -139,13 +128,6 @@ public class ViewGerente extends javax.swing.JFrame {
         this.setVisible(false);
         v.setVisible(true);
     }//GEN-LAST:event_buttonConsultarDataActionPerformed
-
-    private void buttonPeticionAbastecimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPeticionAbastecimientoActionPerformed
-
-        ViewPeticionAbastecimiento v = new ViewPeticionAbastecimiento(logueado);
-        this.setVisible(false);
-        v.setVisible(true);
-    }//GEN-LAST:event_buttonPeticionAbastecimientoActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         ViewLogin v = new ViewLogin();
@@ -211,7 +193,6 @@ public class ViewGerente extends javax.swing.JFrame {
     private javax.swing.JButton buttonAsignarPermisos1;
     private javax.swing.JButton buttonAsignarPermisos2;
     private javax.swing.JButton buttonConsultarData;
-    private javax.swing.JButton buttonPeticionAbastecimiento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
