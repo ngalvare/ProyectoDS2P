@@ -73,6 +73,7 @@ public class Database {
             rs = st.executeQuery(comando);
         } catch (SQLException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
         return rs;
     }
@@ -82,6 +83,8 @@ public class Database {
     }
 
     public static Usuario validaInicio(String usr, String psw) {
+        if(usr==null)
+            return null;
         Usuario u = null;
         try {
             ResultSet rs = consultaQuery(SelectQueries.getUser(usr, psw));
@@ -301,6 +304,8 @@ public class Database {
     }
 
     public static boolean getPrivAdmin(String cedula) {
+       if(cedula==null)
+           return false;
         ResultSet rs;
         rs = consultaQuery(SelectQueries.getUsrbyCed(cedula));
         try {
@@ -346,6 +351,7 @@ public class Database {
     }
 
     public static void completarRuta(int idRuta) {
+            
         try {
             PreparedStatement ps = conn.prepareStatement(UpdateQueries.cambiarEstadoRuta(idRuta, 1));
             ps.executeUpdate();

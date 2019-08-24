@@ -48,6 +48,8 @@ public class SelectQueries {
     }
     
     public static String getEmpSimple(String cedula){
+        if(cedula == null)
+            return " ";
         return "select * from tblEmpleado where cedulaEmp=\'"+cedula+"\';";
     }
     
@@ -106,7 +108,7 @@ public class SelectQueries {
     }
 
     public static String getEnvSimple(int idEnvio) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Envio";
     }
 
     public static String getVenta(int idVenta) {
@@ -114,6 +116,8 @@ public class SelectQueries {
     }
 
     public static String getCliente(String cedulaCl) {
+        if(cedulaCl == null)
+            return null;
         return "select * from tblCliente where cedulaCl = \'"+cedulaCl+"\';";
     }
 
