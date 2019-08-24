@@ -42,9 +42,9 @@ public class Database {
 
     private Database() {
         driver = "com.mysql.jdbc.Driver";
-        user = "arun";
-        password = "12345";
-        url = "jdbc:mysql://localhost:3306/dbTecno";
+        user = getEncryptedUser();
+        password = getEncryptedPass();
+        url = "jdbc:mysql://localhost:33etEncryptedPa06/dbTecno";
     }
 
     public void conectar() {
@@ -365,4 +365,11 @@ public class Database {
         }
     }
 
+    private String getEncryptedUser() {
+        return "arun";
+    }
+
+    private String getEncryptedPass() {
+        return "12345";
+    }
 }
